@@ -1,0 +1,15 @@
+# robots.txt for goldwashplants.com
+# https://goldwashplants.com/
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://goldwashplants.com/sitemap.xml
+
+# Block admin/private paths (add as needed)
+Disallow: /admin/
+Disallow: /private/
+
+# Crawl delay (optional, be polite to servers)
+Crawl-delay: 1
