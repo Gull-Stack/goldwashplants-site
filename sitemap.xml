@@ -43,4 +43,5 @@
   <!-- Legal -->
   <url><loc>https://goldwashplants.com/privacy/</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
   <url><loc>https://goldwashplants.com/terms/</loc><priority>0.3</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://goldwashplants.com/examples.html</loc><priority>0.8</priority></url>
 </urlset>
