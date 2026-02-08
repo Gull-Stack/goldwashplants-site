@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Gold Wash Plants - Get a Free Quote</title>
+  <meta name="description" content="Contact Gold Wash Plants for a free quote on custom gold mining equipment. WhatsApp, phone, or email - we respond within 24 hours.">
+  
+  <link rel="canonical" href="https://goldwashplants.com/contact/">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --gold: #C4A052;
+      --gold-light: #D4B87A;
+      --gold-dark: #A68A3C;
+      --black: #1A1A1A;
+      --charcoal: #2D2D2D;
+      --gray-900: #111827;
+      --gray-700: #374151;
+      --gray-500: #6B7280;
+      --gray-300: #D1D5DB;
+      --gray-100: #F3F4F6;
+      --white: #FFFFFF;
+      --cream: #FAF8F5;
+      --whatsapp: #25D366;
+      
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: var(--font-body);
+      color: var(--gray-900);
+      line-height: 1.6;
+      background: var(--white);
+    }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-100);
+    }
+    
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--black);
+      text-decoration: none;
+    }
+    
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    
+    nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    
+    nav a:hover { color: var(--black); }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+    
+    .btn-primary {
+      background: var(--black);
+      color: var(--white);
+    }
+    
+    .btn-whatsapp {
+      background: var(--whatsapp);
+      color: var(--white);
+    }
+    
+    .btn-whatsapp:hover {
+      background: #20bd5a;
+    }
+    
+    .btn-lg {
+      padding: 16px 32px;
+      font-size: 1rem;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      padding: 140px 0 80px;
+      background: var(--cream);
+      min-height: 100vh;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    
+    .contact-info h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .contact-info p {
+      color: var(--gray-700);
+      margin-bottom: 32px;
+      font-size: 1.1rem;
+    }
+    
+    .contact-methods {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--gray-100);
+    }
+    
+    .contact-method-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gold);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    
+    .contact-method-icon.whatsapp {
+      background: var(--whatsapp);
+    }
+    
+    .contact-method h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    
+    .contact-method a {
+      color: var(--gold-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .contact-method a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Form */
+    .contact-form-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    .contact-form-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--gray-700);
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 1rem;
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      font-family: var(--font-body);
+      transition: border-color 0.2s;
+    }
+    
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .form-submit:hover {
+      background: var(--charcoal);
+    }
+    
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+      color: var(--gray-500);
+    }
+    
+    .or-divider::before,
+    .or-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gray-300);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 40px 0;
+      text-align: center;
+    }
+    
+    footer p {
+      color: var(--gray-500);
+      font-size: 0.9rem;
+    }
+    
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+    
+    .gullstack-credit {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      color: var(--gray-500);
+      font-size: 0.85rem;
+    }
+    
+    .gullstack-credit img {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <a href="/" class="logo">
+          <span class="logo-icon">⛏️</span>
+          Gold Wash Plants
+        </a>
+        <nav>
+          <a href="/products/100-ton.html">Equipment</a>
+          <a href="/how-it-works.html">How It Works</a>
+          <a href="/locations/alaska.html">Locations</a>
+          <a href="/faq.html">FAQ</a>
+          <a href="/contact/" class="btn btn-primary">Get a Quote</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h1>Get a Free Quote</h1>
+          <p>Ready to start recovering more gold? Contact us for a free, no-obligation quote. We typically respond within 24 hours.</p>
+          
+          <div class="contact-methods">
+            <a href="https://wa.me/16618101844?text=I'm%20interested%20in%20your%20gold%20wash%20plants" class="contact-method" style="text-decoration: none; color: inherit;">
+              <div class="contact-method-icon whatsapp">💬</div>
+              <div>
+                <h3>WhatsApp (Fastest)</h3>
+                <span style="color: var(--whatsapp); font-weight: 600;">Chat with us now →</span>
+              </div>
+            </a>
+            
+            <div class="contact-method">
+              <div class="contact-method-icon">📞</div>
+              <div>
+                <h3>Phone</h3>
+                <a href="tel:+16618101844">+1 (661) 810-1844</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-method-icon">✉️</div>
+              <div>
+                <h3>Email</h3>
+                <a href="mailto:sales@goldwashplants.com">sales@goldwashplants.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form-card">
+          <h2>Send us a message</h2>
+          <form action="https://formspree.io/f/your-form-id" method="POST">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+              <label for="equipment">Equipment Interest</label>
+              <select id="equipment" name="equipment">
+                <option value="">Select equipment type...</option>
+                <option value="50-ton">50 Ton Wash Plant</option>
+                <option value="100-ton">100 Ton Wash Plant</option>
+                <option value="200-ton">200 Ton Wash Plant</option>
+                <option value="300-ton">300 Ton Wash Plant</option>
+                <option value="trommel">Gold Trommel</option>
+                <option value="custom">Custom Configuration</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message *</label>
+              <textarea id="message" name="message" placeholder="Tell us about your operation, location, and what you're looking for..." required></textarea>
+            </div>
+            
+            <button type="submit" class="form-submit">Send Message</button>
+          </form>
+          
+          <div class="or-divider">or</div>
+          
+          <a href="https://wa.me/16618101844?text=I'm%20interested%20in%20your%20gold%20wash%20plants" class="btn btn-whatsapp btn-lg" style="width: 100%; text-decoration: none;">
+            💬 Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Gold Wash Plants. All rights reserved.</p>
+      <p style="margin-top: 8px;"><a href="/">Home</a> · <a href="/products/100-ton.html">Equipment</a> · <a href="/faq.html">FAQ</a> · <a href="/contact/">Contact</a></p>
+      <div class="gullstack-credit">
+        <span>Marketing by</span>
+        <a href="https://gullstack.com" target="_blank" style="display: inline-flex; align-items: center; gap: 4px;">
+          🦅 GullStack
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/16618101844?text=I'm%20interested%20in%20your%20gold%20wash%20plants" target="_blank" style="position:fixed;bottom:24px;right:24px;width:60px;height:60px;background:#25D366;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(37,211,102,0.4);z-index:1000;" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</body>
+</html>
