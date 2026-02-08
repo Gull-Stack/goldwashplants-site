@@ -196,6 +196,7 @@
       min-height: 90vh;
       display: flex;
       align-items: center;
+      overflow: hidden;
     }
     
     .hero-grid {
@@ -278,11 +279,14 @@
     
     .hero-image {
       position: relative;
+      margin-right: -120px;
     }
     
     .hero-image img {
       border-radius: 16px;
       box-shadow: var(--shadow-xl);
+      width: 140%;
+      max-width: none;
     }
     
     .hero-image-badge {
