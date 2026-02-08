@@ -1,4 +1,10 @@
 {
+    "git": {
+        "deploymentEnabled": {
+            "main": true,
+            "staging": false
+        }
+    },
     "github": {
         "enabled": true,
         "autoAlias": false
