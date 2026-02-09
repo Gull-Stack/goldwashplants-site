@@ -785,28 +785,7 @@
   </style>
 </head>
 <body>
-  <!-- Gold Price Ticker -->
-  <div id="gold-ticker" style="display:flex;justify-content:center;gap:20px;background:#1A1A1A;padding:8px 0;border-bottom:1px solid rgba(196,160,82,0.3);overflow:hidden;">
-    <div class="tradingview-widget-container" style="width:280px;height:70px;">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol":"FOREXCOM:XAUUSD","dateRange":"1D","colorTheme":"dark","trendLineColor":"#C4A052","underLineColor":"rgba(196,160,82,0.10)","isTransparent":true,"autosize":true,"locale":"en"}</script>
-    </div>
-    <div class="tradingview-widget-container" style="width:280px;height:70px;">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol":"FX_IDC:XAUUSD","dateRange":"1D","colorTheme":"dark","trendLineColor":"#C4A052","underLineColor":"rgba(196,160,82,0.10)","isTransparent":true,"autosize":true,"locale":"en"}</script>
-    </div>
-    <div class="tradingview-widget-container" style="width:280px;height:70px;">
-      <div class="tradingview-widget-container__widget"></div>
-      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol":"TVC:GOLD","dateRange":"1D","colorTheme":"dark","trendLineColor":"#C4A052","underLineColor":"rgba(196,160,82,0.10)","isTransparent":true,"autosize":true,"locale":"en"}</script>
-    </div>
-  </div>
-  <script>
-    // Hide ticker if widgets don't load (e.g. on GitHub Pages)
-    setTimeout(function(){
-      var t=document.getElementById('gold-ticker');
-      if(t && !t.querySelector('iframe')){t.style.display='none';}
-    },3000);
-  </script>
+  <!-- Gold Price Ticker (removed for now) -->
 
   <!-- ═══════════════════════════════════════════
        HEADER
