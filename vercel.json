@@ -1,6 +1,19 @@
 {
     "cleanUrls": true,
     "trailingSlash": false,
+    "redirects": [
+        { "source": "/50-ton", "destination": "/products/50-ton", "permanent": true },
+        { "source": "/100-ton", "destination": "/products/100-ton", "permanent": true },
+        { "source": "/200-ton", "destination": "/products/200-ton", "permanent": true },
+        { "source": "/300-ton", "destination": "/products/300-ton", "permanent": true },
+        { "source": "/gold-trommel", "destination": "/products", "permanent": true },
+        { "source": "/alaska", "destination": "/locations/alaska", "permanent": true },
+        { "source": "/california", "destination": "/locations/california", "permanent": true },
+        { "source": "/africa", "destination": "/locations/africa", "permanent": true },
+        { "source": "/guyana", "destination": "/locations/guyana", "permanent": true },
+        { "source": "/suriname", "destination": "/locations/suriname", "permanent": true },
+        { "source": "/products/gold-trommel", "destination": "/products", "permanent": true }
+    ],
     "git": {
         "deploymentEnabled": {
             "main": true,
