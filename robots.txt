@@ -4,8 +4,9 @@
 User-agent: *
 Allow: /
 
-# Sitemap
+# Sitemaps
 Sitemap: https://goldwashplants.com/sitemap.xml
+Sitemap: https://goldwashplants.com/video-sitemap.xml
 
 # Block admin/private paths (add as needed)
 Disallow: /admin/

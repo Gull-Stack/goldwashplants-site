@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  
+  <!-- Examples Page - All Demo Videos -->
+  <url>
+    <loc>https://www.goldwashplants.com/examples.html</loc>
+    
+    <!-- M50 Demo -->
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/01WlVkNIUis/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>M50 Gold Wash Plant Demo - 50 Ton Portable Mining Equipment</video:title>
+      <video:description>Watch the M50 Gold Wash Plant in action. Our entry-level 50-ton portable wash plant processing material on-site with 95-98% gold recovery. Perfect for small to medium placer mining claims. Custom built in the USA, ships worldwide.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=01WlVkNIUis</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/01WlVkNIUis</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>gold wash plant</video:tag>
+      <video:tag>M50 wash plant</video:tag>
+      <video:tag>50 ton gold mining</video:tag>
+      <video:tag>portable wash plant</video:tag>
+      <video:tag>placer mining equipment</video:tag>
+      <video:tag>gold recovery</video:tag>
+    </video:video>
+    
+    <!-- M200T Demo -->
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/CX17QH5hm4c/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>M200T Commercial Gold Wash Plant - 200 Ton Mining Equipment</video:title>
+      <video:description>See the M200T Gold Wash Plant handling high-volume commercial mining operations. Our 200-ton wash plant processes hundreds of tons per hour with 95-98% gold recovery. Made in USA with American steel. Mercury-free gold mining equipment.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=CX17QH5hm4c</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/CX17QH5hm4c</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>gold wash plant</video:tag>
+      <video:tag>M200T wash plant</video:tag>
+      <video:tag>200 ton gold mining</video:tag>
+      <video:tag>commercial mining equipment</video:tag>
+      <video:tag>gold mining USA</video:tag>
+    </video:video>
+    
+    <!-- 30 Ton Small Wash Plant -->
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/06Xb3F_ajDc/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>30 Ton Small Gold Wash Plant - Compact Portable Mining Equipment</video:title>
+      <video:description>Our most portable gold wash plant option. The 30 ton per hour small wash plant is perfect for prospectors, testing new claims, or operations with limited access. Full 95-98% gold recovery in a compact, easy-to-transport package.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=06Xb3F_ajDc</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/06Xb3F_ajDc</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>small gold wash plant</video:tag>
+      <video:tag>30 ton wash plant</video:tag>
+      <video:tag>portable gold mining</video:tag>
+      <video:tag>gold prospecting equipment</video:tag>
+      <video:tag>compact wash plant</video:tag>
+    </video:video>
+    
+    <!-- 200 Ton Full Operation -->
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/tgN4ttrJmtg/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>200 Ton Per Hour Gold Wash Plant - Full Commercial Operation</video:title>
+      <video:description>Watch our flagship 200 TPH gold wash plant in a full commercial mining operation. Complete setup, feeding process, and gold recovery at industrial scale. Truly portable wash plant solution for serious gold mining operations.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=tgN4ttrJmtg</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/tgN4ttrJmtg</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>gold wash plant for sale</video:tag>
+      <video:tag>200 ton wash plant</video:tag>
+      <video:tag>commercial gold mining</video:tag>
+      <video:tag>industrial wash plant</video:tag>
+      <video:tag>gold mining equipment</video:tag>
+    </video:video>
+    
+    <!-- Equipment Overview -->
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/4j-gacM62hM/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Gold Mining Equipment For Sale - Complete Product Line Overview</video:title>
+      <video:description>A complete look at our full line of gold mining equipment from Gold Watch Project. Learn about the different wash plant configurations and options available for your specific mining needs. From 30 ton to 300 ton capacity.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=4j-gacM62hM</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/4j-gacM62hM</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>gold mining equipment for sale</video:tag>
+      <video:tag>gold wash plants</video:tag>
+      <video:tag>mining equipment USA</video:tag>
+      <video:tag>placer mining</video:tag>
+    </video:video>
+    
+    <!-- Company Overview -->
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/nSsJAmmJU8Y/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Gold Watch Project - Custom Gold Wash Plant Manufacturer USA</video:title>
+      <video:description>Meet the team behind Gold Wash Plants. We're miners ourselves, and we build the equipment we wish we had when we started. Every wash plant is custom-built in our American facility with American steel. Ships worldwide.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=nSsJAmmJU8Y</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/nSsJAmmJU8Y</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>gold wash plant manufacturer</video:tag>
+      <video:tag>gold watch project</video:tag>
+      <video:tag>made in USA mining equipment</video:tag>
+      <video:tag>custom wash plants</video:tag>
+    </video:video>
+  </url>
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.goldwashplants.com/</loc>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/01WlVkNIUis/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>Gold Wash Plants - Custom Portable Mining Equipment Made in USA</video:title>
+      <video:description>Custom portable gold wash plants built to order. 95-98% gold recovery, mercury-free placer mining equipment. Made in the USA, ships worldwide. 50-300 tons per hour capacity. Ready in 1-3 weeks. Visit goldwashplants.com for quotes.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=01WlVkNIUis</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/01WlVkNIUis</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>gold wash plants for sale</video:tag>
+      <video:tag>gold mining equipment</video:tag>
+      <video:tag>portable gold wash plant</video:tag>
+      <video:tag>made in USA</video:tag>
+    </video:video>
+  </url>
+
+  <!-- 50 Ton Product Page -->
+  <url>
+    <loc>https://www.goldwashplants.com/products/50-ton.html</loc>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/01WlVkNIUis/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>50 Ton Gold Wash Plant for Sale - M50 Demo Video</video:title>
+      <video:description>The M50 Gold Wash Plant processes 50 tons per hour with 95-98% gold recovery. Perfect for small to medium placer mining operations. Watch it in action. Custom built in USA, ships worldwide.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=01WlVkNIUis</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/01WlVkNIUis</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>50 ton gold wash plant</video:tag>
+      <video:tag>M50 wash plant for sale</video:tag>
+      <video:tag>small gold wash plant</video:tag>
+    </video:video>
+  </url>
+
+  <!-- 200 Ton Product Page -->
+  <url>
+    <loc>https://www.goldwashplants.com/products/200-ton.html</loc>
+    <video:video>
+      <video:thumbnail_loc>https://i.ytimg.com/vi/CX17QH5hm4c/maxresdefault.jpg</video:thumbnail_loc>
+      <video:title>200 Ton Gold Wash Plant for Sale - M200T Commercial Demo</video:title>
+      <video:description>The M200T Gold Wash Plant handles 200 tons per hour for commercial mining operations. See the power and efficiency of industrial-scale gold recovery. Made in USA with American steel.</video:description>
+      <video:content_loc>https://www.youtube.com/watch?v=CX17QH5hm4c</video:content_loc>
+      <video:player_loc>https://www.youtube.com/embed/CX17QH5hm4c</video:player_loc>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:requires_subscription>no</video:requires_subscription>
+      <video:live>no</video:live>
+      <video:tag>200 ton gold wash plant</video:tag>
+      <video:tag>M200T wash plant for sale</video:tag>
+      <video:tag>commercial gold mining equipment</video:tag>
+    </video:video>
+  </url>
+
+</urlset>
