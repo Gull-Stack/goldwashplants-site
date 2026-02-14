@@ -70,6 +70,7 @@
       line-height: 1.6;
       background: var(--white);
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
     
     img { max-width: 100%; height: auto; }
@@ -744,6 +745,8 @@
       .hero-stats { flex-direction: column; gap: 24px; align-items: center; }
       .products-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr; gap: 32px; }
+      #contact .container > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+      #contact form > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
       .features-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
