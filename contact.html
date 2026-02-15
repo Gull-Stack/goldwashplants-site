@@ -102,7 +102,7 @@
       <!-- Form -->
       <div>
         <h2 style="font-family:var(--font-display);font-size:1.6rem;color:var(--white);margin-bottom:24px">Request a Quote</h2>
-        <form action="https://formspree.io/f/xeelookq" method="POST" style="display:flex;flex-direction:column;gap:16px">
+        <form id="leadForm" style="display:flex;flex-direction:column;gap:16px">
           <div class="name-email-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
             <input type="text" name="name" placeholder="Your Name *" required class="input-style">
             <input type="email" name="email" placeholder="Email Address *" required class="input-style">
@@ -119,8 +119,56 @@
           </select>
           <input type="text" name="location" placeholder="Mining Location (state/country)" class="input-style">
           <textarea name="message" placeholder="Tell us about your operation — material type, volume goals, timeline..." rows="5" class="input-style" style="resize:vertical"></textarea>
-          <button type="submit" style="padding:16px 32px;border-radius:8px;border:none;background:var(--gold);color:white;font-size:1rem;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:background 0.2s" onmouseover="this.style.background='#A68A3C'" onmouseout="this.style.background='#C4A052'">Send Quote Request →</button>
+          <button type="submit" id="submitBtn" style="padding:16px 32px;border-radius:8px;border:none;background:var(--gold);color:white;font-size:1rem;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:background 0.2s" onmouseover="this.style.background='#A68A3C'" onmouseout="this.style.background='#C4A052'">Send Quote Request →</button>
+          <div id="formMessage" style="display:none;padding:16px;border-radius:8px;text-align:center;font-weight:500"></div>
         </form>
+        <script>
+          document.getElementById('leadForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const msg = document.getElementById('formMessage');
+            const form = this;
+            
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            msg.style.display = 'none';
+            
+            const data = {
+              name: form.name.value,
+              email: form.email.value,
+              phone: form.phone.value,
+              interest: form.interest.value,
+              location: form.location.value,
+              message: form.message.value
+            };
+            
+            try {
+              const res = await fetch('/api/submit-lead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+              });
+              const result = await res.json();
+              
+              if (res.ok) {
+                msg.style.background = 'rgba(34,197,94,0.15)';
+                msg.style.color = '#22c55e';
+                msg.textContent = result.message || 'Thank you! We\'ll be in touch soon.';
+                form.reset();
+              } else {
+                throw new Error(result.error || 'Something went wrong');
+              }
+            } catch (err) {
+              msg.style.background = 'rgba(239,68,68,0.15)';
+              msg.style.color = '#ef4444';
+              msg.textContent = err.message || 'Error submitting form. Please try again.';
+            }
+            
+            msg.style.display = 'block';
+            btn.disabled = false;
+            btn.textContent = 'Send Quote Request →';
+          });
+        </script>
       </div>
 
       <!-- Contact Options -->
