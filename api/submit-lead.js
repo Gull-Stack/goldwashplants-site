@@ -7,7 +7,7 @@ const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const SALES_EMAIL = process.env.SITE_EMAIL || 'sales@goldwatchproject.com';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'leads@gullstack.com';
 
-async function sendEmail({ to, from, subject, html, replyTo }) {
+async function sendEmail({ to, from, fromName, subject, html, replyTo }) {
   const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
     method: 'POST',
     headers: {
@@ -16,7 +16,7 @@ async function sendEmail({ to, from, subject, html, replyTo }) {
     },
     body: JSON.stringify({
       personalizations: [{ to: [{ email: to }] }],
-      from: { email: from },
+      from: { email: from, name: fromName || 'Gold Wash Plants' },
       reply_to: replyTo ? { email: replyTo } : undefined,
       subject,
       content: [{ type: 'text/html', value: html }],
@@ -131,6 +131,7 @@ export default async function handler(req, res) {
       await sendEmail({
         to: SALES_EMAIL,
         from: FROM_EMAIL,
+        fromName: `${leadData.name} via Gold Wash Plants`,
         subject: `🔔 New Lead: ${leadData.name} - ${leadData.interest || 'General Inquiry'}`,
         html: notificationHtml,
         replyTo: leadData.email,
