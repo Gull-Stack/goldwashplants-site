@@ -1497,5 +1497,30 @@
       });
     });
   </script>
+  
+  <!-- GA4 Click Tracking for WhatsApp & Phone -->
+  <script>
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      
+      // Track WhatsApp clicks
+      if (href.includes('wa.me') || href.includes('whatsapp')) {
+        gtag('event', 'whatsapp_click', {
+          event_category: 'engagement',
+          event_label: href
+        });
+      }
+      
+      // Track phone clicks
+      if (href.startsWith('tel:')) {
+        gtag('event', 'phone_click', {
+          event_category: 'engagement',
+          event_label: href.replace('tel:', '')
+        });
+      }
+    });
+  </script>
 </body>
 </html>

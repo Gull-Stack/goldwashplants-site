@@ -211,5 +211,18 @@
   function toggleMobileMenu(){var b=document.querySelector('.mobile-menu-btn'),n=document.getElementById('main-nav');b.classList.toggle('active');n.classList.toggle('active')}
   document.querySelectorAll('#main-nav a').forEach(function(l){l.addEventListener('click',function(){document.querySelector('.mobile-menu-btn').classList.remove('active');document.getElementById('main-nav').classList.remove('active')})});
   </script>
+  <script>
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (href.includes('wa.me') || href.includes('whatsapp')) {
+        gtag('event', 'whatsapp_click', { event_category: 'engagement', event_label: href });
+      }
+      if (href.startsWith('tel:')) {
+        gtag('event', 'phone_click', { event_category: 'engagement', event_label: href.replace('tel:', '') });
+      }
+    });
+  </script>
 </body>
 </html>
