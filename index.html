@@ -1498,26 +1498,71 @@
     });
   </script>
   
-  <!-- GA4 Click Tracking for WhatsApp & Phone -->
+  <!-- GA4 Conversion Tracking -->
   <script>
+    // Form submission tracking
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      if (form.action && form.action.includes('formspree')) {
+        gtag('event', 'contact_form_submit', {
+          event_category: 'lead_generation',
+          event_label: 'quote_request_form',
+          value: 1
+        });
+        
+        // Also track as conversion
+        gtag('event', 'conversion', {
+          send_to: 'G-21ZDT1EM3M/contact_form'
+        });
+      }
+    });
+
+    // Click tracking for all conversion actions
     document.addEventListener('click', function(e) {
       var link = e.target.closest('a');
       if (!link) return;
       var href = link.getAttribute('href') || '';
       
-      // Track WhatsApp clicks
+      // Track WhatsApp clicks (highest value lead source)
       if (href.includes('wa.me') || href.includes('whatsapp')) {
         gtag('event', 'whatsapp_click', {
-          event_category: 'engagement',
-          event_label: href
+          event_category: 'lead_generation',
+          event_label: 'whatsapp_chat',
+          value: 2  // Higher value - more engaged leads
         });
       }
       
       // Track phone clicks
       if (href.startsWith('tel:')) {
         gtag('event', 'phone_click', {
+          event_category: 'lead_generation',
+          event_label: 'phone_call',
+          phone_number: href.replace('tel:', ''),
+          value: 3  // Highest value - direct call
+        });
+      }
+      
+      // Track email clicks  
+      if (href.startsWith('mailto:')) {
+        gtag('event', 'email_click', {
+          event_category: 'lead_generation',
+          event_label: 'email_contact',
+          email_address: href.replace('mailto:', ''),
+          value: 1
+        });
+      }
+    });
+
+    // Track page scroll depth for engagement
+    var maxScroll = 0;
+    window.addEventListener('scroll', function() {
+      var scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      if (scrollPercent > maxScroll && scrollPercent % 25 === 0 && scrollPercent > 0) {
+        maxScroll = scrollPercent;
+        gtag('event', 'scroll', {
           event_category: 'engagement',
-          event_label: href.replace('tel:', '')
+          event_label: scrollPercent + '_percent',
+          value: scrollPercent
         });
       }
     });
