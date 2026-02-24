@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Core Pages -->
-  <url><loc>https://goldwashplants.com/</loc><lastmod>2026-02-14</lastmod><priority>1.0</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://goldwashplants.com/how-it-works.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/faq.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/compare.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/contact.html</loc><lastmod>2026-02-14</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/examples.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/</loc><lastmod>2026-02-24</lastmod><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/how-it-works</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/faq</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/compare</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/contact</loc><lastmod>2026-02-24</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/examples</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
 
   <!-- Equipment Landing -->
-  <url><loc>https://goldwashplants.com/products/index.html</loc><lastmod>2026-02-14</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/products</loc><lastmod>2026-02-24</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
 
   <!-- Product Pages -->
-  <url><loc>https://goldwashplants.com/products/50-ton.html</loc><lastmod>2026-02-14</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/products/100-ton.html</loc><lastmod>2026-02-14</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/products/200-ton.html</loc><lastmod>2026-02-14</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/products/300-ton.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/products/gold-trommel.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/products/50-ton</loc><lastmod>2026-02-24</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/products/100-ton</loc><lastmod>2026-02-24</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/products/200-ton</loc><lastmod>2026-02-24</lastmod><priority>0.9</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/products/300-ton</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/products/gold-trommel</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
 
   <!-- Location Pages -->
-  <url><loc>https://goldwashplants.com/locations/alaska.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/california.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/colorado.html</loc><lastmod>2026-02-14</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/arizona.html</loc><lastmod>2026-02-14</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/nevada.html</loc><lastmod>2026-02-14</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/montana.html</loc><lastmod>2026-02-14</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/oregon.html</loc><lastmod>2026-02-14</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/idaho.html</loc><lastmod>2026-02-14</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/georgia.html</loc><lastmod>2026-02-14</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/africa.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/locations/australia.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/alaska</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/california</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/colorado</loc><lastmod>2026-02-24</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/arizona</loc><lastmod>2026-02-24</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/nevada</loc><lastmod>2026-02-24</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/montana</loc><lastmod>2026-02-24</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/oregon</loc><lastmod>2026-02-24</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/idaho</loc><lastmod>2026-02-24</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/georgia</loc><lastmod>2026-02-24</lastmod><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/africa</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/locations/australia</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
 
   <!-- Blog -->
-  <url><loc>https://goldwashplants.com/blog/index.html</loc><lastmod>2026-02-14</lastmod><priority>0.7</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://goldwashplants.com/blog/gold-wash-plant-cost-guide.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/blog/trommel-vs-wash-plant.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/blog/fine-gold-recovery.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://goldwashplants.com/blog/small-mining-operations.html</loc><lastmod>2026-02-14</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/blog</loc><lastmod>2026-02-24</lastmod><priority>0.7</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/blog/gold-wash-plant-cost-guide</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/blog/trommel-vs-wash-plant</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/blog/fine-gold-recovery</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://www.goldwashplants.com/blog/small-mining-operations</loc><lastmod>2026-02-24</lastmod><priority>0.8</priority><changefreq>monthly</changefreq></url>
 </urlset>
