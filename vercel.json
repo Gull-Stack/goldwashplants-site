@@ -12,7 +12,10 @@
         { "source": "/africa", "destination": "/locations/africa", "permanent": true },
         { "source": "/guyana", "destination": "/locations/guyana", "permanent": true },
         { "source": "/suriname", "destination": "/locations/suriname", "permanent": true },
-        { "source": "/products/gold-trommel", "destination": "/products", "permanent": true }
+        { "source": "/products/gold-trommel", "destination": "/products", "permanent": true },
+        { "source": "/contact.html", "destination": "/contact", "permanent": true },
+        { "source": "/wash-plant-pricing.html", "destination": "/wash-plant-pricing", "permanent": true },
+        { "source": "/blog/index.html", "destination": "/blog", "permanent": true }
     ],
     "git": {
         "deploymentEnabled": {
