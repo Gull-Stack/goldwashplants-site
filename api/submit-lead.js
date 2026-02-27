@@ -4,7 +4,7 @@
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
-const SALES_EMAIL = process.env.SITE_EMAIL || 'sales@goldwatchproject.com';
+const SALES_EMAIL = process.env.SITE_EMAIL || 'chase@goldwashplants.com';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'leads@gullstack.com';
 
 async function sendEmail({ to, from, fromName, subject, html, replyTo }) {
