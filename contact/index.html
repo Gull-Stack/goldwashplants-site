@@ -403,7 +403,7 @@
         
         <div class="contact-form-card">
           <h2>Send us a message</h2>
-          <form action="https://formspree.io/f/xeelookq" method="POST">
+          <form id="contact-form">
             <div class="form-group">
               <label for="name">Name *</label>
               <input type="text" id="name" name="name" required>
@@ -436,7 +436,11 @@
               <textarea id="message" name="message" placeholder="Tell us about your operation, location, and what you're looking for..." required></textarea>
             </div>
             
-            <button type="submit" class="form-submit">Send Message</button>
+            <!-- Honeypot -->
+            <div style="position:absolute;left:-9999px;"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
+            
+            <button type="submit" class="form-submit" id="submit-btn">Send Message</button>
+            <div id="form-status" style="margin-top:12px;text-align:center;font-weight:500;"></div>
           </form>
           
           <div class="or-divider">or</div>
@@ -472,6 +476,52 @@
   <script>
   function toggleMobileMenu(){var b=document.querySelector('.mobile-menu-btn'),n=document.getElementById('main-nav');b.classList.toggle('active');n.classList.toggle('active')}
   document.querySelectorAll('#main-nav a').forEach(function(l){l.addEventListener('click',function(){document.querySelector('.mobile-menu-btn').classList.remove('active');document.getElementById('main-nav').classList.remove('active')})});
+  </script>
+
+  <!-- Form Submission -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('submit-btn');
+      var status = document.getElementById('form-status');
+      
+      // Honeypot check
+      if (this.querySelector('[name="website"]').value) return;
+      
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      status.textContent = '';
+      status.style.color = '';
+      
+      try {
+        var res = await fetch('/api/submit-lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            interest: document.getElementById('equipment').value,
+            message: document.getElementById('message').value
+          })
+        });
+        var data = await res.json();
+        if (res.ok) {
+          status.style.color = '#25D366';
+          status.textContent = data.message || "Thank you! We'll be in touch within 24 hours.";
+          this.reset();
+          gtag('event', 'contact_form_submit', { event_category: 'lead_generation', event_label: 'quote_request_form', value: 1 });
+        } else {
+          status.style.color = '#e74c3c';
+          status.textContent = data.error || 'Something went wrong. Please try again.';
+        }
+      } catch (err) {
+        status.style.color = '#e74c3c';
+        status.textContent = 'Network error. Please try again or contact us directly.';
+      }
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+    });
   </script>
 
   <!-- GA4 Conversion Tracking -->
