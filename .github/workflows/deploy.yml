@@ -9,6 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Regenerate sitemap
+        run: bash generate-sitemap.sh
+
       - name: Deploy to Vercel
         uses: amondnet/vercel-action@v25
         with:
