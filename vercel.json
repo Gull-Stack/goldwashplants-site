@@ -26,7 +26,11 @@
         { "source": "/cat-rentals", "destination": "/", "permanent": true },
         { "source": "/cat-rentals/", "destination": "/", "permanent": true },
         { "source": "/wash-plant-pricing", "destination": "/products", "permanent": true },
-        { "source": "/wash-plant-pricing/", "destination": "/products", "permanent": true }
+        { "source": "/wash-plant-pricing/", "destination": "/products", "permanent": true },
+        { "source": "/blog/trommel-vs-wash-plant", "destination": "/blog/gold-wash-plant-vs-trommel", "permanent": true },
+        { "source": "/blog/trommel-vs-wash-plant/", "destination": "/blog/gold-wash-plant-vs-trommel", "permanent": true },
+        { "source": "/pricing", "destination": "/products", "permanent": true },
+        { "source": "/pricing/", "destination": "/products", "permanent": true }
     ],
     "git": {
         "deploymentEnabled": {
