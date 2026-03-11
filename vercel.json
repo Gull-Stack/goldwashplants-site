@@ -14,8 +14,19 @@
         { "source": "/suriname", "destination": "/locations/suriname", "permanent": true },
         { "source": "/products/gold-trommel", "destination": "/products", "permanent": true },
         { "source": "/contact.html", "destination": "/contact", "permanent": true },
-        { "source": "/wash-plant-pricing.html", "destination": "/wash-plant-pricing", "permanent": true },
-        { "source": "/blog/index.html", "destination": "/blog", "permanent": true }
+        { "source": "/blog/index.html", "destination": "/blog", "permanent": true },
+        { "source": "/about-us", "destination": "/", "permanent": true },
+        { "source": "/about-us/", "destination": "/", "permanent": true },
+        { "source": "/contact-us", "destination": "/contact", "permanent": true },
+        { "source": "/contact-us/", "destination": "/contact", "permanent": true },
+        { "source": "/wash-plant-examples", "destination": "/examples", "permanent": true },
+        { "source": "/wash-plant-examples/", "destination": "/examples", "permanent": true },
+        { "source": "/category/mining-knowledge", "destination": "/blog", "permanent": true },
+        { "source": "/category/mining-knowledge/", "destination": "/blog", "permanent": true },
+        { "source": "/cat-rentals", "destination": "/", "permanent": true },
+        { "source": "/cat-rentals/", "destination": "/", "permanent": true },
+        { "source": "/wash-plant-pricing", "destination": "/products", "permanent": true },
+        { "source": "/wash-plant-pricing/", "destination": "/products", "permanent": true }
     ],
     "git": {
         "deploymentEnabled": {
