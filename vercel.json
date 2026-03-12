@@ -1,6 +1,7 @@
 {
-    "buildCommand": "npx eleventy",
+    "buildCommand": "npm install && npx @11ty/eleventy",
     "outputDirectory": "_site",
+    "installCommand": "npm install",
     "cleanUrls": true,
     "trailingSlash": false,
     "redirects": [
