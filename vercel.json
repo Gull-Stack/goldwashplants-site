@@ -1,4 +1,6 @@
 {
+    "buildCommand": "npx eleventy",
+    "outputDirectory": "_site",
     "cleanUrls": true,
     "trailingSlash": false,
     "redirects": [

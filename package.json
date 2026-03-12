@@ -1,0 +1,22 @@
+{
+  "name": "goldwashplants-site",
+  "version": "1.0.0",
+  "description": "Gold Wash Plants website built with Eleventy",
+  "main": ".eleventy.js",
+  "scripts": {
+    "build": "npx eleventy",
+    "dev": "npx eleventy --serve",
+    "start": "npx eleventy --serve"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  },
+  "keywords": [
+    "eleventy",
+    "static-site-generator",
+    "gold-mining",
+    "wash-plants"
+  ],
+  "author": "GullStack",
+  "license": "MIT"
+}

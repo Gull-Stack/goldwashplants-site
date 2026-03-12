@@ -1,0 +1,370 @@
+---
+layout: base.njk
+title: "Contact Us | Gold Wash Plants - Get a Free Quote"
+description: "Contact Gold Wash Plants for a free quote on custom gold mining equipment. WhatsApp, phone, or email - we respond within 24 hours."
+permalink: /contact/
+---
+
+<style>
+  .contact-section {
+    padding: 100px 0 80px;
+    background: var(--cream);
+  }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  
+  .contact-info h1 {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+  
+  .contact-info p {
+    font-size: 1.2rem;
+    color: var(--gray-600);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+  
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s;
+    border: 1px solid var(--gray-100);
+  }
+  
+  .contact-method:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .contact-method-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gray-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  
+  .contact-method-icon.whatsapp {
+    background: #25D366;
+    color: white;
+  }
+  
+  .contact-method h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+  
+  .contact-method a {
+    color: var(--gold-dark);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  
+  .contact-method a:hover {
+    color: var(--gold);
+  }
+  
+  .contact-form-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray-100);
+  }
+  
+  .contact-form-card h2 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 32px;
+  }
+  
+  .form-group {
+    margin-bottom: 24px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--gray-300);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    transition: border-color 0.2s;
+    background: var(--white);
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(196,160,82,0.1);
+  }
+  
+  .form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  
+  .form-submit {
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .form-submit:hover {
+    background: var(--gold-dark);
+    transform: translateY(-1px);
+  }
+  
+  .form-submit:disabled {
+    background: var(--gray-300);
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .or-divider {
+    text-align: center;
+    margin: 24px 0;
+    position: relative;
+    color: var(--gray-500);
+    font-size: 0.9rem;
+  }
+  
+  .or-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--gray-200);
+    z-index: 1;
+  }
+  
+  .or-divider::after {
+    content: 'or';
+    background: var(--white);
+    padding: 0 16px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .btn-whatsapp {
+    background: #25D366;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+    display: block;
+    transition: all 0.2s;
+  }
+  
+  .btn-whatsapp:hover {
+    background: #22c55e;
+    transform: translateY(-1px);
+  }
+  
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+    
+    .contact-info h1 {
+      font-size: 2.5rem;
+    }
+    
+    .contact-form-card {
+      padding: 32px 24px;
+    }
+  }
+</style>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h1>Get a Free Quote</h1>
+        <p>Ready to start recovering more gold? Contact us for a free, no-obligation quote. We typically respond within 24 hours.</p>
+        
+        <div class="contact-methods">
+          <a href="https://wa.me/16618101844?text=I'm%20interested%20in%20your%20gold%20wash%20plants" class="contact-method" style="text-decoration: none; color: inherit;">
+            <div class="contact-method-icon whatsapp">
+              <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <div>
+              <h3>WhatsApp (Fastest)</h3>
+              <span style="color: #25D366; font-weight: 600;">Chat with us now →</span>
+            </div>
+          </a>
+          
+          <div class="contact-method">
+            <div class="contact-method-icon">📞</div>
+            <div>
+              <h3>Phone</h3>
+              <a href="tel:+18888682650">+1 (888) 868-2650</a>
+            </div>
+          </div>
+          
+          <div class="contact-method">
+            <div class="contact-method-icon">✉️</div>
+            <div>
+              <h3>Email</h3>
+              <a href="mailto:sales@goldwashplants.com">sales@goldwashplants.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-form-card">
+        <h2>Send us a message</h2>
+        <form action="/api/submit-lead" method="POST" id="contact-form">
+          <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+          
+          <div class="form-group">
+            <label for="equipment">Equipment Interest</label>
+            <select id="equipment" name="equipment">
+              <option value="">Select equipment type...</option>
+              <option value="50-ton">50 Ton Wash Plant</option>
+              <option value="100-ton">100 Ton Wash Plant</option>
+              <option value="200-ton">200 Ton Wash Plant</option>
+              <option value="300-ton">300 Ton Wash Plant</option>
+              <option value="custom">Custom Configuration</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" placeholder="Tell us about your operation, location, and what you're looking for..." required></textarea>
+          </div>
+          
+          <!-- Honeypot -->
+          <div style="position:absolute;left:-9999px;">
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          
+          <button type="submit" class="form-submit" id="submit-btn">Send Message</button>
+          <div id="form-status" style="margin-top:12px;text-align:center;font-weight:500;"></div>
+        </form>
+        
+        <div class="or-divider"></div>
+        
+        <a href="https://wa.me/16618101844?text=I'm%20interested%20in%20your%20gold%20wash%20plants" class="btn-whatsapp" style="text-decoration: none;">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const submitBtn = document.getElementById('submit-btn');
+    const statusDiv = document.getElementById('form-status');
+    const formData = new FormData(this);
+    
+    // Honeypot check
+    if (formData.get('website')) {
+      return;
+    }
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    statusDiv.textContent = '';
+    
+    try {
+      const response = await fetch('/api/submit-lead', {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (response.ok) {
+        statusDiv.innerHTML = '<span style="color: var(--gold)">✅ Message sent! We\'ll respond within 24 hours.</span>';
+        this.reset();
+        
+        // Track submission
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'form_submit', {
+            event_category: 'lead_generation',
+            event_label: 'contact_form',
+            value: 1
+          });
+        }
+      } else {
+        throw new Error('Network error');
+      }
+    } catch (error) {
+      statusDiv.innerHTML = '<span style="color: #dc2626">❌ Error sending message. Please try WhatsApp or phone.</span>';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Message';
+    }
+  });
+</script>
