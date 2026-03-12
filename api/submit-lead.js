@@ -7,7 +7,7 @@ const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const SALES_EMAIL = process.env.SITE_EMAIL || 'chase@goldwashplants.com';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'leads@gullstack.com';
 
-async function sendEmail({ to, from, fromName, subject, html, replyTo }) {
+async function sendEmail({ to, from, fromName, subject, html, replyTo, cc }) {
   const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
     method: 'POST',
     headers: {
@@ -15,7 +15,7 @@ async function sendEmail({ to, from, fromName, subject, html, replyTo }) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      personalizations: [{ to: [{ email: to }] }],
+      personalizations: [{ to: [{ email: to }], ...(cc ? { cc: [{ email: cc }] } : {}) }],
       from: { email: from, name: fromName || 'Gold Wash Plants' },
       reply_to: replyTo ? { email: replyTo } : undefined,
       subject,
@@ -135,6 +135,7 @@ export default async function handler(req, res) {
         subject: `🔔 New Lead: ${leadData.name} - ${leadData.interest || 'General Inquiry'}`,
         html: notificationHtml,
         replyTo: leadData.email,
+        cc: 'bryce@gullstack.com',
       });
 
       // Mark email as sent in Supabase
