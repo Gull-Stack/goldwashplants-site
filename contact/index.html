@@ -486,6 +486,8 @@
 
   <!-- Form Submission -->
   <script>
+    window._formLoadTime = Date.now().toString();
+    
     document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       var btn = document.getElementById('submit-btn');
@@ -508,7 +510,9 @@
             email: document.getElementById('email').value,
             phone: document.getElementById('phone').value,
             interest: document.getElementById('equipment').value,
-            message: document.getElementById('message').value
+            message: document.getElementById('message').value,
+            website: this.querySelector('[name="website"]').value,
+            _timestamp: window._formLoadTime
           })
         });
         var data = await res.json();

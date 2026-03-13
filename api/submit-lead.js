@@ -7,6 +7,42 @@ const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const SALES_EMAIL = process.env.SITE_EMAIL || 'chase@goldwashplants.com';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'leads@gullstack.com';
 
+// === SPAM PROTECTION ===
+function isGibberish(text) {
+  if (!text || text.length < 2) return false;
+  const cleaned = text.toLowerCase().replace(/[^a-z]/g, '');
+  if (cleaned.length < 2) return false;
+  const vowels = cleaned.match(/[aeiou]/g);
+  if (!vowels || vowels.length < cleaned.length * 0.15) return true;
+  if (/[^aeiou]{5,}/i.test(cleaned)) return true;
+  return false;
+}
+
+function looksLikeSpam(data) {
+  const { name, website, _timestamp, email, message } = data;
+  if (website) return 'honeypot';
+  if (_timestamp) {
+    const elapsed = Date.now() - parseInt(_timestamp, 10);
+    if (elapsed < 3000) return 'too_fast';
+  }
+  if (isGibberish(name)) return 'gibberish_name';
+  if (name && name.trim().length < 2) return 'short_name';
+  // Block common spam patterns in message
+  if (message) {
+    const spamPatterns = /\b(viagra|casino|crypto|bitcoin|lottery|prize|winner|click here|buy now|free money|nigerian|prince)\b/i;
+    if (spamPatterns.test(message)) return 'spam_content';
+    // Excessive URLs in message
+    const urlCount = (message.match(/https?:\/\//g) || []).length;
+    if (urlCount > 2) return 'too_many_urls';
+  }
+  // Block disposable/suspicious email patterns
+  if (email) {
+    const disposable = /@(mailinator|guerrillamail|tempmail|throwaway|yopmail|sharklasers|grr\.la|guerrillamailblock|dispostable|maildrop)\./i;
+    if (disposable.test(email)) return 'disposable_email';
+  }
+  return false;
+}
+
 async function sendEmail({ to, from, fromName, subject, html, replyTo, cc }) {
   const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
     method: 'POST',
@@ -34,15 +70,16 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   try {
-    const { name, email, phone, interest, location, message } = req.body;
+    const { name, email, phone, interest, location, message, website, _timestamp } = req.body;
+
+    const spamReason = looksLikeSpam({ name, website, _timestamp, email, message });
+    if (spamReason) {
+      console.log(`[SPAM BLOCKED] reason=${spamReason} name="${name}" email="${email}"`);
+      return res.status(200).json({ success: true, message: "Thank you! We'll be in touch within 24 hours." });
+    }
 
     if (!name || !email) {
       return res.status(400).json({ error: 'Name and email are required' });
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return res.status(400).json({ error: 'Invalid email format' });
     }
 
     const leadData = {
