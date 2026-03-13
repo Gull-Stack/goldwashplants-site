@@ -27,19 +27,34 @@ function looksLikeSpam(data) {
   }
   if (isGibberish(name)) return 'gibberish_name';
   if (name && name.trim().length < 2) return 'short_name';
-  // Block common spam patterns in message
-  if (message) {
-    const spamPatterns = /\b(viagra|casino|crypto|bitcoin|lottery|prize|winner|click here|buy now|free money|nigerian|prince)\b/i;
-    if (spamPatterns.test(message)) return 'spam_content';
-    // Excessive URLs in message
-    const urlCount = (message.match(/https?:\/\//g) || []).length;
-    if (urlCount > 2) return 'too_many_urls';
-  }
-  // Block disposable/suspicious email patterns
+
+  // Names with underscores, pipes, or other non-name characters = bot
+  if (name && /[_|<>{}[\]\\\/~`^]/.test(name)) return 'suspicious_name_chars';
+  // Names that are single words with mixed case patterns like "guMi" (camelCase/random caps)
+  if (name && /[a-z][A-Z]/.test(name.trim()) && !name.trim().includes(' ')) return 'bot_name_pattern';
+
+  // Gibberish email local part (before @)
   if (email) {
-    const disposable = /@(mailinator|guerrillamail|tempmail|throwaway|yopmail|sharklasers|grr\.la|guerrillamailblock|dispostable|maildrop)\./i;
+    const localPart = email.split('@')[0];
+    if (isGibberish(localPart)) return 'gibberish_email';
+    // Spam/affiliate email domains
+    const spamDomains = /@.*(affiliate|marketing|seo-|bulk|promo|blast|leads|spammer|filler|nosefiller)/i;
+    if (spamDomains.test(email)) return 'spam_email_domain';
+    const disposable = /@(mailinator|guerrillamail|tempmail|throwaway|yopmail|sharklasers|grr\.la|guerrillamailblock|dispostable|maildrop|cool-affiliates)\./i;
     if (disposable.test(email)) return 'disposable_email';
   }
+
+  // Block common spam patterns in message
+  if (message) {
+    const spamPatterns = /\b(viagra|casino|crypto|bitcoin|lottery|prize|winner|click here|buy now|free money|nigerian|prince|seo services|web design services|backlink|link building)\b/i;
+    if (spamPatterns.test(message)) return 'spam_content';
+    // ANY URL in message that isn't goldwashplants.com = suspicious
+    const urls = message.match(/https?:\/\/[^\s)]+/g) || [];
+    const externalUrls = urls.filter(u => !u.includes('goldwashplants.com'));
+    if (externalUrls.length > 0) return 'external_url';
+    // Message completely irrelevant to gold mining (no mining/equipment keywords in a short message with a URL)
+  }
+
   return false;
 }
 
