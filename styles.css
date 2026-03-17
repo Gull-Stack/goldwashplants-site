@@ -37,7 +37,7 @@ section{padding:80px 0}.bg-dark{background:var(--black);color:var(--white)}.bg-c
 .cta-section h2{font-family:var(--font-display);font-size:2.2rem;color:var(--white);margin-bottom:16px}
 .cta-section p{color:rgba(255,255,255,0.7);font-size:1.1rem;margin-bottom:32px}
 .cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
-footer{background:var(--black);padding:40px 0;border-top:1px solid rgba(196,160,82,0.2);text-align:center;color:rgba(255,255,255,0.5);font-size:0.85rem}
+footer{background:#111111;padding:40px 0;border-top:1px solid rgba(196,160,82,0.2);text-align:center;color:rgba(255,255,255,0.5);font-size:0.85rem}
 footer a{color:var(--gold)}
 .whatsapp-btn{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
 @media(max-width:768px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.hero-dark h1{font-size:2.2rem}nav{display:none}.cta-buttons{flex-direction:column;align-items:center}}
