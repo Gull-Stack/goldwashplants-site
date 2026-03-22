@@ -6,6 +6,7 @@ const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const SALES_EMAIL = process.env.SITE_EMAIL || 'chase@goldwashplants.com';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'leads@gullstack.com';
+const TURNSTILE_SECRET = process.env.TURNSTILE_SECRET_KEY;
 
 // === SPAM PROTECTION ===
 function isGibberish(text) {
@@ -86,6 +87,27 @@ export default async function handler(req, res) {
 
   try {
     const { name, email, phone, interest, location, message, website, _timestamp } = req.body;
+    const turnstileToken = req.body['cf-turnstile-response'];
+
+    // Turnstile verification (if secret is configured)
+    if (TURNSTILE_SECRET) {
+      if (!turnstileToken) {
+        console.log(`[TURNSTILE BLOCKED] reason=missing_token name="${name}" email="${email}"`);
+        return res.status(200).json({ success: true, message: "Thank you! We'll be in touch within 24 hours." });
+      }
+
+      const tsResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `secret=${encodeURIComponent(TURNSTILE_SECRET)}&response=${encodeURIComponent(turnstileToken)}`,
+      });
+      const tsResult = await tsResponse.json();
+
+      if (!tsResult.success) {
+        console.log(`[TURNSTILE BLOCKED] reason=failed_verification name="${name}" email="${email}" errors=${JSON.stringify(tsResult['error-codes'])}`);
+        return res.status(200).json({ success: true, message: "Thank you! We'll be in touch within 24 hours." });
+      }
+    }
 
     const spamReason = looksLikeSpam({ name, website, _timestamp, email, message });
     if (spamReason) {
