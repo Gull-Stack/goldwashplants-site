@@ -343,9 +343,19 @@ permalink: /contact/
     statusDiv.textContent = '';
     
     try {
+      const jsonBody = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        interest: formData.get('equipment'),
+        message: formData.get('message'),
+        website: formData.get('website'),
+        'cf-turnstile-response': formData.get('cf-turnstile-response')
+      };
       const response = await fetch('/api/submit-lead', {
         method: 'POST',
-        body: formData
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jsonBody)
       });
       
       if (response.ok) {
