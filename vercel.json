@@ -5,6 +5,11 @@
     "cleanUrls": true,
     "trailingSlash": false,
     "redirects": [
+        { "source": "/(.*)", "has": [{ "type": "host", "value": "www.goldwashplants.com" }], "destination": "https://goldwashplants.com/$1", "permanent": true },
+        { "source": "/wp-content/uploads/2023/12/gwp-brochure.pdf", "destination": "/products", "permanent": true },
+        { "source": "/wp-content/:path*", "destination": "/", "permanent": true },
+        { "source": "/wp-admin/:path*", "destination": "/", "permanent": true },
+        { "source": "/wp-login.php", "destination": "/", "permanent": true },
         { "source": "/50-ton", "destination": "/products/50-ton", "permanent": true },
         { "source": "/100-ton", "destination": "/products/100-ton", "permanent": true },
         { "source": "/200-ton", "destination": "/products/200-ton", "permanent": true },

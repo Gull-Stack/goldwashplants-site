@@ -3,7 +3,7 @@
 # Outputs extensionless URLs (Vercel clean URLs)
 # Usage: ./generate-sitemap.sh
 
-DOMAIN="https://www.goldwashplants.com"
+DOMAIN="https://goldwashplants.com"
 TODAY=$(date +%Y-%m-%d)
 OUTPUT="sitemap.xml"
 

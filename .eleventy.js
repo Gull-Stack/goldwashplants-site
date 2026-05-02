@@ -1,4 +1,11 @@
 module.exports = function(eleventyConfig) {
+  // SEO: canonical URL filter — strip trailing slash except for homepage
+  eleventyConfig.addFilter("canonical", function(path) {
+    const p = String(path || '/');
+    if (p === '/') return '/';
+    return p.replace(/\/$/, '');
+  });
+
   // Copy static assets to output directory
   eleventyConfig.addPassthroughCopy({"images": "images"});
   eleventyConfig.addPassthroughCopy({"js": "js"});
