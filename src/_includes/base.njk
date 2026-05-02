@@ -11,26 +11,55 @@
   <meta name="description" content="{{ description }}">
   <meta name="keywords" content="{{ keywords or 'gold wash plant for sale, gold wash plants, portable gold wash plant, placer mining equipment, gold recovery equipment, gold mining equipment' }}">
   
-  <link rel="canonical" href="https://www.goldwashplants.com{{ permalink or page.url }}">
+  <link rel="canonical" href="https://goldwashplants.com{{ (permalink or page.url) | canonical }}">
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/dark-logo.png">
-  
+
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.goldwashplants.com{{ permalink or page.url }}">
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:url" content="https://goldwashplants.com{{ (permalink or page.url) | canonical }}">
   <meta property="og:title" content="{{ title }}">
   <meta property="og:description" content="{{ description }}">
-  <meta property="og:image" content="https://www.goldwashplants.com/images/gold-wash-plant.jpg">
+  <meta property="og:image" content="https://goldwashplants.com{{ ogImage or '/images/gold-wash-plant.jpg' }}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="Gold Wash Plants">
-  
+
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://www.goldwashplants.com{{ permalink or page.url }}">
+  <meta name="twitter:url" content="https://goldwashplants.com{{ (permalink or page.url) | canonical }}">
   <meta name="twitter:title" content="{{ title }}">
   <meta name="twitter:description" content="{{ description }}">
-  <meta name="twitter:image" content="https://www.goldwashplants.com/images/gold-wash-plant.jpg">
+  <meta name="twitter:image" content="https://goldwashplants.com{{ ogImage or '/images/gold-wash-plant.jpg' }}">
+
+  <!-- Sitewide Organization + Website schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://goldwashplants.com/#organization",
+        "name": "Gold Wash Plants",
+        "alternateName": "Gold Watch Project",
+        "url": "https://goldwashplants.com/",
+        "logo": "https://goldwashplants.com/images/dark-logo.png",
+        "telephone": "+1-888-868-2650",
+        "email": "sales@goldwashplants.com",
+        "areaServed": "Worldwide",
+        "description": "Custom-built portable gold wash plants and placer mining equipment, made in the USA. 50–300 tons per hour capacity, 95–98% gold recovery, mercury-free."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://goldwashplants.com/#website",
+        "url": "https://goldwashplants.com/",
+        "name": "Gold Wash Plants",
+        "publisher": { "@id": "https://goldwashplants.com/#organization" },
+        "inLanguage": "en-US"
+      }
+    ]
+  }
+  </script>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
