@@ -17,8 +17,65 @@ Auto-deploys from `main` (autoAlias to production).
 - Supabase is on a separate org from GullStack's MCP. To query locally:
   `vercel link` + `vercel env pull --environment=production` then curl
   `$SUPABASE_URL/rest/v1/leads`.
+- Three Nunjucks partials drive site-wide consistency:
+  - `src/_includes/icons.njk` — SVG icon macro (`{% from "icons.njk" import icon %}`
+    then `{{ icon("phone", 24) }}`). No emojis on this site by policy.
+  - `src/_includes/location-schema.njk` — LocalBusiness + Service JSON-LD
+    for every `/locations/*` page. Reads `location` / `regionType` /
+    `regionCode` from per-page front-matter.
+  - `src/_includes/article-schema.njk` — Article + BreadcrumbList JSON-LD
+    for every `/blog/*` post. Reads `datePublished` / `dateModified` from
+    front-matter.
 
 ## Session Log
+
+### 2026-05-14 — Emoji cleanup, SEO sweep, schema rollout
+
+- **Shipped in three commits**:
+  - [01f476a](https://github.com/Gull-Stack/goldwashplants-site/commit/01f476a):
+    SVG icon library + emoji cleanup across 41 templates (127 emojis
+    replaced). SEO quick wins: meta description tightened, hero H1
+    capitalized, removed `<em>` from product image alt text (screen
+    readers were reading "less-than em greater-than"), deleted
+    duplicate Alaska LocalBusiness, added FAQPage schema to /faq,
+    fixed sitemap host (now matches `www.` canonical), stripped
+    `.html` from video-sitemap, rewrote 237 internal `.html` hrefs
+    to clean URLs (every internal click was a 308 hop), deleted
+    deprecated `<meta name="keywords">`.
+  - [23e3024](https://github.com/Gull-Stack/goldwashplants-site/commit/23e3024):
+    Hero CTAs flipped — primary is gold "Get a Free Quote →"
+    anchored to homepage form; WhatsApp demoted to outlined-green
+    secondary. Sticky WhatsApp float kept.
+  - [01d1fa3](https://github.com/Gull-Stack/goldwashplants-site/commit/01d1fa3):
+    Re-localized 6 cloned country pages (Ghana, Tanzania, Congo,
+    Guyana, Suriname, South America) — they all had "Africa" in
+    the H1/hero/regions. Now country-specific with real mining
+    districts. New `src/_includes/location-schema.njk` rolls
+    LocalBusiness + Service JSON-LD across all 17 locations. New
+    `src/_includes/article-schema.njk` rolls Article + BreadcrumbList
+    across 22 blog posts. Two new high-intent posts:
+    `/blog/gold-dredge-vs-wash-plant/` and
+    `/blog/gold-concentrator-vs-wash-plant/`.
+- **Current state**:
+  - Site is emoji-free, all SVG (via `icons.njk` macro).
+  - Every page that matters for SEO has structured data: homepage
+    (Organization + LocalBusiness), products (Product), locations
+    (LocalBusiness + Service), blog (Article + Breadcrumb + FAQPage),
+    /faq (FAQPage).
+  - All internal links are clean `/trailing-slash/` URLs.
+  - Sitemap is consistent with canonical (`www.`).
+- **Pick up next session** (outstanding from the audit):
+  - Re-localized country pages are still light on copy (~300 words);
+    consider expanding with permits/customs/incoterms detail per country.
+  - `generate-sitemap.sh` exists but isn't wired into the build. Hook
+    it into `package.json` `build` or replace with eleventy-plugin-sitemap
+    so it auto-stays in sync.
+  - No `VideoObject` JSON-LD on pages with YouTube iframes (homepage
+    has 4, examples + product pages have more). Easy add.
+  - Per-page OG images are missing; everything points at
+    `/images/gold-wash-plant.jpg`.
+  - Inline `<style>` mobile-menu CSS is duplicated across ~30 files.
+    Move to `styles.css`.
 
 ### 2026-05-14 — Fix lead drop: homepage form + silent-drop spam filter
 
