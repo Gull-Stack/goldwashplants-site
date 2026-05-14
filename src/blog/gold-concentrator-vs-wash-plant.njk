@@ -1,0 +1,403 @@
+---
+layout: base.njk
+title: "Gold Concentrator vs Wash Plant: What's the Difference?"
+description: "Gold concentrator vs wash plant explained. How centrifugal concentrators, shaker tables, and jigs fit into a wash plant flowsheet — and when to add one."
+permalink: /blog/gold-concentrator-vs-wash-plant/
+datePublished: "2026-05-14"
+dateModified: "2026-05-14"
+---
+
+{% include "article-schema.njk" %}
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What's the difference between a gold concentrator and a wash plant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A wash plant is a bulk processor: it takes raw alluvial gravel and pulls 95-98% of the gold out into a concentrate. A gold concentrator is an upgrader: it takes the wash plant's concentrate — or any pre-classified, gold-bearing fines — and concentrates it further into a high-grade product. They do different jobs and most serious operations run both."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I run a gold concentrator without a wash plant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Only on very small volumes or already-classified material. Centrifugal concentrators like the Knelson and Falcon require a screened, deslimed feed — typically -2mm or finer. Feeding raw alluvial gravel directly into a concentrator will plug it, damage internal components, and produce poor recovery. You need a wash plant or equivalent classification ahead of the concentrator."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does a centrifugal gold concentrator cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bowl-style centrifugal concentrators range from $8,000 for small batch units (KC-CD30 class) to $80,000+ for continuous-discharge industrial models. Shaker tables run $3,000-$25,000. Jig concentrators range $5,000-$50,000. A wash plant runs $45,000-$185,000. The plant carries the throughput; the concentrator carries the upgrade ratio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do your wash plants include a concentrator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our wash plants include integrated sluice runs with riffles and high-recovery matting as standard, which handle the primary concentration. We can spec a centrifugal concentrator or shaker table as an add-on for operations that want to upgrade the concentrate on-site before smelting. Most customers run the wash plant alone for the first season and add a concentrator once they've characterized their gold."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What concentrator works best for fine gold?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Centrifugal concentrators (Knelson, Falcon, iCON) are the best general-purpose tool for fine gold down to -200 mesh. Shaker tables work well for very fine gold but have low throughput. Jigs are better for coarse and medium gold than for flour gold. If your deposit is fine-gold dominant, plan on a centrifugal unit as the cleanup stage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a concentrator replace a wash plant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. A concentrator processes a few hundred pounds to a few tons per hour of pre-classified fines. A wash plant processes 50-300 cubic yards per hour of raw alluvial material. Trying to run an operation on a concentrator alone is like trying to feed a flour mill with whole wheat stalks — it'll choke and you'll lose most of your gold."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I add a concentrator to my wash plant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Add a concentrator when your sluice concentrates are running thick with black sand and you're losing time on manual cleanup, when your gold is fine enough that you suspect sluice losses on the back end, or when you want a smelter-ready product instead of raw concentrate. Most operations add a concentrator in year two, once they understand their material."
+        }
+      }
+    ]
+  }
+</script>
+
+<style>
+.whatsapp-btn{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
+    @media(max-width:768px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.hero-dark h1{font-size:2.2rem}nav{display:none}.cta-buttons{flex-direction:column;align-items:center}}
+
+    /* Mobile Menu */
+    .mobile-menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px;z-index:1001}
+    .mobile-menu-btn span{display:block;width:24px;height:2px;background:#374151;transition:all 0.3s ease}
+    .mobile-menu-btn.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .mobile-menu-btn.active span:nth-child(2){opacity:0}
+    .mobile-menu-btn.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    @media(max-width:768px){
+      .mobile-menu-btn{display:flex}
+      nav{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;z-index:999;flex-direction:column;padding:20px 24px;box-shadow:0 4px 20px rgba(0,0,0,0.1);border-top:1px solid #f3f4f6}
+      nav.active{display:flex}
+      nav a{padding:12px 0;border-bottom:1px solid #f3f4f6;color:#374151!important;font-size:1rem}
+      nav a:last-child{border-bottom:none}
+      nav .btn,.btn-gold{margin-top:12px;text-align:center}
+    }
+</style>
+
+<section class="hero-dark">
+  <div class="container">
+    <h1>Gold Concentrator vs <em>Wash Plant</em>: What's the Difference?</h1>
+    <p>These two pieces of equipment get compared constantly online — usually by people who don't realize they do completely different jobs. Here's how concentrators and wash plants actually fit together in a real flowsheet.</p>
+    <p style="font-size:0.85rem;color:rgba(255,255,255,0.5);margin-top:16px">Published May 14, 2026 · Gold Wash Plants</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <article class="content">
+      <p>If you've spent any time on mining forums or watching YouTube prospecting channels, you've seen the question: "Should I buy a wash plant or a concentrator?" It's the wrong question. Wash plants and gold concentrators aren't really competitors — they sit at different points in the same process, and most serious commercial operations end up running both.</p>
+
+      <p>This guide breaks down what each piece of equipment actually does, where it lives in the flowsheet, and when (and whether) you need to add a concentrator to your wash plant operation.</p>
+
+      <h2>What Is a Gold Concentrator?</h2>
+      <p>"Concentrator" is a broad term in mining. In the placer and small-scale gold world it almost always means one of three machines:</p>
+
+      <h3>Centrifugal Concentrator</h3>
+      <p>A spinning bowl with fluidized riffles that uses centripetal force to separate heavy minerals from light. Knelson and Falcon are the dominant brands, with iCON and various Chinese clones at the lower end. Centrifugal concentrators handle 0.5 to 100+ tons per hour depending on size, but they require a screened, pre-classified feed — typically -2mm down to -200 mesh. They are the gold standard for fine gold recovery and produce a high-grade concentrate from a relatively low-grade feed.</p>
+
+      <h3>Shaker Table</h3>
+      <p>A flat, slightly inclined deck with riffles that vibrates back and forth while water washes feed across it. Heavy gold settles on the riffles and walks to one end of the table; light material washes off the side. Shaker tables are slow (a few hundred pounds per hour for the small ones), produce a beautiful visible separation, and are excellent for very fine gold when fed correctly. Common as a final cleanup stage in commercial operations.</p>
+
+      <h3>Jig Concentrator</h3>
+      <p>A pulsating bed of heavy media (often steel shot or hematite) that allows heavy minerals to settle through while light material is washed away. Jigs handle coarser feed than centrifugal units and run continuously at moderate throughputs. Less popular in modern placer flowsheets but still used in some hard-rock and high-volume operations.</p>
+
+      <p>All three share a key trait: they're <strong>upgraders</strong>, not bulk processors. They take a feed that already has elevated gold content and concentrate it further. They don't dig, they don't wash clay, and they can't handle raw alluvial gravel.</p>
+
+      <h2>What Is a Gold Wash Plant?</h2>
+      <p>A wash plant is the bulk processor at the front of the flowsheet. It does the heavy lifting that has to happen before any concentrator can work:</p>
+
+      <ul>
+        <li><strong>Feed handling:</strong> Hopper, grizzly, and conveyor accept raw run-of-mine material — gravel, cobbles, clay, dirt, and all</li>
+        <li><strong>Washing:</strong> High-pressure water breaks up clay-bound material so gold can be liberated</li>
+        <li><strong>Screening:</strong> Trommel or vibratory screens classify material by size; oversize is rejected</li>
+        <li><strong>Primary concentration:</strong> Sluice runs with riffles, matting, and expanded metal capture the gold</li>
+        <li><strong>Tailings management:</strong> Conveyors or stackers carry waste to managed piles</li>
+        <li><strong>Closed-loop water:</strong> Settling pond recycles water back to the plant</li>
+      </ul>
+
+      <p>Our <a href="/products/">complete wash plant lineup</a> — <a href="/products/50-ton/">50</a>, <a href="/products/100-ton/">100</a>, <a href="/products/200-ton/">200</a>, and <a href="/products/300-ton/">300</a> ton — handles 50 to 300+ cubic yards per hour of raw alluvial material. The sluice runs in every plant are tuned to capture 95-98% of the gold in that feed. What comes off the sluice at cleanup is your concentrate — and that concentrate is exactly what a concentrator is designed to upgrade.</p>
+
+      <h2>Where Each Piece Lives in the Flowsheet</h2>
+      <p>The simplest way to understand the relationship:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Stage</th>
+              <th>Equipment</th>
+              <th>What Comes In</th>
+              <th>What Comes Out</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1. Mining</td>
+              <td>Excavator, loader</td>
+              <td>Pay gravel in the ground</td>
+              <td>Raw feed to plant</td>
+            </tr>
+            <tr>
+              <td>2. Bulk processing</td>
+              <td><strong>Wash plant</strong></td>
+              <td>Raw alluvial gravel (50-300 cy/hr)</td>
+              <td>Concentrate (a few buckets/day at 1-5 oz/ton)</td>
+            </tr>
+            <tr>
+              <td>3. Upgrading</td>
+              <td><strong>Concentrator</strong></td>
+              <td>Wash plant concentrate</td>
+              <td>High-grade product (50+ oz/ton)</td>
+            </tr>
+            <tr>
+              <td>4. Final cleanup</td>
+              <td>Magnet, pan, mercury alternatives</td>
+              <td>Concentrator product</td>
+              <td>Smelter-ready gold</td>
+            </tr>
+            <tr>
+              <td>5. Refining</td>
+              <td>Smelter / refiner</td>
+              <td>Dorè or gold-rich concentrate</td>
+              <td>Doré bars / fine gold</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The wash plant moves the tonnage. The concentrator does the chemistry-free upgrade. They aren't substitutes; they're stations on an assembly line.</p>
+
+      <h2>Recovery Math: Why It Takes Both</h2>
+      <p>Let's run the numbers on a real-world example. Say you're mining ground that runs 0.03 oz/cy — solid commercial-grade placer.</p>
+
+      <h3>Step 1: Wash plant on raw feed</h3>
+      <ul>
+        <li>Feed: 100 cy/hr at 0.03 oz/cy = 3.0 oz/hr of gold entering the plant</li>
+        <li>Wash plant recovery: 97%</li>
+        <li>Gold to concentrate: 2.91 oz/hr</li>
+        <li>Concentrate volume: roughly 200-300 lbs/hr of black sand + heavies = 1-1.5 lbs of concentrate per hour at 1-2 oz/ton equivalent</li>
+        <li>Tailings: ~99,996 lbs/hr discarded</li>
+      </ul>
+
+      <h3>Step 2: Concentrator on plant concentrate</h3>
+      <ul>
+        <li>Feed: wash plant concentrate (a few hundred lbs/hr of gold-rich heavies)</li>
+        <li>Concentrator recovery: 95-99%</li>
+        <li>Final concentrate: maybe 5-15 lbs of product at 50-200 oz/ton — visibly mostly gold</li>
+        <li>Mids/tails go back through the wash plant sluice or get re-run</li>
+      </ul>
+
+      <h3>What this means in practice</h3>
+      <p>The wash plant did the work of pulling 2.91 oz of gold out of 100 cubic yards of mud and rock. The concentrator did the work of pulling that 2.91 oz out of a hundred pounds of black sand and into a few pounds of smelter feed. Take either machine out of the line and the operation breaks: no wash plant means the concentrator has nothing to feed; no concentrator means cleanup is slow and back-end losses are higher than they need to be.</p>
+
+      <div class="highlight-stat">
+        <span class="number">97% × 97%</span>
+        <span class="label">Stacked recovery from wash plant + concentrator combo</span>
+      </div>
+
+      <h2>"Just a Concentrator" vs "Wash Plant + Concentrator"</h2>
+      <p>Some prospectors try to run a concentrator standalone, fed by classifying raw gravel through screens by hand or with a small trommel. It can work at hobby scale. It does not work at commercial scale, and here's why:</p>
+
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Factor</th>
+              <th>Concentrator Alone</th>
+              <th>Wash Plant Only</th>
+              <th>Wash Plant + Concentrator</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Throughput</td>
+              <td>1-5 tons/hr (after manual classification)</td>
+              <td>50-300 cy/hr</td>
+              <td>50-300 cy/hr through plant</td>
+            </tr>
+            <tr>
+              <td>Handles raw gravel</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Handles clay</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Primary recovery</td>
+              <td>N/A (depends on feed prep)</td>
+              <td>95-98%</td>
+              <td>95-98%</td>
+            </tr>
+            <tr>
+              <td>Concentrate upgrade</td>
+              <td>Yes</td>
+              <td>Manual cleanup</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Smelter-ready output</td>
+              <td>Possibly</td>
+              <td>No — needs final cleanup</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <td>Labor requirement</td>
+              <td>Very high (manual prep)</td>
+              <td>Moderate</td>
+              <td>Moderate</td>
+            </tr>
+            <tr>
+              <td>Capital</td>
+              <td>$10k-$80k</td>
+              <td>$45k-$185k</td>
+              <td>$55k-$250k combined</td>
+            </tr>
+            <tr>
+              <td>Commercial viability</td>
+              <td>Hobby only</td>
+              <td>Yes</td>
+              <td>Yes — best economics</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The concentrator-only approach fails on throughput, not technology. You can buy the best Knelson on the market, but if you have to hand-classify everything that goes into it, you'll never process enough material to pay for the rig — let alone make a living.</p>
+
+      <h2>When Should You Add a Concentrator?</h2>
+      <p>Most of our customers do not add a concentrator in year one. The plant's sluice runs handle primary recovery well, and a clean-out + table at base camp handles the final upgrade. Add a concentrator when one or more of these is true:</p>
+
+      <ul>
+        <li><strong>Your concentrate is heavy with black sand.</strong> Magnetite, ilmenite, and garnet sand are common in placer ground. If your sluice cleanups are producing buckets of black sand per shift, manual cleanup becomes the bottleneck. A centrifugal concentrator handles this in minutes.</li>
+        <li><strong>You're seeing fine gold in the tailings.</strong> A 200-mesh sample of the back end of your sluice should be visibly clean. If it isn't, a concentrator on the recirculated sluice tail can recover the losses.</li>
+        <li><strong>You want a smelter-ready product on-site.</strong> Selling raw concentrate means paying refining costs and waiting on assay. A concentrator + table workflow produces material clean enough to sell direct to a refiner at near-spot.</li>
+        <li><strong>You're processing tailings or low-grade ground.</strong> Reprocessing old workings means lots of black sand per ounce of gold. A concentrator earns its keep fast in this scenario.</li>
+        <li><strong>You're handling sulfide-bearing gold.</strong> Hard-rock and weathered hard-rock ore often produces concentrate with sulfides locked to gold. A centrifugal concentrator can isolate the heavy fraction for further treatment.</li>
+      </ul>
+
+      <h2>Choosing the Right Concentrator</h2>
+      <p>If you've decided to add one, the right unit depends on your gold's particle size and your concentrate volume.</p>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3>Fine to flour gold dominant:</h3>
+          <ul>
+            <li>Centrifugal concentrator (Knelson, Falcon, iCON)</li>
+            <li>Recovery down to -200 mesh and finer</li>
+            <li>Batch or continuous discharge depending on volume</li>
+            <li>Shaker table as final stage after centrifugal</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Coarse to medium gold dominant:</h3>
+          <ul>
+            <li>Jig concentrator handles +20 to -100 mesh well</li>
+            <li>Shaker table for cleanup of jig concentrate</li>
+            <li>In many placer cases, the plant's sluice already captures coarse gold and a concentrator adds limited value</li>
+            <li>Verify particle-size distribution before investing</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Centrifugal: batch vs continuous</h3>
+      <p>Batch units (KC-CD30, KC-MD3) are cheaper and simpler but require periodic shutdown to dump concentrate — every 1-4 hours depending on heavy mineral loading. Continuous-discharge units (Falcon SB, Knelson CVD) run unattended for full shifts and are worth the extra capital on any operation running 16+ hours a day.</p>
+
+      <h2>What We Offer</h2>
+      <p>Our portable gold wash plants include integrated sluice systems engineered to capture 95-98% of the gold in raw alluvial feed — riffles, vortex mats, expanded metal, and final cleanup matting in a configuration we've refined across hundreds of installations from Alaska to West Africa.</p>
+
+      <p>For customers who want a complete on-site upgrade flowsheet, we'll spec a centrifugal concentrator and shaker table add-on package matched to the plant. Most customers either:</p>
+
+      <ul>
+        <li>Run the plant alone for the first season, ship concentrate to a refiner, and add a concentrator in year two once they know their material, or</li>
+        <li>Order the concentrator + table package up front if they're already running smelter-direct in a similar operation</li>
+      </ul>
+
+      <p>Either path works. The wash plant is the foundation; the concentrator is the optimization layer.</p>
+
+      <h2>The Verdict</h2>
+      <p>Stop thinking of wash plants and concentrators as competitors. The right way to think about them: a wash plant is a tractor; a concentrator is a combine. You don't pick one or the other for a wheat field — you use them in sequence, and the question is just when to add each.</p>
+
+      <p>For 95% of new placer operations, the first piece of capital equipment should be a wash plant sized correctly for your ground. Read <a href="/blog/choosing-right-size-gold-wash-plant/">our sizing guide</a> for help picking the model. If you're still weighing the plant against a trommel or a dredge, check our <a href="/blog/gold-wash-plant-vs-trommel/">wash plant vs trommel</a> and <a href="/blog/gold-dredge-vs-wash-plant/">dredge vs wash plant</a> comparisons.</p>
+
+      <div class="cta">
+        <h3>Need Help Spec'ing a Complete Flowsheet?</h3>
+        <p>We've helped commercial operations on five continents build out their gold recovery line — wash plant, concentrator, shaker table, the whole stack. Tell us what you're mining and we'll tell you what you actually need.</p>
+        <a href="/contact/" class="btn">Get a Free Consultation</a>
+        <a href="tel:8888682650" class="btn" style="margin-left:12px">Call Chase: (888) 868-2650</a>
+      </div>
+
+      <h2>Frequently Asked Questions</h2>
+
+      <h3>What's the difference between a gold concentrator and a wash plant?</h3>
+      <p>A wash plant is a bulk processor: it takes raw alluvial gravel and pulls 95-98% of the gold out into a concentrate. A gold concentrator is an upgrader: it takes the wash plant's concentrate — or any pre-classified, gold-bearing fines — and concentrates it further into a high-grade product. They do different jobs and most serious operations run both.</p>
+
+      <h3>Can I run a gold concentrator without a wash plant?</h3>
+      <p>Only on very small volumes or already-classified material. Centrifugal concentrators like the Knelson and Falcon require a screened, deslimed feed — typically -2mm or finer. Feeding raw alluvial gravel directly into a concentrator will plug it, damage internal components, and produce poor recovery. You need a wash plant or equivalent classification ahead of the concentrator.</p>
+
+      <h3>How much does a centrifugal gold concentrator cost?</h3>
+      <p>Bowl-style centrifugal concentrators range from $8,000 for small batch units (KC-CD30 class) to $80,000+ for continuous-discharge industrial models. Shaker tables run $3,000-$25,000. Jig concentrators range $5,000-$50,000. A wash plant runs $45,000-$185,000. The plant carries the throughput; the concentrator carries the upgrade ratio.</p>
+
+      <h3>Do your wash plants include a concentrator?</h3>
+      <p>Our wash plants include integrated sluice runs with riffles and high-recovery matting as standard, which handle the primary concentration. We can spec a centrifugal concentrator or shaker table as an add-on for operations that want to upgrade the concentrate on-site before smelting. Most customers run the wash plant alone for the first season and add a concentrator once they've characterized their gold.</p>
+
+      <h3>What concentrator works best for fine gold?</h3>
+      <p>Centrifugal concentrators (Knelson, Falcon, iCON) are the best general-purpose tool for fine gold down to -200 mesh. Shaker tables work well for very fine gold but have low throughput. Jigs are better for coarse and medium gold than for flour gold. If your deposit is fine-gold dominant, plan on a centrifugal unit as the cleanup stage.</p>
+
+      <h3>Can a concentrator replace a wash plant?</h3>
+      <p>No. A concentrator processes a few hundred pounds to a few tons per hour of pre-classified fines. A wash plant processes 50-300 cubic yards per hour of raw alluvial material. Trying to run an operation on a concentrator alone is like trying to feed a flour mill with whole wheat stalks — it'll choke and you'll lose most of your gold.</p>
+
+      <h3>When should I add a concentrator to my wash plant?</h3>
+      <p>Add a concentrator when your sluice concentrates are running thick with black sand and you're losing time on manual cleanup, when your gold is fine enough that you suspect sluice losses on the back end, or when you want a smelter-ready product instead of raw concentrate. Most operations add a concentrator in year two, once they understand their material.</p>
+    </article>
+  </div>
+</section>
+
+<section class="bg-cream">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">More Articles</span>
+      <h2 class="section-title">Continue Reading</h2>
+    </div>
+    <div class="grid-3">
+      <a href="/blog/gold-wash-plant-vs-trommel/" class="card"><h3>Wash Plant vs Trommel</h3><p>Two bulk processors, one decision.</p></a>
+      <a href="/blog/gold-dredge-vs-wash-plant/" class="card"><h3>Dredge vs Wash Plant</h3><p>Why most commercial operations have moved on from dredges.</p></a>
+      <a href="/blog/fine-gold-recovery/" class="card"><h3>Fine Gold Recovery</h3><p>Keeping flour gold out of the tailings.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Build a Complete Recovery Line</h2>
+    <p>Plant, concentrator, table — we'll spec the right combination for your ground.</p>
+    <div class="cta-buttons">
+      <a href="/contact/" class="btn btn-gold btn-lg">Get a Free Quote</a>
+      <a href="tel:+18888682650" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">(888) 868-2650</a>
+    </div>
+  </div>
+</section>

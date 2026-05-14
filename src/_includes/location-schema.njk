@@ -1,0 +1,46 @@
+{# LocalBusiness + Service schema for /locations/* pages.
+   Consumer must set front-matter:
+     location:    "Alaska"                 (human-readable)
+     regionType:  "State" | "Country"      (defaults to "AdministrativeArea")
+     regionCode:  "US-AK" | "GH" | "AU"    (ISO; optional, improves geo signal)
+#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Gold Wash Plants — {{ location }}",
+  "description": "{{ description }}",
+  "url": "https://www.goldwashplants.com{{ permalink or page.url }}",
+  "telephone": "+1-888-868-2650",
+  "email": "sales@goldwashplants.com",
+  "image": "https://www.goldwashplants.com/images/gold-wash-plant.jpg",
+  "areaServed": {
+    "@type": "{{ regionType or 'AdministrativeArea' }}",
+    "name": "{{ location }}"{% if regionCode %},
+    "identifier": "{{ regionCode }}"{% endif %}
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "{{ regionCode | default('US') | truncate(2, true, '') }}"
+  },
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "Gold Wash Plants",
+    "url": "https://www.goldwashplants.com",
+    "logo": "https://www.goldwashplants.com/images/dark-logo.png"
+  },
+  "makesOffer": {
+    "@type": "Offer",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Gold wash plant delivery and setup in {{ location }}",
+      "serviceType": "Custom gold mining equipment manufacturing and shipping",
+      "provider": {
+        "@type": "Organization",
+        "name": "Gold Wash Plants"
+      },
+      "areaServed": "{{ location }}"
+    }
+  }
+}
+</script>
