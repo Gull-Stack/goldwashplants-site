@@ -1,9 +1,10 @@
 ---
 layout: base.njk
-title: "Gold Wash Plants for Sale | Custom Portable Mining Equipment | USA Made"
-description: "Gold wash plants for sale - custom built in the USA. 50-300 ton capacity, 95-98% gold recovery rate. Portable placer mining equipment. Mercury-free. Proven on 6 continents. Get a free quote today."
+title: "Gold Wash Plants for Sale | Portable Placer Mining Equipment | USA"
+description: "Custom gold wash plants for sale, 50-300 ton portable placer mining equipment. 95-98% recovery, mercury-free, made in USA, ships worldwide. Free quote."
 permalink: /
 ---
+{% from "icons.njk" import icon %}
 
 <style>
   /* ═══════════════════════════════════════════
@@ -163,7 +164,9 @@ permalink: /
   }
   
   .trust-item-icon {
-    font-size: 1.2rem;
+    display: inline-flex;
+    align-items: center;
+    color: var(--gold);
   }
   
   /* ═══════════════════════════════════════════
@@ -467,8 +470,15 @@ permalink: /
   }
   
   .feature-icon {
-    font-size: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
     margin-bottom: 16px;
+    background: rgba(196, 160, 82, 0.12);
+    color: var(--gold-dark);
+    border-radius: 12px;
   }
   
   .feature-card h3 {
@@ -557,8 +567,8 @@ permalink: /
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text">
-        <div class="hero-badge">🇺🇸 <span>Made in the USA</span> • Ships Worldwide</div>
-        <h1>Gold wash plants <em>for sale</em></h1>
+        <div class="hero-badge"><span>Made in the USA</span> • Ships Worldwide</div>
+        <h1>Gold Wash Plants <em>for Sale</em></h1>
         <p class="hero-subtitle">
           Custom portable gold wash plants built to order. 95-98% gold recovery. 
           Mercury-free placer mining equipment. Proven on 6 continents. Ready in 1-3 weeks, shipped worldwide.
@@ -606,19 +616,19 @@ permalink: /
   <div class="container">
     <div class="trust-items">
       <div class="trust-item">
-        <span class="trust-item-icon">♻️</span>
+        <span class="trust-item-icon">{{ icon("leaf", 20) }}</span>
         Mercury-Free Recovery
       </div>
       <div class="trust-item">
-        <span class="trust-item-icon">🚚</span>
+        <span class="trust-item-icon">{{ icon("truck", 20) }}</span>
         Worldwide Shipping
       </div>
       <div class="trust-item">
-        <span class="trust-item-icon">⚡</span>
+        <span class="trust-item-icon">{{ icon("bolt", 20) }}</span>
         30-Minute Setup
       </div>
       <div class="trust-item">
-        <span class="trust-item-icon">💬</span>
+        <span class="trust-item-icon">{{ icon("chat", 20) }}</span>
         Expert Support
       </div>
     </div>
@@ -743,49 +753,49 @@ permalink: /
     
     <div class="features-grid">
       <div class="feature-card">
-        <div class="feature-icon">🎯</div>
+        <div class="feature-icon">{{ icon("target", 28) }}</div>
         <h3>95-98% Recovery</h3>
         <p>Science-backed sluice design captures fine gold down to 200 mesh.</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">⚡</div>
+        <div class="feature-icon">{{ icon("bolt", 28) }}</div>
         <h3>30-Minute Setup</h3>
         <p>Completely portable. Drag it, set it up, start mining same day.</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">🏭</div>
+        <div class="feature-icon">{{ icon("factory", 28) }}</div>
         <h3>Made in USA</h3>
         <p>American steel, American welding. Built to last in harsh conditions.</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">♻️</div>
+        <div class="feature-icon">{{ icon("leaf", 28) }}</div>
         <h3>Mercury-Free</h3>
         <p>Environmentally responsible. Just water and gravity.</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">🔧</div>
+        <div class="feature-icon">{{ icon("wrench", 28) }}</div>
         <h3>All-In-One</h3>
         <p>No extra screens or boxes needed. Complete system in one unit.</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">📦</div>
+        <div class="feature-icon">{{ icon("globe", 28) }}</div>
         <h3>Ships Worldwide</h3>
         <p>From Alaska to Africa. Container-ready for international orders.</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">⏱️</div>
+        <div class="feature-icon">{{ icon("clock", 28) }}</div>
         <h3>Fast Build</h3>
         <p>1-3 week production. Custom configs without long delays.</p>
       </div>
-      
+
       <div class="feature-card">
-        <div class="feature-icon">💪</div>
+        <div class="feature-icon">{{ icon("shield", 28) }}</div>
         <h3>Heavy Duty</h3>
         <p>24" rock capacity. Built for the toughest placer deposits.</p>
       </div>
@@ -912,7 +922,7 @@ permalink: /
       <p>Get a free quote in 5 minutes. Tell us about your operation and we'll recommend the perfect equipment.</p>
       <div class="cta-buttons">
         <a href="/contact/" class="btn btn-gold btn-lg">Get a Free Quote</a>
-        <a href="tel:+18888682650" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.3); color: white;">📞 (888) 868-2650</a>
+        <a href="tel:+18888682650" class="btn btn-outline btn-lg" style="border-color: rgba(255,255,255,0.3); color: white; gap:10px;">{{ icon("phone", 18) }} (888) 868-2650</a>
       </div>
     </div>
   </div>
@@ -982,7 +992,7 @@ permalink: /
               });
               var body = await res.json().catch(function () { return {}; });
               if (res.ok) {
-                status.innerHTML = '<span style="color:#25D366">✅ ' + (body.message || "Thank you! We'll be in touch within 24 hours.") + '</span>';
+                status.innerHTML = '<span style="color:#25D366">' + (body.message || "Thank you! We'll be in touch within 24 hours.") + '</span>';
                 form.reset();
                 if (typeof gtag !== 'undefined') {
                   gtag('event', 'contact_form_submit', { event_category: 'lead_generation', event_label: 'quote_request_form_home', value: 1 });
@@ -1002,7 +1012,7 @@ permalink: /
       <!-- Or WhatsApp -->
       <div style="display:flex;flex-direction:column;gap:24px">
         <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px;text-align:center">
-          <div style="font-size:2.5rem;margin-bottom:16px">💬</div>
+          <div style="margin-bottom:16px;color:#25D366;display:flex;justify-content:center">{{ icon("whatsapp", 40) }}</div>
           <h3 style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:8px">Prefer WhatsApp?</h3>
           <p style="color:rgba(255,255,255,0.6);font-size:0.95rem;margin-bottom:24px;line-height:1.7">Chat directly with our team. Get answers fast — most replies within minutes during business hours.</p>
           <a href="https://wa.me/16618101844?text=I'm%20interested%20in%20your%20wash%20plants" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:#25D366;color:white;border-radius:8px;font-weight:600;font-size:1rem;box-shadow:0 4px 16px rgba(37,211,102,0.3);transition:transform 0.2s" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
@@ -1011,11 +1021,11 @@ permalink: /
           </a>
         </div>
         <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;text-align:center">
-          <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:8px">📞 Call Us Directly</h3>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px">{{ icon("phone", 20) }} Call Us Directly</h3>
           <a href="tel:+18888682650" style="color:var(--gold);font-size:1.3rem;font-weight:600;font-family:var(--font-display)">(888) 868-2650</a>
         </div>
         <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:24px;text-align:center">
-          <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:8px">✉️ Email</h3>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:8px">{{ icon("envelope", 20) }} Email</h3>
           <a href="mailto:sales@goldwashplants.com" style="color:var(--gold);font-size:1rem">sales@goldwashplants.com</a>
         </div>
       </div>

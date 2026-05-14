@@ -4,6 +4,7 @@ title: "Contact Us | Gold Wash Plants - Get a Free Quote"
 description: "Contact Gold Wash Plants for a free quote on custom gold mining equipment. WhatsApp, phone, or email - we respond within 24 hours."
 permalink: /contact/
 ---
+{% from "icons.njk" import icon %}
 
 <style>
   .contact-section {
@@ -251,15 +252,15 @@ permalink: /contact/
           </a>
           
           <div class="contact-method">
-            <div class="contact-method-icon">📞</div>
+            <div class="contact-method-icon">{{ icon("phone", 24) }}</div>
             <div>
               <h3>Phone</h3>
               <a href="tel:+18888682650">+1 (888) 868-2650</a>
             </div>
           </div>
-          
+
           <div class="contact-method">
-            <div class="contact-method-icon">✉️</div>
+            <div class="contact-method-icon">{{ icon("envelope", 24) }}</div>
             <div>
               <h3>Email</h3>
               <a href="mailto:sales@goldwashplants.com">sales@goldwashplants.com</a>
@@ -318,7 +319,7 @@ permalink: /contact/
         <div class="or-divider"></div>
         
         <a href="https://wa.me/16618101844?text=I'm%20interested%20in%20your%20gold%20wash%20plants" class="btn-whatsapp" style="text-decoration: none;">
-          💬 Chat on WhatsApp
+          Chat on WhatsApp
         </a>
       </div>
     </div>
@@ -359,7 +360,7 @@ permalink: /contact/
       });
       
       if (response.ok) {
-        statusDiv.innerHTML = '<span style="color: var(--gold)">✅ Message sent! We\'ll respond within 24 hours.</span>';
+        statusDiv.innerHTML = '<span style="color: var(--gold)">Message sent! We\'ll respond within 24 hours.</span>';
         this.reset();
         
         // Track submission
@@ -374,7 +375,7 @@ permalink: /contact/
         throw new Error('Network error');
       }
     } catch (error) {
-      statusDiv.innerHTML = '<span style="color: #dc2626">❌ Error sending message. Please try WhatsApp or phone.</span>';
+      statusDiv.innerHTML = '<span style="color: #dc2626">Error sending message. Please try WhatsApp or phone.</span>';
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Send Message';
