@@ -29,10 +29,12 @@ function looksLikeSpam(data) {
   if (isGibberish(name)) return 'gibberish_name';
   if (name && name.trim().length < 2) return 'short_name';
 
-  // Names with underscores, pipes, or other non-name characters = bot
-  if (name && /[_|<>{}[\]\\\/~`^]/.test(name)) return 'suspicious_name_chars';
-  // Names that are single words with mixed case patterns like "guMi" (camelCase/random caps)
-  if (name && /[a-z][A-Z]/.test(name.trim()) && !name.trim().includes(' ')) return 'bot_name_pattern';
+  // Truly non-name characters (URLs, code, pipes). Allow apostrophes, hyphens, dots, spaces, diacritics.
+  if (name && /[|<>{}[\]\\\/~`^]/.test(name)) return 'suspicious_name_chars';
+
+  // NOTE: previous version rejected any single-word mixed-case name (e.g. "McDonald",
+  // "DeAngelo", "MacGregor", "LaShawn") as a bot. That dropped real leads silently.
+  // Mixed case alone is not a spam signal.
 
   // Gibberish email local part (before @)
   if (email) {
@@ -90,29 +92,32 @@ export default async function handler(req, res) {
     const turnstileToken = req.body['cf-turnstile-response'];
 
     // Turnstile verification (if secret is configured)
+    let flaggedReason = null;
+
     if (TURNSTILE_SECRET) {
       if (!turnstileToken) {
-        console.log(`[TURNSTILE BLOCKED] reason=missing_token name="${name}" email="${email}"`);
-        return res.status(200).json({ success: true, message: "Thank you! We'll be in touch within 24 hours." });
-      }
-
-      const tsResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: `secret=${encodeURIComponent(TURNSTILE_SECRET)}&response=${encodeURIComponent(turnstileToken)}`,
-      });
-      const tsResult = await tsResponse.json();
-
-      if (!tsResult.success) {
-        console.log(`[TURNSTILE BLOCKED] reason=failed_verification name="${name}" email="${email}" errors=${JSON.stringify(tsResult['error-codes'])}`);
-        return res.status(200).json({ success: true, message: "Thank you! We'll be in touch within 24 hours." });
+        console.log(`[TURNSTILE FLAG] reason=missing_token name="${name}" email="${email}"`);
+        flaggedReason = 'turnstile_missing';
+      } else {
+        const tsResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `secret=${encodeURIComponent(TURNSTILE_SECRET)}&response=${encodeURIComponent(turnstileToken)}`,
+        });
+        const tsResult = await tsResponse.json();
+        if (!tsResult.success) {
+          console.log(`[TURNSTILE FLAG] reason=failed_verification name="${name}" email="${email}" errors=${JSON.stringify(tsResult['error-codes'])}`);
+          flaggedReason = 'turnstile_failed';
+        }
       }
     }
 
-    const spamReason = looksLikeSpam({ name, website, _timestamp, email, message });
-    if (spamReason) {
-      console.log(`[SPAM BLOCKED] reason=${spamReason} name="${name}" email="${email}"`);
-      return res.status(200).json({ success: true, message: "Thank you! We'll be in touch within 24 hours." });
+    if (!flaggedReason) {
+      const spamReason = looksLikeSpam({ name, website, _timestamp, email, message });
+      if (spamReason) {
+        console.log(`[SPAM FLAG] reason=${spamReason} name="${name}" email="${email}"`);
+        flaggedReason = spamReason;
+      }
     }
 
     if (!name || !email) {
@@ -127,7 +132,8 @@ export default async function handler(req, res) {
       location: location?.trim() || null,
       message: message?.trim() || null,
       source: 'goldwashplants.com',
-      status: 'new',
+      status: flaggedReason ? 'flagged' : 'new',
+      notes: flaggedReason ? `auto-flagged: ${flaggedReason}` : null,
       email_sent: false,
       created_at: new Date().toISOString(),
     };
@@ -151,8 +157,9 @@ export default async function handler(req, res) {
       }
     }
 
-    // Send confirmation to lead
-    if (SENDGRID_API_KEY) {
+    // Send emails only for clean leads. Flagged leads stay in Supabase
+    // for manual review without spamming the inbox.
+    if (SENDGRID_API_KEY && !flaggedReason) {
       const confirmationHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #b8860b 0%, #daa520 100%); padding: 30px; text-align: center;">

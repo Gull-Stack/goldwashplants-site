@@ -926,12 +926,15 @@ permalink: /
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1000px;margin:0 auto;align-items:start">
       <!-- Form -->
-      <form action="/api/submit-lead" method="POST" style="display:flex;flex-direction:column;gap:16px">
+      <form id="quote-form" action="/api/submit-lead" method="POST" style="display:flex;flex-direction:column;gap:16px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
           <input type="text" name="name" placeholder="Your Name" required style="padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-size:0.95rem;font-family:var(--font-body)">
           <input type="email" name="email" placeholder="Email Address" required style="padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-size:0.95rem;font-family:var(--font-body)">
         </div>
-        <input type="tel" name="phone" placeholder="Phone Number" style="padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-size:0.95rem;font-family:var(--font-body)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <input type="tel" name="phone" placeholder="Phone Number" style="padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-size:0.95rem;font-family:var(--font-body)">
+          <input type="text" name="location" placeholder="Country / Region" style="padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-size:0.95rem;font-family:var(--font-body)">
+        </div>
         <select name="interest" style="padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);font-size:0.95rem;font-family:var(--font-body);appearance:auto">
           <option value="" disabled selected>What are you interested in?</option>
           <option value="50-ton">50 Ton Wash Plant</option>
@@ -941,10 +944,59 @@ permalink: /
           <option value="custom">Custom Build</option>
           <option value="other">Other / Not Sure</option>
         </select>
-        <textarea name="message" placeholder="Tell us about your operation — location, material type, volume goals..." rows="4" style="padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-size:0.95rem;font-family:var(--font-body);resize:vertical"></textarea>
+        <textarea name="message" placeholder="Tell us about your operation — material type, volume goals, timeline..." rows="4" style="padding:14px 18px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:white;font-size:0.95rem;font-family:var(--font-body);resize:vertical"></textarea>
+        <div style="position:absolute;left:-9999px;" aria-hidden="true"><input type="text" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAACuiqvpvQIIu8Gzp" data-theme="dark"></div>
-        <button type="submit" style="padding:16px 32px;border-radius:8px;border:none;background:var(--gold);color:white;font-size:1rem;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:background 0.2s" onmouseover="this.style.background='#A68A3C'" onmouseout="this.style.background='#C4A052'">Send Quote Request →</button>
+        <button type="submit" id="quote-submit" style="padding:16px 32px;border-radius:8px;border:none;background:var(--gold);color:white;font-size:1rem;font-weight:600;cursor:pointer;font-family:var(--font-body);transition:background 0.2s" onmouseover="this.style.background='#A68A3C'" onmouseout="this.style.background='#C4A052'">Send Quote Request →</button>
+        <div id="quote-status" style="text-align:center;font-weight:500;min-height:1.2em" aria-live="polite"></div>
       </form>
+      <script>
+        (function () {
+          var form = document.getElementById('quote-form');
+          if (!form) return;
+          var btn = document.getElementById('quote-submit');
+          var status = document.getElementById('quote-status');
+          form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            var data = new FormData(form);
+            if (data.get('website')) return;
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            status.textContent = '';
+            try {
+              var res = await fetch('/api/submit-lead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  name: data.get('name'),
+                  email: data.get('email'),
+                  phone: data.get('phone'),
+                  location: data.get('location'),
+                  interest: data.get('interest'),
+                  message: data.get('message'),
+                  website: data.get('website'),
+                  'cf-turnstile-response': data.get('cf-turnstile-response')
+                })
+              });
+              var body = await res.json().catch(function () { return {}; });
+              if (res.ok) {
+                status.innerHTML = '<span style="color:#25D366">✅ ' + (body.message || "Thank you! We'll be in touch within 24 hours.") + '</span>';
+                form.reset();
+                if (typeof gtag !== 'undefined') {
+                  gtag('event', 'contact_form_submit', { event_category: 'lead_generation', event_label: 'quote_request_form_home', value: 1 });
+                  gtag('event', 'conversion', { send_to: 'G-21ZDT1EM3M/contact_form' });
+                }
+              } else {
+                status.innerHTML = '<span style="color:#e74c3c">' + (body.error || 'Something went wrong. Please try again or call (888) 868-2650.') + '</span>';
+              }
+            } catch (err) {
+              status.innerHTML = '<span style="color:#e74c3c">Network error. Please try again or call (888) 868-2650.</span>';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Send Quote Request →';
+          });
+        })();
+      </script>
       <!-- Or WhatsApp -->
       <div style="display:flex;flex-direction:column;gap:24px">
         <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px;text-align:center">
