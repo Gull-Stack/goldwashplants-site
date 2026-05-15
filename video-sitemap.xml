@@ -4,7 +4,7 @@
   
   <!-- Examples Page - All Demo Videos -->
   <url>
-    <loc>https://www.goldwashplants.com/examples</loc>
+    <loc>https://goldwashplants.com/examples/</loc>
     
     <!-- M50 Demo -->
     <video:video>
@@ -110,7 +110,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://www.goldwashplants.com/</loc>
+    <loc>https://goldwashplants.com/</loc>
     <video:video>
       <video:thumbnail_loc>https://i.ytimg.com/vi/01WlVkNIUis/maxresdefault.jpg</video:thumbnail_loc>
       <video:title>Gold Wash Plants - Custom Portable Mining Equipment Made in USA</video:title>
@@ -129,7 +129,7 @@
 
   <!-- 50 Ton Product Page -->
   <url>
-    <loc>https://www.goldwashplants.com/products/50-ton</loc>
+    <loc>https://goldwashplants.com/products/50-ton/</loc>
     <video:video>
       <video:thumbnail_loc>https://i.ytimg.com/vi/01WlVkNIUis/maxresdefault.jpg</video:thumbnail_loc>
       <video:title>50 Ton Gold Wash Plant for Sale - M50 Demo Video</video:title>
@@ -147,7 +147,7 @@
 
   <!-- 200 Ton Product Page -->
   <url>
-    <loc>https://www.goldwashplants.com/products/200-ton</loc>
+    <loc>https://goldwashplants.com/products/200-ton/</loc>
     <video:video>
       <video:thumbnail_loc>https://i.ytimg.com/vi/CX17QH5hm4c/maxresdefault.jpg</video:thumbnail_loc>
       <video:title>200 Ton Gold Wash Plant for Sale - M200T Commercial Demo</video:title>

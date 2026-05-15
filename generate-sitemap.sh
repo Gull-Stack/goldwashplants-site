@@ -3,7 +3,7 @@
 # Outputs extensionless URLs (Vercel clean URLs)
 # Usage: ./generate-sitemap.sh
 
-DOMAIN="https://www.goldwashplants.com"
+DOMAIN="https://goldwashplants.com"
 TODAY=$(date +%Y-%m-%d)
 OUTPUT="sitemap.xml"
 
@@ -49,8 +49,8 @@ find . -name "*.html" -not -path "./.git/*" -not -path "./.vercel/*" | sort | wh
     path=""
   fi
 
-  url="${DOMAIN}/${path}"
-  # Clean trailing slash for homepage
+  url="${DOMAIN}/${path}/"
+  # Homepage is just the root
   [[ "$path" == "" ]] && url="${DOMAIN}/"
 
   priority=$(get_priority "$path")

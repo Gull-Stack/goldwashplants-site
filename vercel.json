@@ -3,7 +3,7 @@
     "outputDirectory": "_site",
     "installCommand": "npm install",
     "cleanUrls": true,
-    "trailingSlash": false,
+    "trailingSlash": true,
     "redirects": [
         { "source": "/50-ton", "destination": "/products/50-ton", "permanent": true },
         { "source": "/100-ton", "destination": "/products/100-ton", "permanent": true },
