@@ -29,6 +29,45 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-05-15 — Fix canonical host bug (traffic suppressor)
+
+- **Trigger**: Chase's site getting almost no organic traffic. Ran a full
+  SEO audit (searchfit-seo agent) against the live site + codebase.
+- **Root cause found**: the whole site was standardized on
+  `https://www.goldwashplants.com`, but Vercel serves the **non-www** host.
+  Every `<link rel="canonical">`, OG/Twitter URL, JSON-LD `url`/`@id`, and
+  all 57 sitemap entries pointed at a URL that 308-redirects. On a small/new
+  domain that strands pages in "Crawled - not indexed" and breaks canonical
+  consolidation. NOTE: the 2026-05-14 log entry below claims it "fixed
+  sitemap host (now matches www canonical)" — that *was* the bug, not a fix.
+- **Shipped** [6e913f4](https://github.com/Gull-Stack/goldwashplants-site/commit/6e913f4):
+  standardized everything on `https://goldwashplants.com` + set
+  `trailingSlash: true` in `vercel.json`. Now canonicals, permalinks (all
+  end in `/`), and internal links (all slashed) resolve to a 200 instead of
+  a 308 — also kills the internal-link redirect hops the prior session noted.
+  Changed: `vercel.json`, `base.njk`, `location-schema.njk`,
+  `article-schema.njk`, `index.njk`, `products/50-ton.njk`, `sitemap.xml`,
+  `video-sitemap.xml`, `generate-sitemap.sh` (host + slash output fixed so a
+  future run won't reintroduce the bug).
+- **Verified live**: `goldwashplants.com/locations/ghana/` → 200; non-www
+  and non-slash variants → 308 *into* the canonical; live canonical tag
+  matches. Deployed to production.
+- **Pick up next session** (the audit's bigger findings, NOT yet done):
+  - In GSC: resubmit sitemap, run URL Inspection → Request Indexing on key
+    pages to speed re-crawl. Watch indexed-page count recover.
+  - The 17 location pages are thin doorway pages (9 US-state pages are
+    ~120-180 words of unique copy on an identical skeleton). Consolidate to
+    2-3 strong regional pages or keep only Alaska+California, 301 the rest;
+    expand country pages to 800-1200 words of country-specific detail.
+  - Keyword targeting is anchored on low-volume "gold wash plant {geo}".
+    Real demand: "gold wash plant for sale/price/cost", "gold trommel"
+    (currently 301'd away — own it instead), "placer mining equipment".
+  - Internal linking is siloed; the strong 22 blog posts are stranded.
+  - `generate-sitemap.sh` still not wired into the build (host now fixed,
+    but it goes stale until someone runs it — wire into build or replace
+    with eleventy-plugin-sitemap).
+  - Images: 8.9MB unoptimized, no WebP/srcset; per-page OG images missing.
+
 ### 2026-05-14 — Emoji cleanup, SEO sweep, schema rollout
 
 - **Shipped in three commits**:
