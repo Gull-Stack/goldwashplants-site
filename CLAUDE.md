@@ -29,6 +29,34 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-05-19 — CRITICAL: stylesheet was never linked + internal linking
+
+- **Critical bug found while starting the "expand thin location pages"
+  task**: `styles.css` (the stylesheet for every non-homepage page —
+  defines `.card`, `.hero-dark`, `.cta-section`, `.section-header`,
+  `.spec-table`, `.grid-*`, etc.) is passthrough-copied to `_site/`
+  but **was never `<link>`ed in `<head>`**. Only the homepage looked
+  right because it carries a full inline `<style>`. All 4 product
+  pages, 17 location pages, 22 blog posts, and faq/compare/examples/
+  how-it-works/contact were rendering with their main content
+  sections almost entirely unstyled on the live site.
+- **This reframes the "thin location pages" finding** — those pages
+  aren't thin on content (they're 1,000+ words, localized). They were
+  visually broken. The fix below repairs ~45 pages at once.
+- **Fixed**: added `<link rel="stylesheet" href="/styles.css">` to
+  `base.njk`, placed before base's inline `<style>` so the inline
+  header/footer rules still win (header stays `position:fixed`).
+  Homepage is unaffected — its own inline `<style>` overrides.
+- **Internal linking**: new `equipment-callout.njk` partial (self-
+  contained styles, 4 product cards + quote CTA) appended to all 22
+  blog posts, pushing link equity blog -> product pages.
+- Build passes (54 files). Committed + pushed.
+- **Pick up next**: now that pages render, re-judge the location
+  pages. Nevada/Arizona/Colorado/Idaho/Montana/Oregon/Georgia/
+  Australia are genuinely light (~200 words unique vs Alaska's ~800)
+  — expansion still worthwhile but no longer urgent. Also still open:
+  per-page OG images, image optimization, VideoObject schema.
+
 ### 2026-05-19 — Schema + meta cleanup pass
 
 - Second batch from the SEO audit, all template-level, low-risk:
