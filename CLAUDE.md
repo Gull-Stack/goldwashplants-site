@@ -29,6 +29,46 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-05-19 — Unorphan location pages + Product schema
+
+- **Trigger**: Bryce asked why traffic is low; re-ran SEO audit on the
+  live site. Two issues were throttling traffic.
+- **Fixed #1 — orphaned location pages**: the 17 `/locations/*` pages
+  had zero internal links (no nav entry, not in footer) — sitemap-only,
+  so Google barely crawled them and they got no link equity.
+  - New `src/locations/index.njk` — a `/locations/` hub page, dark
+    hero + two card grids (9 US states, 8 international), self-contained
+    inline styles (the site's `styles.css` is passthrough-copied but
+    never `<link>`ed — pages carry their own CSS).
+  - Added "Locations" to header nav (`header.njk`, after Equipment) and
+    a new "Locations" footer column (`footer.njk`); bumped
+    `.footer-grid` to 5 cols in `base.njk`.
+  - Added `/locations/` to `sitemap.xml`.
+- **Fixed #2 — product pages had no schema**: `100/200/300-ton` had
+  zero JSON-LD (50-ton already had a full Product+Offer block).
+  - New `src/_includes/product-schema.njk` — front-matter-driven
+    Product schema (brand, manufacturer, model, productID, specs as
+    `additionalProperty`). **No Offer/price** on purpose: pages show no
+    visible price, so a schema price would mismatch and risk a manual
+    action. Added `productModel/productID/productImage/specs`
+    front-matter + the include to all three pages.
+- **State**: build passes (`npx @11ty/eleventy`, 54 files), all 17
+  location pages now linked from the hub, product JSON-LD validates.
+  Committed + pushed to `main` → Vercel production.
+- **Pick up next session**:
+  - Pre-existing bug found: the blog index (`/blog/`) renders `.card`
+    /`.grid-3` cards but those classes are defined only in the unlinked
+    `styles.css` — blog cards are unstyled on the live site. Either
+    `<link>` styles.css from `base.njk` or inline the classes.
+  - 50-ton Product schema has `price: 35000` but the page shows no
+    price — potential price-mismatch flag in GSC; consider removing the
+    Offer block to match the other three.
+  - Still outstanding from prior audits: thin location-page copy,
+    blog→product internal linking, image optimization, per-page OG
+    images, wire `generate-sitemap.sh` into the build.
+  - In GSC: resubmit sitemap, Request Indexing on `/locations/` + the
+    product pages to speed re-crawl.
+
 ### 2026-05-15 — Fix canonical host bug (traffic suppressor)
 
 - **Trigger**: Chase's site getting almost no organic traffic. Ran a full

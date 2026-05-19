@@ -1,0 +1,34 @@
+{# Product schema for /products/* pages.
+   Consumer must set front-matter:
+     productModel:  "100 Ton"                       (human-readable model)
+     productID:     "GWP-100T"
+     productImage:  "/images/m100-machine.jpg"      (optional, defaults to site image)
+     specs:         [ { name: "Capacity", value: "100 tons per hour" }, ... ]  (optional)
+   Note: no Offer block — these are custom-quoted units with no public price,
+   so a price in schema would mismatch the page and risk a manual action.
+#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ productModel }} Gold Wash Plant",
+  "description": "{{ description }}",
+  "brand": { "@type": "Brand", "name": "Gold Wash Plants" },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "Gold Wash Plants",
+    "url": "https://goldwashplants.com"
+  },
+  "category": "Mining Equipment",
+  "productID": "{{ productID }}",
+  "model": "{{ productModel }}",
+  "countryOfOrigin": "US",
+  "url": "https://goldwashplants.com{{ permalink or page.url }}",
+  "image": [ "https://goldwashplants.com{{ productImage or '/images/gold-wash-plant.jpg' }}" ]{% if specs %},
+  "additionalProperty": [
+    {%- for s in specs %}
+    { "@type": "PropertyValue", "name": "{{ s.name }}", "value": "{{ s.value }}" }{% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]{% endif %}
+}
+</script>
