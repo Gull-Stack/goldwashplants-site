@@ -29,6 +29,28 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-05-19 — Expand 8 thin location pages
+
+- Rewrote the 8 lightest location pages (Nevada, Arizona, Colorado,
+  Idaho, Montana, Oregon, Georgia, Australia). Each went from ~150-200
+  words of unique copy on a shared skeleton to a full page: intro
+  section, 6-district regions grid with real named districts, a
+  "why our equipment" section, and a 4-question FAQ.
+- Content is location-specific and factual (real mining districts,
+  regional ground conditions, regulations — e.g. Nevada water
+  recirculation, Oregon in-stream-vs-bench permitting, Georgia
+  private-land access, Australia container shipping).
+- Each page now also adds `FAQPage` JSON-LD and links out to relevant
+  blog guides + product pages (location -> blog/product internal
+  linking).
+- Also fixed: removed an emoji from the Australia hero (emoji-free
+  policy), fixed "Get a Arizona/Idaho/Oregon Quote" grammar to
+  "Get Your {State} Quote", trimmed Idaho + Georgia titles to match
+  the standardized location title format.
+- Build passes, all JSON-LD validates. Committed + pushed.
+- The remaining 9 location pages (Alaska, California + 7 richer
+  international pages) were already substantial and left as-is.
+
 ### 2026-05-19 — CRITICAL: stylesheet was never linked + internal linking
 
 - **Critical bug found while starting the "expand thin location pages"

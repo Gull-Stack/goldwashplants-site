@@ -10,10 +10,23 @@ regionCode: "US-OR"
 
 {% include "location-schema.njk" %}
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Are wash plants allowed under Oregon mining regulations?", "acceptedAnswer": { "@type": "Answer", "text": "Wash plants are typically fed bench and terrace gravels above the active waterline, which is a different regulatory category than in-stream suction dredging. Miners should confirm permits with Oregon DOGAMI and the Department of State Lands for their specific claim and method." } },
+    { "@type": "Question", "name": "What size gold wash plant is right for an Oregon claim?", "acceptedAnswer": { "@type": "Answer", "text": "A 50-ton plant suits claim testing and small operations. Miners working established ground in the Rogue River region or Baker County dredge fields typically run 100 or 200 ton plants for commercial production." } },
+    { "@type": "Question", "name": "When is the gold mining season in Oregon?", "acceptedAnswer": { "@type": "Answer", "text": "Southwest Oregon's mild climate allows a long working season, often most of the year on lower ground. Higher-elevation claims in eastern Oregon follow the snowmelt season from spring into fall." } },
+    { "@type": "Question", "name": "Can you ship a wash plant to a remote Oregon claim?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We coordinate freight to the nearest road access, and our plants are portable with a 30-minute setup. Diesel power options cover off-grid ground." } }
+  ]
+}
+</script>
+
 <style>
 .whatsapp-btn{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
     @media(max-width:768px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.hero-dark h1{font-size:2.2rem}nav{display:none}.cta-buttons{flex-direction:column;align-items:center}}
-  
+
     /* Mobile Menu */
     .mobile-menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px;z-index:1001}
     .mobile-menu-btn span{display:block;width:24px;height:2px;background:#374151;transition:all 0.3s ease}
@@ -31,65 +44,95 @@ regionCode: "US-OR"
 </style>
 
 <section class="hero-dark">
-    <div class="container">
-      <span style="display:inline-block;background:rgba(196,160,82,0.2);color:var(--gold);padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:16px">Serving Oregon Miners</span>
-      <h1>Gold Wash Plants <em>Oregon</em></h1>
-      <p>Portable gold mining equipment for Oregon operations. Custom wash plants with 95-98% recovery. Built in USA, shipped direct to your Oregon mining site.</p>
-      <div class="cta-buttons">
-        <a href="/#contact" class="btn btn-gold btn-lg">Get a Oregon Quote</a>
-        <a href="/products/" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">View Equipment</a>
-      </div>
+  <div class="container">
+    <span style="display:inline-block;background:rgba(196,160,82,0.2);color:var(--gold);padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:16px">Serving Oregon Miners</span>
+    <h1>Gold Wash Plants <em>Oregon</em></h1>
+    <p>Portable gold mining equipment for Oregon operations. Custom wash plants with 95-98% recovery, built for bench and terrace placer ground. Made in the USA, shipped direct to your Oregon claim.</p>
+    <div class="cta-buttons">
+      <a href="/contact/" class="btn btn-gold btn-lg">Get Your Oregon Quote</a>
+      <a href="/products/" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">View Equipment</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div class="container content">
-      <h2>Gold Mining Equipment for Oregon</h2>
-      <p>Oregon's diverse gold regions — from the Rogue River to the Blue Mountains — offer excellent placer mining opportunities. Our portable wash plants handle everything from river gravels to beach sand deposits.</p>
-      <h3>Oregon Mining Solutions</h3>
-      <ul>
-        <li>Mercury-free operation meets Oregon DEQ requirements</li>
-        <li>Fine gold recovery for Oregon's flour gold deposits</li>
-        <li>Portable design for river and creek operations</li>
-        <li>Ships to Medford, Grants Pass, Baker City, and statewide</li>
-      </ul>
-    </div>
-  </section>
+<section>
+  <div class="container content">
+    <h2>Gold Mining in Oregon</h2>
+    <p>Southwest Oregon has been gold country since the 1850s. The Rogue and Applegate river drainages drew miners by the thousands, and the Sumpter Valley in eastern Oregon later became one of the great bucket-line dredge fields of the West. Oregon gold sits in creek gravels, ancient river terraces, bench deposits, and even the black-sand beaches of the southern coast.</p>
+    <p>Oregon regulates in-stream work closely, but wash plants are typically fed bench and terrace gravels above the active waterline &mdash; a different activity than in-stream suction dredging. That makes a wash plant a practical, productive way to work Oregon ground; miners should confirm permits with Oregon DOGAMI and the Department of State Lands for their claim and method.</p>
+    <p>Water is abundant across most southwest Oregon placer ground, so the focus is matching plant capacity to your yardage and access. Start with our <a href="/blog/choosing-right-size-gold-wash-plant/">sizing guide</a> and <a href="/blog/gold-wash-plant-cost-guide/">cost guide</a>.</p>
+  </div>
+</section>
 
-  <section class="bg-cream">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Mining Regions</span>
-        <h2 class="section-title">Oregon Gold Mining Areas</h2>
-      </div>
-      <div class="grid-3">
-        <div class="card"><h3>SW Oregon / Rogue River</h3><p>Oregon's most productive gold region. Rich placer deposits along the Rogue, Illinois, and Applegate Rivers.</p></div>
-   <div class="card"><h3>Baker County / Blue Mtns</h3><p>Eastern Oregon gold country. Placer mining along the Powder River and Sumpter area.</p></div>
-   <div class="card"><h3>Beach Placers</h3><p>Black sand gold deposits along Oregon's southern coast. Unique mining opportunities.</p></div>
-      </div>
+<section class="bg-cream">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Mining Regions</span>
+      <h2 class="section-title">Oregon Gold Districts We Serve</h2>
+      <p class="section-subtitle">Placer ground across southwest and eastern Oregon.</p>
     </div>
-  </section>
+    <div class="grid-3">
+      <div class="card"><h3>Rogue River &mdash; Galice &amp; Greenback</h3><p>Josephine County placer ground in the heart of Oregon's richest historic gold region.</p></div>
+      <div class="card"><h3>Applegate River</h3><p>Jackson County creek and bench gravels, worked since the earliest Oregon gold rush.</p></div>
+      <div class="card"><h3>Sumpter &amp; the Powder River</h3><p>Baker County dredge fields &mdash; vast worked gravels that reward equipment built to rewash them.</p></div>
+      <div class="card"><h3>John Day</h3><p>Grant County placer ground in eastern Oregon, with productive gulch and creek gravels.</p></div>
+      <div class="card"><h3>Sixes River &amp; the South Coast</h3><p>Southern Oregon coastal placers known for fine gold concentrated in black-sand beach deposits.</p></div>
+      <div class="card"><h3>Bohemia</h3><p>Lane County district in the western Cascades, with historic placer and lode gold.</p></div>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Equipment</span>
-        <h2 class="section-title">Recommended for Oregon</h2>
-      </div>
-      <div class="grid-3">
-        <a href="/products/50-ton/" class="card"><h3>50 Ton Wash Plant</h3><p>Perfect for small Oregon claims and prospecting operations.</p></a>
-        <a href="/products/100-ton/" class="card"><h3>100 Ton Wash Plant</h3><p>Versatile workhorse. Ideal for medium-scale Oregon mining.</p></a>
-        <a href="/products/200-ton/" class="card"><h3>200 Ton Wash Plant</h3><p>Commercial-grade for large Oregon operations.</p></a>
-      </div>
+<section>
+  <div class="container content">
+    <h2>Why Our Wash Plants Work in Oregon</h2>
+    <p>Oregon placer mining rewards equipment built for bench gravels, fine gold, and varied ground. Every plant we ship into the state is configured for these conditions:</p>
+    <ul>
+      <li><strong>Built to process bench and terrace gravels</strong> above the waterline rather than in-stream material</li>
+      <li><strong>Fine-gold recovery to 200 mesh</strong> for coastal black-sand gold and fine river values</li>
+      <li><strong>Built to rewash dredge tailings</strong> common across the Sumpter and Baker County fields</li>
+      <li><strong>Aggressive scrubbing</strong> for clay-bound and consolidated gravels</li>
+      <li><strong>Portable design</strong> with fast 30-minute setup for remote claims</li>
+      <li><strong>Diesel or electric power</strong> for off-grid and developed sites</li>
+    </ul>
+    <p>New to placer mining? Our guide on <a href="/blog/small-mining-operations/">starting a small gold mining operation</a> covers claims, permits, and equipment.</p>
+  </div>
+</section>
+
+<section class="bg-cream">
+  <div class="container content">
+    <h2>Oregon Mining Questions</h2>
+    <h3>Are wash plants allowed under Oregon mining regulations?</h3>
+    <p>Wash plants are typically fed bench and terrace gravels above the active waterline, which is a different regulatory category than in-stream suction dredging. Miners should confirm permits with Oregon DOGAMI and the Department of State Lands for their specific claim and method.</p>
+    <h3>What size gold wash plant is right for an Oregon claim?</h3>
+    <p>A 50-ton plant suits claim testing and small operations. Miners working established ground in the Rogue River region or Baker County dredge fields typically run 100 or 200 ton plants for commercial production.</p>
+    <h3>When is the gold mining season in Oregon?</h3>
+    <p>Southwest Oregon's mild climate allows a long working season, often most of the year on lower ground. Higher-elevation claims in eastern Oregon follow the snowmelt season from spring into fall.</p>
+    <h3>Can you ship a wash plant to a remote Oregon claim?</h3>
+    <p>Yes. We coordinate freight to the nearest road access, and our plants are portable with a 30-minute setup. Diesel power options cover off-grid ground.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Equipment</span>
+      <h2 class="section-title">Recommended for Oregon</h2>
     </div>
-  </section>
-  <section class="cta-section">
-    <div class="container">
-      <h2>Ready to Mine Oregon Gold?</h2>
-      <p>Get a free quote for gold wash plant delivery to your Oregon operation.</p>
-      <div class="cta-buttons">
-        <a href="/#contact" class="btn btn-gold btn-lg">Get a Free Quote</a>
-        <a href="tel:+18888682650" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">(888) 868-2650</a>
-      </div>
+    <div class="grid-3">
+      <a href="/products/50-ton/" class="card"><h3>50 Ton Wash Plant</h3><p>Ideal for testing Oregon claims and small placer operations.</p></a>
+      <a href="/products/100-ton/" class="card"><h3>100 Ton Wash Plant</h3><p>The versatile workhorse for medium-scale Oregon placer mining.</p></a>
+      <a href="/products/200-ton/" class="card"><h3>200 Ton Wash Plant</h3><p>Commercial-grade throughput for large Oregon dredge-ground operations.</p></a>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Mine Oregon Gold?</h2>
+    <p>Get a free quote for gold wash plant delivery to your Oregon operation.</p>
+    <div class="cta-buttons">
+      <a href="/contact/" class="btn btn-gold btn-lg">Get a Free Quote</a>
+      <a href="tel:+18888682650" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">(888) 868-2650</a>
+    </div>
+  </div>
+</section>

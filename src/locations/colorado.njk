@@ -10,10 +10,23 @@ regionCode: "US-CO"
 
 {% include "location-schema.njk" %}
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "When is the gold mining season in Colorado?", "acceptedAnswer": { "@type": "Answer", "text": "Most Colorado placer mining runs from snowmelt in late spring through fall, roughly May to October at higher elevations. Because the season is short, our 30-minute setup helps you put more productive days on the ground." } },
+    { "@type": "Question", "name": "What size gold wash plant is right for a Colorado claim?", "acceptedAnswer": { "@type": "Answer", "text": "A 50-ton plant suits claim testing and small mountain operations. Miners reworking dredge ground around Breckenridge or Fairplay often run 100 or 200 ton plants to move serious yardage in a short season." } },
+    { "@type": "Question", "name": "Can your wash plants handle cold Colorado mountain water?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our sluice design holds recovery efficiency in near-freezing snowmelt water, which is the norm for high-elevation Colorado placer streams." } },
+    { "@type": "Question", "name": "Can you ship a wash plant to a high-altitude Colorado claim?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We coordinate freight to the nearest road access and our plants are portable enough to position on mountain claims. Diesel power options cover ground with no utility access." } }
+  ]
+}
+</script>
+
 <style>
 .whatsapp-btn{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
     @media(max-width:768px){.grid-3{grid-template-columns:1fr}.grid-2{grid-template-columns:1fr}.hero-dark h1{font-size:2.2rem}nav{display:none}.cta-buttons{flex-direction:column;align-items:center}}
-  
+
     /* Mobile Menu */
     .mobile-menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;padding:4px;z-index:1001}
     .mobile-menu-btn span{display:block;width:24px;height:2px;background:#374151;transition:all 0.3s ease}
@@ -31,65 +44,95 @@ regionCode: "US-CO"
 </style>
 
 <section class="hero-dark">
-    <div class="container">
-      <span style="display:inline-block;background:rgba(196,160,82,0.2);color:var(--gold);padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:16px">Serving Colorado Miners</span>
-      <h1>Gold Wash Plants <em>Colorado</em></h1>
-      <p>Portable gold mining equipment for Colorado operations. Custom wash plants with 95-98% recovery. Built in USA, shipped direct to your Colorado mining site.</p>
-      <div class="cta-buttons">
-        <a href="/#contact" class="btn btn-gold btn-lg">Get a Colorado Quote</a>
-        <a href="/products/" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">View Equipment</a>
-      </div>
+  <div class="container">
+    <span style="display:inline-block;background:rgba(196,160,82,0.2);color:var(--gold);padding:6px 16px;border-radius:50px;font-size:0.8rem;font-weight:600;margin-bottom:16px">Serving Colorado Miners</span>
+    <h1>Gold Wash Plants <em>Colorado</em></h1>
+    <p>Portable gold mining equipment for Colorado operations. Custom wash plants with 95-98% recovery, built for mountain placer ground and cold snowmelt water. Made in the USA, shipped direct to your Colorado claim.</p>
+    <div class="cta-buttons">
+      <a href="/contact/" class="btn btn-gold btn-lg">Get Your Colorado Quote</a>
+      <a href="/products/" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">View Equipment</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <div class="container content">
-      <h2>Gold Mining Equipment for Colorado</h2>
-      <p>Colorado's rich mining heritage continues today with active placer operations from Clear Creek to the San Juan Mountains. Our portable wash plants handle the rocky, high-altitude conditions of Colorado mining with ease.</p>
-      <h3>Built for Colorado Conditions</h3>
-      <ul>
-        <li>Handles rocky mountain placer deposits with 24-inch rock capacity</li>
-        <li>Cold water performance for snowmelt-fed operations</li>
-        <li>Portable design for Colorado's remote mountain claims</li>
-        <li>Quick setup for short high-altitude mining seasons</li>
-      </ul>
-    </div>
-  </section>
+<section>
+  <div class="container content">
+    <h2>Gold Mining in Colorado</h2>
+    <p>Colorado's 1859 gold rush built the state, and the placer ground that drew those first miners is still productive today. The mountain valleys of the Front Range and central Rockies hold gold in creek gravels, glacial benches, and the enormous dredge fields left behind around Breckenridge and Fairplay. Colorado placer gold ranges from coarse pickers to fine flour gold, and a well-built wash plant captures the full range.</p>
+    <p>Water is rarely the problem in Colorado &mdash; snowmelt-fed streams run through most placer ground. The real constraint is the season. High-elevation mining typically runs from late spring melt into fall, so productivity depends on equipment you can set up fast and run hard while the weather holds. Our plants set up in about 30 minutes.</p>
+    <p>Whether you are testing a claim in Clear Creek County or reworking dredge tailings along the Blue River, we size the plant to your ground and season. See our <a href="/blog/choosing-right-size-gold-wash-plant/">sizing guide</a> and <a href="/blog/gold-wash-plant-cost-guide/">cost guide</a> to plan your build.</p>
+  </div>
+</section>
 
-  <section class="bg-cream">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Mining Regions</span>
-        <h2 class="section-title">Colorado Gold Mining Areas</h2>
-      </div>
-      <div class="grid-3">
-        <div class="card"><h3>Clear Creek County</h3><p>One of Colorado's most productive gold mining areas. Rich placer deposits along Clear Creek and its tributaries.</p></div>
-   <div class="card"><h3>Breckenridge / Summit</h3><p>Historic dredge mining area with excellent remaining placer deposits in the Blue River drainage.</p></div>
-   <div class="card"><h3>South Park</h3><p>Extensive placer deposits in Park County. Large-scale alluvial gold in the South Platte headwaters.</p></div>
-      </div>
+<section class="bg-cream">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Mining Regions</span>
+      <h2 class="section-title">Colorado Gold Districts We Serve</h2>
+      <p class="section-subtitle">Placer ground across the Front Range and central Colorado Rockies.</p>
     </div>
-  </section>
+    <div class="grid-3">
+      <div class="card"><h3>Clear Creek &amp; Idaho Springs</h3><p>The site of Colorado's first major gold strike, with productive creek and bench gravels close to Denver.</p></div>
+      <div class="card"><h3>Fairplay &amp; South Park</h3><p>Park County dredge fields and Tarryall Creek placers &mdash; some of the most worked, and still productive, ground in the state.</p></div>
+      <div class="card"><h3>Arkansas River Valley</h3><p>Granite and Cache Creek placers in Chaffee and Lake counties, with strong water flow and accessible gravels.</p></div>
+      <div class="card"><h3>Breckenridge &amp; the Blue River</h3><p>Vast dredge tailings in Summit County that reward equipment built to rewash rounded gravels.</p></div>
+      <div class="card"><h3>California Gulch &amp; Leadville</h3><p>Historic Lake County placer ground in one of Colorado's richest mining districts.</p></div>
+      <div class="card"><h3>Gold Hill &amp; Boulder Creek</h3><p>Boulder County gulch and creek placers, with a long record of coarse gold recovery.</p></div>
+    </div>
+  </div>
+</section>
 
-  <section>
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Equipment</span>
-        <h2 class="section-title">Recommended for Colorado</h2>
-      </div>
-      <div class="grid-3">
-        <a href="/products/50-ton/" class="card"><h3>50 Ton Wash Plant</h3><p>Perfect for small Colorado claims and prospecting operations.</p></a>
-        <a href="/products/100-ton/" class="card"><h3>100 Ton Wash Plant</h3><p>Versatile workhorse. Ideal for medium-scale Colorado mining.</p></a>
-        <a href="/products/200-ton/" class="card"><h3>200 Ton Wash Plant</h3><p>Commercial-grade for large Colorado operations.</p></a>
-      </div>
+<section>
+  <div class="container content">
+    <h2>Why Our Wash Plants Work in Colorado</h2>
+    <p>Colorado placer mining rewards equipment built for cold water and short seasons. Every plant we ship into the state is configured for mountain conditions:</p>
+    <ul>
+      <li><strong>Cold-water recovery</strong> that holds efficiency in near-freezing snowmelt streams</li>
+      <li><strong>Fast 30-minute setup</strong> to maximize productive days in a short mountain season</li>
+      <li><strong>Built to rewash dredge tailings</strong> and rounded glacial gravels common in Colorado</li>
+      <li><strong>Fine-gold recovery to 200 mesh</strong> for Colorado's flour gold as well as its coarse pickers</li>
+      <li><strong>Portable design</strong> that positions on remote mountain claims with limited access</li>
+      <li><strong>Diesel or electric power</strong> for both off-grid and developed sites</li>
+    </ul>
+    <p>Planning your site? Our <a href="/blog/gold-wash-plant-site-preparation/">site preparation checklist</a> covers water, settling ponds, and access before your plant arrives.</p>
+  </div>
+</section>
+
+<section class="bg-cream">
+  <div class="container content">
+    <h2>Colorado Mining Questions</h2>
+    <h3>When is the gold mining season in Colorado?</h3>
+    <p>Most Colorado placer mining runs from snowmelt in late spring through fall, roughly May to October at higher elevations. Because the season is short, our 30-minute setup helps you put more productive days on the ground.</p>
+    <h3>What size gold wash plant is right for a Colorado claim?</h3>
+    <p>A 50-ton plant suits claim testing and small mountain operations. Miners reworking dredge ground around Breckenridge or Fairplay often run 100 or 200 ton plants to move serious yardage in a short season.</p>
+    <h3>Can your wash plants handle cold Colorado mountain water?</h3>
+    <p>Yes. Our sluice design holds recovery efficiency in near-freezing snowmelt water, which is the norm for high-elevation Colorado placer streams.</p>
+    <h3>Can you ship a wash plant to a high-altitude Colorado claim?</h3>
+    <p>Yes. We coordinate freight to the nearest road access and our plants are portable enough to position on mountain claims. Diesel power options cover ground with no utility access.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Equipment</span>
+      <h2 class="section-title">Recommended for Colorado</h2>
     </div>
-  </section>
-  <section class="cta-section">
-    <div class="container">
-      <h2>Ready to Mine Colorado Gold?</h2>
-      <p>Get a free quote for gold wash plant delivery to your Colorado operation.</p>
-      <div class="cta-buttons">
-        <a href="/#contact" class="btn btn-gold btn-lg">Get a Free Quote</a>
-        <a href="tel:+18888682650" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">(888) 868-2650</a>
-      </div>
+    <div class="grid-3">
+      <a href="/products/50-ton/" class="card"><h3>50 Ton Wash Plant</h3><p>Ideal for testing Colorado claims and small mountain operations.</p></a>
+      <a href="/products/100-ton/" class="card"><h3>100 Ton Wash Plant</h3><p>The versatile workhorse for medium-scale Colorado placer mining.</p></a>
+      <a href="/products/200-ton/" class="card"><h3>200 Ton Wash Plant</h3><p>Commercial-grade throughput for large Colorado dredge-ground operations.</p></a>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Mine Colorado Gold?</h2>
+    <p>Get a free quote for gold wash plant delivery to your Colorado operation.</p>
+    <div class="cta-buttons">
+      <a href="/contact/" class="btn btn-gold btn-lg">Get a Free Quote</a>
+      <a href="tel:+18888682650" class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,0.3);color:white">(888) 868-2650</a>
+    </div>
+  </div>
+</section>
