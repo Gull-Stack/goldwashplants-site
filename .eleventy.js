@@ -11,7 +11,14 @@ module.exports = function(eleventyConfig) {
   
   // Copy api directory (Vercel serverless functions) as-is
   eleventyConfig.addPassthroughCopy({"api": "api"});
-  
+
+  // Human-readable date filter (e.g. "March 2, 2026") for blog post bylines
+  eleventyConfig.addFilter("readableDate", function(value) {
+    if (!value) return "";
+    var d = new Date(value + "T00:00:00Z");
+    return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+  });
+
   // Configure input and output directories
   return {
     dir: {

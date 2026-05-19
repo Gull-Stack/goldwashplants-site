@@ -29,6 +29,33 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-05-19 — Schema + meta cleanup pass
+
+- Second batch from the SEO audit, all template-level, low-risk:
+  - **robots.txt**: removed `Crawl-delay: 1` (Google ignores it; Bing
+    obeyed it and crawled slower for no benefit).
+  - **Homepage schema**: the two blocks (Organization + LocalBusiness)
+    were merged into one `Organization`. LocalBusiness had only a
+    country-stub address. Kept `aggregateRating` 4.8/127 — **verify
+    this is real and backed by collected reviews**, or remove it
+    (fake rating markup is a manual-action risk).
+  - **HowTo schema** added to `/how-it-works/` (5-step process). Note:
+    Google retired HowTo rich results, but it still helps AI/LLM
+    answer engines parse the page.
+  - **Titles**: trimmed 18 over-length titles (location pages were
+    72-83 chars and truncating). Locations standardized to
+    "Gold Wash Plants {Place} | Placer Mining Equipment".
+  - **Blog dates**: visible "Published" bylines contradicted the
+    `datePublished` front-matter on nearly every post, and 6 posts
+    had no byline. Added a `readableDate` filter to `.eleventy.js`;
+    all 22 posts now render the byline from front-matter so the
+    visible date and schema date always agree.
+- **Skipped on purpose**: FAQPage schema on the 17 location pages —
+  Google restricted FAQ rich results to gov/health sites in 2023, so
+  it's not worth 85 Q&A extractions. VideoObject schema — deferred,
+  needs real YouTube upload dates.
+- Build passes (54 files), all JSON-LD validates. Committed + pushed.
+
 ### 2026-05-19 — Unorphan location pages + Product schema
 
 - **Trigger**: Bryce asked why traffic is low; re-ran SEO audit on the
