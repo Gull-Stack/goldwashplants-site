@@ -1,0 +1,140 @@
+---
+layout: base.njk
+title: "Gold Wash Plant Size Calculator: Which Model Do You Need?"
+description: "Free gold wash plant size calculator. Answer 3 questions about your operation and get a recommended wash plant model - 50 to 300 TPH. Then request a custom quote."
+permalink: /wash-plant-size-calculator/
+---
+{% from "icons.njk" import icon %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://goldwashplants.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Wash Plant Size Calculator", "item": "https://goldwashplants.com/wash-plant-size-calculator/" }
+  ]
+}
+</script>
+
+<style>
+  .calc-hero { background: var(--gray-900); color: var(--white); padding: 130px 0 50px; text-align: center; }
+  .calc-hero h1 { font-family: var(--font-display); font-size: 2.4rem; line-height: 1.15; margin-bottom: 14px; }
+  .calc-hero h1 em { color: var(--gold); font-style: normal; }
+  .calc-hero p { color: rgba(255,255,255,0.75); max-width: 640px; margin: 0 auto; font-size: 1.1rem; }
+  .calc-wrap { max-width: 720px; margin: -30px auto 0; padding: 0 24px 64px; }
+  .calc-card { background: var(--white); border: 1px solid var(--gray-300); border-radius: 16px; box-shadow: var(--shadow-lg); padding: 36px; }
+  .calc-field { margin-bottom: 24px; }
+  .calc-field label { display: block; font-weight: 600; margin-bottom: 10px; color: var(--black); }
+  .calc-field select { width: 100%; padding: 14px 16px; font-size: 1rem; border: 1.5px solid var(--gray-300); border-radius: 8px; font-family: var(--font-body); background: var(--white); }
+  .calc-field select:focus { outline: none; border-color: var(--gold); }
+  .calc-check { display: flex; align-items: center; gap: 10px; }
+  .calc-check input { width: 18px; height: 18px; }
+  .calc-check label { margin: 0; font-weight: 500; }
+  .calc-result { margin-top: 28px; padding: 28px; border-radius: 12px; background: var(--cream); border: 1px solid var(--gold); display: none; }
+  .calc-result.show { display: block; }
+  .calc-result .rec-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-dark); font-weight: 700; }
+  .calc-result h2 { font-family: var(--font-display); font-size: 1.8rem; color: var(--black); margin: 6px 0 12px; }
+  .calc-result p { color: var(--gray-700); margin-bottom: 8px; }
+  .calc-result .rec-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+  .calc-note { font-size: 0.9rem; color: var(--gray-700); background: rgba(196,160,82,0.12); padding: 12px 14px; border-radius: 8px; margin-top: 14px; }
+  .calc-prose { max-width: 720px; margin: 0 auto; padding: 8px 24px 72px; }
+  .calc-prose h2 { font-family: var(--font-display); font-size: 1.7rem; color: var(--black); margin: 28px 0 12px; }
+  .calc-prose p { color: var(--gray-700); margin-bottom: 14px; }
+  .calc-prose a { color: var(--gold-dark); font-weight: 600; }
+  @media (max-width: 768px) { .calc-hero h1 { font-size: 1.9rem; } .calc-card { padding: 24px; } }
+</style>
+
+<section class="calc-hero">
+  <div class="container">
+    <h1>Gold Wash Plant Size <em>Calculator</em></h1>
+    <p>Not sure which size you need? Answer three quick questions and we'll recommend a model. Every plant is still custom-built - this just gets you in the right range.</p>
+  </div>
+</section>
+
+<div class="calc-wrap">
+  <div class="calc-card">
+    <div class="calc-field">
+      <label for="calc-volume">How much material do you want to process per hour?</label>
+      <select id="calc-volume">
+        <option value="">Select...</option>
+        <option value="0">Not sure yet / just testing a claim</option>
+        <option value="50">Up to 50 tons per hour (small)</option>
+        <option value="100">50-100 tons per hour (growing)</option>
+        <option value="200">100-200 tons per hour (commercial)</option>
+        <option value="300">200+ tons per hour (large-scale)</option>
+      </select>
+    </div>
+
+    <div class="calc-field">
+      <label for="calc-feed">How will you feed the plant?</label>
+      <select id="calc-feed">
+        <option value="">Select...</option>
+        <option value="50">By hand / shovel</option>
+        <option value="100">Mini excavator (under 10 ton)</option>
+        <option value="200">Standard excavator (20 ton+)</option>
+        <option value="300">Wheel loader / large excavator</option>
+      </select>
+    </div>
+
+    <div class="calc-field">
+      <div class="calc-check">
+        <input type="checkbox" id="calc-fine">
+        <label for="calc-fine">My ground has a lot of fine / flour gold</label>
+      </div>
+    </div>
+
+    <button id="calc-go" class="btn btn-gold btn-lg" style="width:100%">Recommend my wash plant</button>
+
+    <div class="calc-result" id="calc-result" aria-live="polite">
+      <span class="rec-label">Recommended</span>
+      <h2 id="rec-title"></h2>
+      <p id="rec-why"></p>
+      <div class="calc-note" id="rec-fine" style="display:none">Because you have fine gold, ask about our mercury-free sluice (recovers down to 200 mesh) and optional final-stage concentrator - it's how you keep the flour gold most setups lose.</div>
+      <div class="rec-cta">
+        <a href="/contact/" class="btn btn-gold" id="rec-quote">Get a free quote</a>
+        <a href="#" class="btn btn-outline" id="rec-details">View model details</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="calc-prose">
+  <h2>How wash plant sizing works</h2>
+  <p>A gold wash plant is rated by how many tons of material it can process per hour (TPH). The right size is whichever your feed equipment can keep fed - there's no point buying a 300 TPH plant if a single mini excavator can only feed 80. Two questions decide it: how much you want to process, and how you'll load the hopper.</p>
+  <p>All of our plants share the same proven 95-98% recovery sluice, so stepping up in size buys you throughput, not better recovery. See the full <a href="/products/">model comparison</a> or read our guide to <a href="/blog/choosing-right-size-gold-wash-plant/">choosing the right size gold wash plant</a>.</p>
+  <h2>Still not sure?</h2>
+  <p>Every operation is different. Tell us your material type, volume and location and we'll size it for you - free, no obligation. Browse all <a href="/">gold wash plants for sale</a> or learn more about <a href="/placer-mining-equipment/">placer mining equipment</a>.</p>
+</div>
+
+<script>
+  (function () {
+    var MODELS = {
+      50:  { name: "50 Ton Gold Wash Plant",  why: "Highly portable, sets up in under 30 minutes, and is our best seller for small claims and prospecting.", url: "/products/50-ton/" },
+      100: { name: "100 Ton Gold Wash Plant", why: "A portable mid-range workhorse for growing operations that have outgrown a small plant.", url: "/products/100-ton/" },
+      200: { name: "200 Ton Gold Wash Plant", why: "Our commercial best seller - serious throughput that's still movable around a site.", url: "/products/200-ton/" },
+      300: { name: "300 Ton Gold Wash Plant", why: "Built for high-volume, large-scale alluvial production.", url: "/products/300-ton/" }
+    };
+    function pick() {
+      var vol = parseInt(document.getElementById('calc-volume').value, 10);
+      var feed = parseInt(document.getElementById('calc-feed').value, 10);
+      if (isNaN(vol) || isNaN(feed)) { alert('Please answer the first two questions.'); return; }
+      // Volume target; "not sure / testing" (0) defaults to the entry model.
+      var byVol = vol === 0 ? 50 : vol;
+      // You can't run a plant bigger than your feed equipment can load.
+      var rec = Math.min(byVol, feed);
+      if (rec < 50) rec = 50;
+      var m = MODELS[rec];
+      document.getElementById('rec-title').textContent = m.name;
+      var why = m.why;
+      if (feed < byVol) { why += " We capped the size at what your feed equipment can realistically load - a bigger plant would sit half-empty."; }
+      document.getElementById('rec-why').textContent = why;
+      document.getElementById('rec-details').setAttribute('href', m.url);
+      document.getElementById('rec-fine').style.display = document.getElementById('calc-fine').checked ? 'block' : 'none';
+      document.getElementById('calc-result').classList.add('show');
+      document.getElementById('calc-result').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (window.gtag) { gtag('event', 'calculator_result', { event_category: 'engagement', event_label: m.name }); }
+    }
+    document.getElementById('calc-go').addEventListener('click', pick);
+  })();
+</script>
