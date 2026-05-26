@@ -120,20 +120,31 @@ export default async function handler(req, res) {
       }
     }
 
+    // Honeypot is filled only by bots — hard drop (no save, no email).
+    // Every other flag is uncertain (a real visitor's Turnstile widget can
+    // fail), so those are saved AND emailed below, marked for review.
+    if (flaggedReason === 'honeypot') {
+      return res.status(200).json({ success: true, message: "Thank you! We'll be in touch within 24 hours." });
+    }
+
     if (!name || !email) {
       return res.status(400).json({ error: 'Name and email are required' });
     }
 
+    // NOTE: no `notes` column exists on the leads table — including it made
+    // every insert fail (Postgres 42703) and silently lost the lead. The flag
+    // reason is preserved in `message` and `status` instead.
     const leadData = {
       name: name.trim(),
       email: email.trim().toLowerCase(),
       phone: phone?.trim() || null,
       interest: interest || null,
       location: location?.trim() || null,
-      message: message?.trim() || null,
+      message: flaggedReason
+        ? `${message?.trim() || ''}\n\n[auto-flagged: ${flaggedReason}]`.trim()
+        : (message?.trim() || null),
       source: 'goldwashplants.com',
       status: flaggedReason ? 'flagged' : 'new',
-      notes: flaggedReason ? `auto-flagged: ${flaggedReason}` : null,
       email_sent: false,
       created_at: new Date().toISOString(),
     };
@@ -157,9 +168,11 @@ export default async function handler(req, res) {
       }
     }
 
-    // Send emails only for clean leads. Flagged leads stay in Supabase
-    // for manual review without spamming the inbox.
-    if (SENDGRID_API_KEY && !flaggedReason) {
+    // Always notify sales (clean OR flagged) so a real lead is never silently
+    // dropped; flagged leads are clearly marked for review. The confirmation
+    // email to the submitter is sent only for clean leads.
+    if (SENDGRID_API_KEY) {
+     if (!flaggedReason) {
       const confirmationHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #b8860b 0%, #daa520 100%); padding: 30px; text-align: center;">
@@ -186,10 +199,15 @@ export default async function handler(req, res) {
         subject: 'Thanks for contacting Gold Wash Plants!',
         html: confirmationHtml,
       });
+     }
 
-      // Send notification to sales
+      // Send notification to sales — sent for every lead, flagged or not.
+      const flagBanner = flaggedReason
+        ? `<div style="background:#b00020;color:#fff;padding:12px;text-align:center;font-weight:bold;">&#9888;&#65039; AUTO-FLAGGED: ${flaggedReason} &mdash; verify before trusting this lead</div>`
+        : '';
       const notificationHtml = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          ${flagBanner}
           <div style="background: #b8860b; padding: 20px; text-align: center;">
             <h1 style="color: white; margin: 0;">🔔 New Lead!</h1>
           </div>
@@ -213,7 +231,7 @@ export default async function handler(req, res) {
         to: SALES_EMAIL,
         from: FROM_EMAIL,
         fromName: `${leadData.name} via Gold Wash Plants`,
-        subject: `🔔 New Lead: ${leadData.name} - ${leadData.interest || 'General Inquiry'}`,
+        subject: `${flaggedReason ? `⚠️ FLAGGED (${flaggedReason})` : '🔔 New Lead'}: ${leadData.name} - ${leadData.interest || 'General Inquiry'}`,
         html: notificationHtml,
         replyTo: leadData.email,
         cc: 'bryce@gullstack.com',
