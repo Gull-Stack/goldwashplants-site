@@ -29,6 +29,42 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-06-24 — Domain re-registration + lead pipeline 500 fix
+
+- **Domain**: goldwashplants.com had **expired**; Bryce repurchased it
+  (Namecheap, now valid through Jun 16 2027, auto-renew ON) and moved
+  nameservers to **Cloudflare** (`mary/ram.ns.cloudflare.com`). Verified
+  live via DNS-over-HTTPS (Google + Cloudflare DoH): apex + www resolve to
+  Vercel, email is on Google Workspace MX + `v=spf1 include:_spf.google.com
+  ~all` + SendGrid DKIM (`s1/s2._domainkey`) + DMARC — all correct. Site +
+  email fully restored. (Future-debug heads-up: this sandbox's DNS resolver
+  served **stale cached parking records** `mx.plingest.com` / `v=spf1 -all`
+  for a long time — a red herring. Confirm goldwashplants DNS via DoH, not
+  `dig`, in this environment.)
+- **Real bug — quote/contact form returned 500.** Root cause: the Supabase
+  project `jnpinscmjciysrhpgjyp.supabase.co` was **deleted** (NXDOMAIN —
+  Supabase permanently removes free projects left paused too long). The
+  unguarded insert `fetch` threw `ENOTFOUND` straight to the catch and
+  500'd every submission **before** the email step — so leads were lost
+  entirely (no DB row, no SendGrid notification) for the whole outage
+  window. Both the homepage form and `/contact/` hit the same endpoint.
+- **Shipped** [28c1846](https://github.com/Gull-Stack/goldwashplants-site/commit/28c1846):
+  wrapped the Supabase insert + `email_sent` PATCH in `api/submit-lead.js`
+  in try/catch so a DB outage is **non-fatal** — it logs and still sends the
+  SendGrid notification + customer confirmation and returns 200. Lead
+  delivery is now decoupled from the database. Verified live: 200 +
+  `[SUPABASE] insert unreachable, continuing to email`.
+- The push rebased on top of a **parallel branch fix** that removed the
+  nonexistent `notes` column (was causing Postgres 42703) and made flagged
+  leads still notify sales. Both are now on `main`.
+- **Pick up next — STILL OPEN (separate Supabase account, Bryce only):**
+  the lead DB is gone. Form works email-only with no audit trail until it's
+  restored. To fully fix: create a new Supabase project + recreate the
+  `leads` table (cols: id, name, email, phone, interest, location, message,
+  source, status, email_sent, created_at), then update `SUPABASE_URL` +
+  `SUPABASE_SERVICE_KEY` in the Vercel project and redeploy. Also assume
+  some leads were missed during the outage — cross-check WhatsApp/phone.
+
 ### 2026-05-19 — Expand 8 thin location pages
 
 - Rewrote the 8 lightest location pages (Nevada, Arizona, Colorado,
