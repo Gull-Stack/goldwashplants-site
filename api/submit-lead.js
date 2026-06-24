@@ -149,22 +149,30 @@ export default async function handler(req, res) {
       created_at: new Date().toISOString(),
     };
 
-    // Insert into Supabase (if configured)
+    // Insert into Supabase (if configured). Non-fatal: if the DB is
+    // unreachable (paused/deleted project, network error) we log and keep
+    // going so the lead still reaches sales via email instead of 500ing.
     let savedLead = null;
     if (SUPABASE_URL && SUPABASE_KEY) {
-      const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_KEY,
-          'Authorization': `Bearer ${SUPABASE_KEY}`,
-          'Prefer': 'return=representation',
-        },
-        body: JSON.stringify(leadData),
-      });
+      try {
+        const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
+            'Prefer': 'return=representation',
+          },
+          body: JSON.stringify(leadData),
+        });
 
-      if (response.ok) {
-        savedLead = await response.json();
+        if (response.ok) {
+          savedLead = await response.json();
+        } else {
+          console.error(`[SUPABASE] insert failed status=${response.status} ${await response.text().catch(() => '')}`);
+        }
+      } catch (dbErr) {
+        console.error('[SUPABASE] insert unreachable, continuing to email:', dbErr?.cause?.code || dbErr?.message || dbErr);
       }
     }
 
@@ -237,18 +245,23 @@ export default async function handler(req, res) {
         cc: 'bryce@gullstack.com',
       });
 
-      // Mark email as sent in Supabase
+      // Mark email as sent in Supabase (best-effort, never fatal)
       if (savedLead?.[0]?.id && SUPABASE_URL && SUPABASE_KEY) {
-        await fetch(`${SUPABASE_URL}/rest/v1/leads?id=eq.${savedLead[0].id}`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-            'apikey': SUPABASE_KEY,
-            'Authorization': `Bearer ${SUPABASE_KEY}`,
-          },
-          body: JSON.stringify({ email_sent: true }),
-        });
+        try {
+          await fetch(`${SUPABASE_URL}/rest/v1/leads?id=eq.${savedLead[0].id}`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              'apikey': SUPABASE_KEY,
+              'Authorization': `Bearer ${SUPABASE_KEY}`,
+            },
+            body: JSON.stringify({ email_sent: true }),
+          });
+        } catch (patchErr) {
+          console.error('[SUPABASE] email_sent patch failed:', patchErr?.cause?.code || patchErr?.message || patchErr);
+        }
       }
+
     }
 
     return res.status(200).json({
