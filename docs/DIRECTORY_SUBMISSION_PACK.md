@@ -4,11 +4,12 @@ Copy-paste content for the Tier 1 + Tier 2 listings in `BACKLINK_PLAN.md`.
 Everything is pre-written to the lengths these sites ask for, so submitting
 is data entry, not writing. Work top to bottom.
 
-> **One input needed from Chase before starting:** a business **address**
-> (full street address, or a city + "service area" if he runs it from home /
-> doesn't want the street public). Google Business Profile and most B2B
-> directories require it, and the NAP must be *identical* everywhere or the
-> listings stop reinforcing each other. Placeholder below is `[[ADDRESS]]`.
+> **Status: ready to submit.** Address confirmed and the business name is
+> **decided: "Gold Wash Plants"** — use it identically on every listing.
+> **First action:** rename the existing Google Business Profile from
+> "Gwp Gold Mining Equipment" to **Gold Wash Plants** so the GBP and all new
+> listings share one name (NAP consistency). Do that before the other
+> listings so everything matches from the start.
 
 ---
 
@@ -16,12 +17,12 @@ is data entry, not writing. Work top to bottom.
 
 ```
 Business name:  Gold Wash Plants
-Address:        [[ADDRESS]]
+Address:        874 W Skyline Dr, Loa, UT 84747
 Phone:          (888) 868-2650
 Email:          sales@goldwashplants.com
 Website:        https://goldwashplants.com
 Category:       Mining Equipment Supplier / Manufacturer
-Hours:          Mon–Fri, business hours
+Hours:          Open 24 hours
 ```
 
 ## 2. Descriptions (use the length the form allows)
@@ -101,9 +102,14 @@ Price on request — call (888) 868-2650 or visit goldwashplants.com.
 Do them in this order. Check the box as each goes live.
 
 **Tier 1 — foundational (free, ~1 afternoon)**
-- [ ] **Google Business Profile** (business.google.com/create) — highest
-  priority. Category "Mining equipment supplier". Use the Long description,
-  add photos + the plant-in-action videos, list the 4 models as Products.
+- [ ] **Google Business Profile** — ALREADY EXISTS and Chase manages it
+  (currently named "Gwp Gold Mining Equipment", 874 W Skyline Dr Loa UT,
+  3.0★/2 reviews, Profile Strength incomplete). So this is **optimize, not
+  create**: (1) resolve the name decision above, (2) hit "Complete Info"
+  until Profile Strength is full, (3) set category "Mining equipment
+  supplier", add the Long description, photos + plant-in-action videos, and
+  the 4 models as Products, (4) ask recent buyers for reviews — 2 reviews at
+  3.0 is the weakest part of an otherwise strong profile (308 interactions).
 - [ ] **Bing Places** (bingplaces.com) — import from GBP in one click.
 - [ ] **Apple Business Connect** (businessconnect.apple.com).
 - [ ] **ThomasNet** (thomasnet.com/list-your-company) — Long description,
@@ -130,6 +136,9 @@ Link type (follow/nofollow). Re-check in 2–4 weeks — many directories queue.
 
 ## 6. Status
 
-- Built 2026-06-24. Copy is ready; **blocked only on the business address**
-  for the NAP. Get that from Chase, drop it into `[[ADDRESS]]`, and Tier 1
-  can be submitted same day.
+- Built 2026-06-24, updated same day with real NAP from Chase's GBP.
+- Address confirmed: 874 W Skyline Dr, Loa, UT 84747. Phone, hours, category
+  all filled in.
+- **Name decided: Gold Wash Plants.** No blockers left. First step is
+  renaming the GBP to match, then optimize it and roll out the Tier 1 + 2
+  listings with the NAP above.
