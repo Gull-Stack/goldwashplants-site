@@ -1,0 +1,28 @@
+{# VideoObject JSON-LD macro for embedded YouTube videos.
+   Usage:
+     {% from "video-schema.njk" import videoObject %}
+     {{ videoObject("YT_ID", "Title", "Description", "2025-06-01") }}
+   uploadDate is ISO 8601 (YYYY-MM-DD). Dates are approximate — set to the
+   real YouTube upload dates when available. #}
+{% macro videoObject(id, name, description, uploadDate) %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": {{ name | dump | safe }},
+  "description": {{ description | dump | safe }},
+  "thumbnailUrl": "https://i.ytimg.com/vi/{{ id }}/maxresdefault.jpg",
+  "uploadDate": "{{ uploadDate }}",
+  "contentUrl": "https://www.youtube.com/watch?v={{ id }}",
+  "embedUrl": "https://www.youtube-nocookie.com/embed/{{ id }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Gold Wash Plants",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://goldwashplants.com/images/dark-logo.png"
+    }
+  }
+}
+</script>
+{% endmacro %}

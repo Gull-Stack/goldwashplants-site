@@ -4,7 +4,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({"js": "js"});
   eleventyConfig.addPassthroughCopy({"styles.css": "styles.css"});
   eleventyConfig.addPassthroughCopy({"robots.txt": "robots.txt"});
-  eleventyConfig.addPassthroughCopy({"sitemap.xml": "sitemap.xml"});
   eleventyConfig.addPassthroughCopy({"video-sitemap.xml": "video-sitemap.xml"});
   eleventyConfig.addPassthroughCopy({"favicon.ico": "favicon.ico"});
   eleventyConfig.addPassthroughCopy({"vercel.json": "vercel.json"});
@@ -17,6 +16,13 @@ module.exports = function(eleventyConfig) {
     if (!value) return "";
     var d = new Date(value + "T00:00:00Z");
     return d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
+  });
+
+  // ISO date (YYYY-MM-DD) for sitemap <lastmod>
+  eleventyConfig.addFilter("htmlDate", function(value) {
+    var d = value instanceof Date ? value : new Date(value);
+    if (isNaN(d.getTime())) d = new Date();
+    return d.toISOString().slice(0, 10);
   });
 
   // Configure input and output directories

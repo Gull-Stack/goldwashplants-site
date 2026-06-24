@@ -3,6 +3,7 @@ layout: base.njk
 title: "200 Ton Gold Wash Plant for Sale | Commercial Placer Plant"
 description: "200 ton commercial gold wash plant for sale. Best seller. High-volume placer mining. ~45' sluice, 2,200 GPM, 95-98% recovery. Built in USA. Ships worldwide. Get a quote."
 permalink: /products/200-ton/
+ogImage: /images/washplant-action.jpg
 productModel: "200 Ton"
 productID: "GWP-200T"
 productImage: "/images/gold-wash-plant.jpg"
@@ -17,6 +18,9 @@ specs:
   - { name: "Build Time", value: "1-3 weeks" }
   - { name: "Origin", value: "Made in USA" }
 ---
+
+{% from "video-schema.njk" import videoObject %}
+{{ videoObject("CX17QH5hm4c", "M200T Gold Wash Plant In Action — 200 Tons Per Hour", "The M200T commercial gold wash plant processing high-volume placer material at 200 tons per hour with 95-98% mercury-free gold recovery. Built in the USA, ships worldwide.", "2025-09-15") | safe }}
 
 {% include "product-schema.njk" %}
 

@@ -5,6 +5,11 @@ description: "Custom gold wash plants for sale, 50-300 ton portable placer minin
 permalink: /
 ---
 {% from "icons.njk" import icon %}
+{% from "video-schema.njk" import videoObject %}
+{{ videoObject("CX17QH5hm4c", "M200T Gold Wash Plant In Action — 200 Tons Per Hour", "The M200T commercial gold wash plant processing high-volume placer material at 200 tons per hour with 95-98% mercury-free gold recovery. Built in the USA, ships worldwide.", "2025-09-15") | safe }}
+{{ videoObject("01WlVkNIUis", "M50 Portable Gold Wash Plant", "The entry-level M50 portable gold wash plant running on-site, processing 50 tons per hour with 95-98% gold recovery. Ideal for small to mid-size placer claims. Custom built in the USA.", "2025-08-10") | safe }}
+{{ videoObject("Y5FkweNmUNk", "2026 Gold Wash Plant Walk-Through", "A full walk-through of a Gold Wash Plants build, covering the hopper, trommel, and sluice on an all-in-one portable unit. Mercury-free gold recovery, made in the USA.", "2026-01-20") | safe }}
+{{ videoObject("0aNI1zPMLFY", "Gold Mining Equipment Factory Tour", "Inside the shop where Gold Wash Plants are engineered and built to order in the USA, from American steel to finished portable wash plant.", "2025-07-05") | safe }}
 
 <style>
   /* ═══════════════════════════════════════════
@@ -601,7 +606,10 @@ permalink: /
       </div>
       
       <div class="hero-image">
-        <img src="/images/gold-wash-plant.jpg" alt="Gold wash plant for sale - portable placer mining equipment made in USA">
+        <picture>
+          <source srcset="/images/gold-wash-plant.webp" type="image/webp">
+          <img src="/images/gold-wash-plant.jpg" alt="Gold wash plant for sale - portable placer mining equipment made in USA" fetchpriority="high" decoding="async">
+        </picture>
         <div class="hero-image-badge">
           <p>Currently building</p>
           <h4>200 Ton • Alaska</h4>
@@ -649,7 +657,10 @@ permalink: /
     <div class="products-grid">
       <div class="product-card">
         <div class="product-image">
-          <img src="/images/gold-wash-plant-all-in-one.jpg" alt="50 ton portable gold wash plant for sale - small scale placer mining equipment">
+          <picture>
+            <source srcset="/images/gold-wash-plant-all-in-one.webp" type="image/webp">
+            <img src="/images/gold-wash-plant-all-in-one.jpg" alt="50 ton portable gold wash plant for sale - small scale placer mining equipment" loading="lazy" decoding="async">
+          </picture>
           <span class="product-badge">Best Seller</span>
         </div>
         <div class="product-content">
@@ -668,7 +679,10 @@ permalink: /
       
       <div class="product-card">
         <div class="product-image">
-          <img src="/images/m100-machine.jpg" alt="100 ton gold wash plant for sale - all-in-one gold recovery equipment">
+          <picture>
+            <source srcset="/images/m100-machine.webp" type="image/webp">
+            <img src="/images/m100-machine.jpg" alt="100 ton gold wash plant for sale - all-in-one gold recovery equipment" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="product-content">
           <h3 class="product-title">100 Ton Wash Plant</h3>
@@ -686,7 +700,10 @@ permalink: /
       
       <div class="product-card">
         <div class="product-image">
-          <img src="/images/washplant-action.jpg" alt="200 ton commercial gold wash plant - high volume gold recovery equipment for sale">
+          <picture>
+            <source srcset="/images/washplant-action.webp" type="image/webp">
+            <img src="/images/washplant-action.jpg" alt="200 ton commercial gold wash plant - high volume gold recovery equipment for sale" loading="lazy" decoding="async">
+          </picture>
           <span class="product-badge">Best Seller</span>
         </div>
         <div class="product-content">
