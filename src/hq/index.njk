@@ -1,0 +1,440 @@
+---
+layout: null
+permalink: /hq/
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Gold Wash Plants — HQ</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12100c; --ink-2:#1a1712; --rule:#2f2b23; --rule-soft:#211e18;
+    --cream:#f0eade; --mute:#948b7a; --gold:#c4a052; --gold-dim:#8a7239;
+    --good:#7fa864; --warn:#c9873f; --bad:#b8564a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{background:var(--ink);color:var(--cream);font:400 16px/1.55 Inter,system-ui,sans-serif;
+       -webkit-font-smoothing:antialiased;padding-bottom:80px}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* ── gate ── */
+  #gate{position:fixed;inset:0;background:var(--ink);z-index:99;display:flex;
+        align-items:center;justify-content:center;padding:28px}
+  #gate .g-inner{width:100%;max-width:330px;text-align:center}
+  #gate h1{font:300 34px/1 Fraunces,Georgia,serif;letter-spacing:-.01em;margin-bottom:10px}
+  #gate p{color:var(--mute);font-size:13px;margin-bottom:26px}
+  #pin{width:100%;background:transparent;border:0;border-bottom:1px solid var(--rule);
+       color:var(--cream);font:400 22px/1 Inter,sans-serif;letter-spacing:.5em;
+       text-align:center;padding:12px 0 12px 8px;outline:none}
+  #pin:focus{border-color:var(--gold)}
+  #gate button{margin-top:22px;width:100%;background:var(--gold);color:#1a1408;border:0;
+       padding:13px;font:600 13px/1 Inter,sans-serif;letter-spacing:.1em;
+       text-transform:uppercase;cursor:pointer;border-radius:2px}
+  #gate button:hover{background:#d4b165}
+  #gate .err{color:var(--bad);font-size:12px;margin-top:14px;min-height:16px}
+  body.locked{overflow:hidden}
+  #app[hidden]{display:none}
+
+  /* ── masthead ── */
+  header.mast{border-bottom:1px solid var(--rule);padding:52px 0 26px;margin-bottom:8px}
+  .mast .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+       color:var(--gold-dim);margin-bottom:16px}
+  .mast h1{font:300 clamp(40px,7vw,74px)/.95 Fraunces,Georgia,serif;letter-spacing:-.025em}
+  .mast .sub{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:20px;
+       color:var(--mute);font-size:13px}
+
+  /* ── sections ── */
+  section{padding:56px 0 12px;border-bottom:1px solid var(--rule-soft)}
+  section:last-of-type{border-bottom:0}
+  .s-head{display:flex;align-items:baseline;justify-content:space-between;
+       gap:16px;flex-wrap:wrap;margin-bottom:30px}
+  .s-head h2{font:300 30px/1.1 Fraunces,Georgia,serif;letter-spacing:-.01em}
+  .s-head .meta{color:var(--mute);font-size:12px}
+  h3.sub-h{font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+       color:var(--mute);margin:38px 0 14px}
+
+  /* ── stat row ── */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+       border-top:1px solid var(--rule)}
+  .stat{padding:22px 22px 22px 0;border-bottom:1px solid var(--rule-soft)}
+  .stat .v{font:300 42px/1 Fraunces,Georgia,serif;color:var(--gold);letter-spacing:-.02em}
+  .stat .l{font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+       color:var(--cream);margin-top:10px}
+  .stat .n{font-size:12px;color:var(--mute);margin-top:5px;line-height:1.4}
+
+  /* ── tables ── */
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  th{text-align:left;font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+     color:var(--mute);font-weight:500;padding:0 12px 10px 0;border-bottom:1px solid var(--rule)}
+  td{padding:11px 12px 11px 0;border-bottom:1px solid var(--rule-soft);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  td.num,th.num{text-align:right;padding-right:0;font-variant-numeric:tabular-nums}
+  .kw{color:var(--cream)}
+  .url{color:var(--mute);font-size:12px}
+  .pos{font-variant-numeric:tabular-nums;font-weight:600}
+  .p-top{color:var(--good)} .p-mid{color:var(--gold)} .p-low{color:var(--mute)}
+  .dim{color:var(--mute)}
+
+  /* ── pills ── */
+  .pill{display:inline-block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+        padding:3px 8px;border:1px solid var(--rule);border-radius:2px;color:var(--mute)}
+  .pill.flag{border-color:var(--warn);color:var(--warn)}
+
+  /* ── bars ── */
+  .bars{display:grid;gap:9px;margin-top:4px}
+  .bar-row{display:grid;grid-template-columns:110px minmax(0,1fr) 42px;align-items:center;gap:14px;font-size:13px}
+  .bar-track{display:block;width:100%;min-width:0;height:6px;background:var(--rule-soft);border-radius:3px;overflow:hidden}
+  .bar-fill{display:block;height:100%;background:var(--gold);border-radius:3px;min-width:3px}
+  .bar-row .n{text-align:right;color:var(--mute);font-variant-numeric:tabular-nums}
+
+  /* ── notes / callouts ── */
+  .note{border-left:2px solid var(--gold-dim);padding:2px 0 2px 18px;
+        color:var(--mute);font-size:13.5px;line-height:1.6;margin:26px 0}
+  ul.insights{list-style:none;margin-top:6px}
+  ul.insights li{padding:14px 0 14px 26px;border-bottom:1px solid var(--rule-soft);
+        position:relative;font-size:14.5px;line-height:1.6}
+  ul.insights li:last-child{border-bottom:0}
+  ul.insights li:before{content:"";position:absolute;left:2px;top:22px;
+        width:6px;height:6px;background:var(--gold);border-radius:50%}
+
+  /* ── roadmap ── */
+  .phase{display:grid;grid-template-columns:180px 1fr;gap:32px;
+         padding:30px 0;border-bottom:1px solid var(--rule-soft)}
+  .phase:last-child{border-bottom:0}
+  .phase-key .p-name{font:300 24px/1.1 Fraunces,Georgia,serif;color:var(--gold)}
+  .phase-key .p-win{font-size:12px;color:var(--mute);margin-top:7px}
+  .phase-key .p-title{font-size:14px;margin-top:12px;line-height:1.4}
+  .task{padding:13px 0;border-bottom:1px solid var(--rule-soft)}
+  .task:last-child{border-bottom:0}
+  .task .t{font-size:14.5px;line-height:1.5}
+  .task .w{font-size:13px;color:var(--mute);margin-top:5px;line-height:1.55}
+
+  .status{font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+          padding:3px 9px;border-radius:2px;display:inline-block;margin-top:12px}
+  .status.ready{background:rgba(196,160,82,.16);color:var(--gold)}
+  .status.next{border:1px solid var(--rule);color:var(--mute)}
+  .status.later{border:1px solid var(--rule-soft);color:var(--rule)}
+
+  footer{padding-top:44px;color:var(--mute);font-size:12px;line-height:1.7}
+
+  @media(max-width:720px){
+    .wrap{padding:0 20px}
+    .phase{grid-template-columns:1fr;gap:14px}
+    .bar-row{grid-template-columns:88px minmax(0,1fr) 36px}
+    .scroll-x{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .scroll-x table{min-width:520px}
+  }
+</style>
+</head>
+<body class="locked">
+
+<div id="gate">
+  <div class="g-inner">
+    <h1>Gold Wash Plants</h1>
+    <p>Enter your access code</p>
+    <input id="pin" type="password" inputmode="numeric" maxlength="4" autocomplete="off" aria-label="Access code">
+    <button id="go">Enter</button>
+    <div class="err" id="err"></div>
+  </div>
+</div>
+
+<div id="app" hidden>
+
+<header class="mast">
+  <div class="wrap">
+    <div class="eyebrow">Operations &amp; Search</div>
+    <h1>HQ</h1>
+    <div class="sub">
+      <span>goldwashplants.com</span>
+      <span>Updated {{ hq.updated }}</span>
+      <span>Prepared by Walkthru Labs</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══ LEADS ══ -->
+<section>
+  <div class="wrap">
+    <div class="s-head">
+      <h2>Leads</h2>
+      <div class="meta">{{ hq.leads.totals.real }} genuine enquiries on record</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="v">{{ hq.leads.totals.real }}</div>
+        <div class="l">Real leads</div>
+        <div class="n">Verified, de-duplicated, tests removed</div>
+      </div>
+      <div class="stat">
+        <div class="v">13</div>
+        <div class="l">This month</div>
+        <div class="n">July — best month on record</div>
+      </div>
+      <div class="stat">
+        <div class="v">{{ hq.leads.totals.spam }}</div>
+        <div class="l">Spam blocked</div>
+        <div class="n">One bot flood, {{ hq.leads.totals.spamWindow }}. Filtered since.</div>
+      </div>
+      <div class="stat">
+        <div class="v">7</div>
+        <div class="l">Countries</div>
+        <div class="n">Ghana · PNG · Chad · Guyana · Mozambique · Perú · Australia</div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">By month</h3>
+    <div class="bars">
+      {%- set maxM = 24 -%}
+      {% for m in hq.leads.byMonth %}
+      <div class="bar-row">
+        <span>{{ m.month }}</span>
+        <span class="bar-track"><span class="bar-fill" style="width:{{ (m.count / maxM * 100) | round }}%"></span></span>
+        <span class="n">{{ m.count }}</span>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h3 class="sub-h">By plant size</h3>
+    <div class="bars">
+      {%- set maxI = 25 -%}
+      {% for i in hq.leads.byInterest %}
+      <div class="bar-row">
+        <span>{{ i.interest }}</span>
+        <span class="bar-track"><span class="bar-fill" style="width:{{ (i.count / maxI * 100) | round }}%"></span></span>
+        <span class="n">{{ i.count }}</span>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h3 class="sub-h">Most recent</h3>
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th>Date</th><th>Name</th><th>Interest</th><th>Location</th><th>Note</th></tr></thead>
+        <tbody>
+        {% for l in hq.leads.recent %}
+          <tr>
+            <td class="dim">{{ l.date | replace("2026-","") }}</td>
+            <td class="kw">{{ l.name }}</td>
+            <td>{{ l.interest }}</td>
+            <td class="dim">{{ l.location }}</td>
+            <td class="dim">{{ l.note }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">What the pipeline says</h3>
+    <ul class="insights">
+      {% for i in hq.leads.insights %}<li>{{ i }}</li>{% endfor %}
+    </ul>
+
+    <div class="note">{{ hq.leads.note }}</div>
+  </div>
+</section>
+
+<!-- ══ SEO ══ -->
+<section>
+  <div class="wrap">
+    <div class="s-head">
+      <h2>Search standing</h2>
+      <div class="meta">{{ hq.seo.source }} · pulled {{ hq.seo.pulled }}</div>
+    </div>
+
+    <div class="stats">
+      {% for s in hq.seo.overview %}
+      <div class="stat">
+        <div class="v">{{ s.value }}</div>
+        <div class="l">{{ s.label }}</div>
+        <div class="n">{{ s.note }}</div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <h3 class="sub-h">Where you rank now</h3>
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th>Keyword</th><th class="num">Position</th><th class="num">Vol/mo</th><th class="num">Difficulty</th><th>Page</th></tr></thead>
+        <tbody>
+        {% for k in hq.seo.keywords %}
+          <tr>
+            <td class="kw">{{ k.kw }}</td>
+            <td class="num"><span class="pos {% if k.pos <= 5 %}p-top{% elif k.pos <= 10 %}p-mid{% else %}p-low{% endif %}">{{ k.pos }}</span></td>
+            <td class="num dim">{{ k.vol }}</td>
+            <td class="num dim">{{ k.kd }}</td>
+            <td class="url">{{ k.url }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      Every position above has been flat for the full tracking window — no movement up or down.
+      The site ranks where it was left. That is the whole argument for the roadmap below.
+    </div>
+
+    <h3 class="sub-h">Striking distance — ranked 11-40, one push from real traffic</h3>
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th>Keyword</th><th class="num">Position</th><th class="num">Vol/mo</th><th class="num">Difficulty</th></tr></thead>
+        <tbody>
+        {% for k in hq.seo.strikingDistance %}
+          <tr>
+            <td class="kw">{{ k.kw }}</td>
+            <td class="num"><span class="pos p-low">{{ k.pos }}</span></td>
+            <td class="num dim">{{ k.vol }}</td>
+            <td class="num dim">{{ k.kd }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">Pages competing with each other</h3>
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th>Keyword</th><th class="num">Competing URLs</th><th>Positions</th><th>Should win</th></tr></thead>
+        <tbody>
+        {% for c in hq.seo.cannibalization %}
+          <tr>
+            <td class="kw">{{ c.kw }}</td>
+            <td class="num">{{ c.urls }}</td>
+            <td class="dim">{{ c.positions | join(" · ") }}</td>
+            <td class="url">{{ c.keep }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      Google is being handed several pages for the same phrase and splitting the credit between them.
+      Consolidating each of these to one page is the single cheapest ranking gain available —
+      no new content required.
+    </div>
+  </div>
+</section>
+
+<!-- ══ ROADMAP ══ -->
+<section>
+  <div class="wrap">
+    <div class="s-head">
+      <h2>Roadmap</h2>
+      <div class="meta">Ordered by return, not by effort</div>
+    </div>
+
+    {% for p in hq.roadmap %}
+    <div class="phase">
+      <div class="phase-key">
+        <div class="p-name">{{ p.phase }}</div>
+        <div class="p-win">{{ p.window }}</div>
+        <div class="p-title">{{ p.title }}</div>
+        <span class="status {{ p.status }}">{{ p.status }}</span>
+      </div>
+      <div class="phase-items">
+        {% for t in p.items %}
+        <div class="task">
+          <div class="t">{{ t.task }}</div>
+          <div class="w">{{ t.why }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ══ PRODUCTION QUEUE ══ -->
+<section>
+  <div class="wrap">
+    <div class="s-head">
+      <h2>Production queue</h2>
+      <div class="meta">Ready to publish</div>
+    </div>
+
+    <h3 class="sub-h">Google Business Profile — first four weeks</h3>
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th class="num">Wk</th><th>Type</th><th>Post</th><th>Button</th></tr></thead>
+        <tbody>
+        {% for g in hq.gbpCalendar %}
+          <tr>
+            <td class="num dim">{{ g.week }}</td>
+            <td><span class="pill">{{ g.type }}</span></td>
+            <td class="kw">{{ g.title }}</td>
+            <td class="dim">{{ g.cta }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">Blog queue — each mapped to a term you already nearly rank for</h3>
+    <div class="scroll-x">
+      <table>
+        <thead><tr><th>Post</th><th>Target keyword</th><th class="num">Vol/mo</th><th class="num">Now at</th></tr></thead>
+        <tbody>
+        {% for b in hq.blogQueue %}
+          <tr>
+            <td class="kw">{{ b.title }}</td>
+            <td class="dim">{{ b.target }}</td>
+            <td class="num dim">{% if b.vol %}{{ b.vol }}{% else %}—{% endif %}</td>
+            <td class="num dim">{% if b.pos %}#{{ b.pos }}{% else %}—{% endif %}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      Lead figures verified against the Supabase export of 2026-05-26 and the lead notification
+      archive through {{ hq.updated }}. Search figures pulled live from the SEMrush API on
+      {{ hq.seo.pulled }}. This page is not indexed.
+    </footer>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var CODE = "1849";
+  var KEY = "gwp_hq";
+  var gate = document.getElementById("gate"), app = document.getElementById("app");
+  var pin = document.getElementById("pin"), err = document.getElementById("err");
+
+  function open(){
+    gate.style.display = "none";
+    app.hidden = false;
+    document.body.classList.remove("locked");
+  }
+  function tryPin(){
+    if (pin.value.trim() === CODE) {
+      try { sessionStorage.setItem(KEY, "1"); } catch(e){}
+      open();
+    } else {
+      err.textContent = "Not quite — try again.";
+      pin.value = ""; pin.focus();
+    }
+  }
+  try { if (sessionStorage.getItem(KEY) === "1") open(); } catch(e){}
+  document.getElementById("go").addEventListener("click", tryPin);
+  pin.addEventListener("keydown", function(e){ if (e.key === "Enter") tryPin(); });
+  if (!app.hidden === false) pin.focus();
+})();
+</script>
+
+</body>
+</html>
