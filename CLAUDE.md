@@ -29,6 +29,63 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-07-22 — Flagged-lead diagnosis + client HQ at /hq
+
+- **The "flagged lead" scare was bots, not lost leads.** Four
+  `turnstile_missing` notifications hit Chase 7/20-7/22, all with the same
+  fingerprint: name `test`, message `Test submission.`, phone
+  `202-555-0123` (a reserved fake), only the email rotating
+  (`harinee@prayani.com`, `dratcliffe@earthlink.net`). These are scripted
+  POSTs straight to `/api/submit-lead`, bypassing the page — hence no
+  token. Verified the widget is healthy: loaded `/contact/` in a real
+  browser, Turnstile rendered and issued a valid token. Genuine
+  submissions are unaffected and real leads are flowing unflagged.
+- **Two real false-positive bugs found in `looksLikeSpam()`** (still
+  OPEN — not fixed this session, they're Phase 1 of the roadmap):
+  1. `/[^aeiou]{5,}/` rejects any company name ending in **LLC**
+     ("Martian gold miners LLC" → `...minerSLLC`). Hit a real Alaska
+     200-ton lead on 7/12.
+  2. `isGibberish()` on the email local part treats **y as a consonant**,
+     so `dyby6178@gmail.com` has "no vowels". Hit a real lead 5/27.
+  Both were still emailed (flagged-but-delivered), so nothing was lost —
+  but Chase may have discounted them. Fix: allowlist LLC/Inc/Corp/Ltd,
+  count `y` as a vowel, rate-limit the endpoint, hard-drop `test` +
+  555-number submissions.
+- **Lead data reality check**: the 2026-05-26 Supabase export has 341
+  rows but only **33 are genuine**. Mar 20-22 was a single bot flood of
+  ~187 multilingual "I wanted to know your price" submissions
+  (`Robertunsot`, `mabuka@aol.com`, `008davidd@gmail.com`). Anyone reading
+  the raw export will badly overcount. Total real leads on record: **53**.
+- **Shipped [5c8235f](https://github.com/Gull-Stack/goldwashplants-site/commit/5c8235f) — client HQ at `/hq`.** Standalone Nunjucks page
+  (`src/hq/index.njk`, `layout: null`), PIN-gated (**1849**, sessionStorage,
+  client-side only — obscurity not security), `noindex` + disallowed in
+  robots.txt + excluded from collections/sitemap. Four sections: Leads,
+  Search standing, Roadmap, Production queue.
+- **Data lives in `src/_data/hq.js`** — a flat file on purpose. The lead
+  DB is still gone (see 2026-06-24) and this site has no paid backend.
+- **Live SEMrush numbers (7/22)**: Authority Score **8** (was 7), **161**
+  organic keywords, **137** organic visits/mo, **131** referring domains.
+  Every tracked position is **flat** — zero movement, which is the whole
+  argument for the roadmap.
+- **Biggest SEO finding — cannibalization.** Six terms are split across
+  2-5 URLs each: `wash plants` ranks 28/45/67/79/92 (five URLs),
+  `gold wash machine` 16/33/51, `gold wash plant for sale` 4/31/47.
+  Consolidating is the cheapest available gain, no new content needed.
+  Biggest single prize: `gold wash plant` (390/mo, KD 0) stuck at **#7**.
+- **`scripts/seo-sync.mjs`** refreshes the SEMrush block on demand
+  (`SEMRUSH_API_KEY=xxx node scripts/seo-sync.mjs`). It prints a
+  paste-ready `seo` object rather than rewriting the data file, because
+  the roadmap prose is hand-written against those numbers. Key lives in
+  `kingmaker-hq/.env.local`; it is **not** yet a shared Vercel env var.
+- **Pick up next**: (1) ship the Phase 1 spam-filter fixes above;
+  (2) rebuild the lead DB so there's an audit trail again; (3) start the
+  GBP posting calendar — profile is claimed and live but dormant, and
+  the site has **zero reviews**, which is the biggest local handicap;
+  (4) write the 6 queued blog posts. Over half of all enquiries are
+  international (Ghana, Chad, Guyana, PNG, Mozambique, Perú, Australia)
+  and the site says nothing about shipping, containerisation or duty —
+  that page is probably the highest-value single piece of content.
+
 ### 2026-06-24 — Domain re-registration + lead pipeline 500 fix
 
 - **Domain**: goldwashplants.com had **expired**; Bryce repurchased it
