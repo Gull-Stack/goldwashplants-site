@@ -29,7 +29,7 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
-### 2026-07-22 — Flagged-lead diagnosis + client HQ at /hq
+### 2026-07-22 — Flagged-lead diagnosis + client Flight Deck at /hq
 
 - **The "flagged lead" scare was bots, not lost leads.** Four
   `turnstile_missing` notifications hit Chase 7/20-7/22, all with the same
@@ -56,7 +56,7 @@ Auto-deploys from `main` (autoAlias to production).
   ~187 multilingual "I wanted to know your price" submissions
   (`Robertunsot`, `mabuka@aol.com`, `008davidd@gmail.com`). Anyone reading
   the raw export will badly overcount. Total real leads on record: **53**.
-- **Shipped [5c8235f](https://github.com/Gull-Stack/goldwashplants-site/commit/5c8235f) — client HQ at `/hq`.** Standalone Nunjucks page
+- **Shipped [5c8235f](https://github.com/Gull-Stack/goldwashplants-site/commit/5c8235f) — client Flight Deck at `/hq`.** Standalone Nunjucks page
   (`src/hq/index.njk`, `layout: null`), PIN-gated (**1849**, sessionStorage,
   client-side only — obscurity not security), `noindex` + disallowed in
   robots.txt + excluded from collections/sitemap. Four sections: Leads,
