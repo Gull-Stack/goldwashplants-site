@@ -146,6 +146,47 @@ detail. Highlights:
   JSON-LD (`/blog/`, `/compare/`, `/contact/`, `/examples/`, `/privacy/`,
   `/terms/`), and `/contact/` is **86 words**.
 
+### Chase replied — the testimonials were ours, and they were fake
+
+- **🔴 THE ONE THAT MATTERS. Chase on the three homepage testimonials: *"I have no
+  idea where those came from. They showed up when you built this new site. I
+  figured you made them up."*** He was right. **"Mike R. / Fairbanks"**,
+  **"James T. / Grass Valley"** and **"Kwame A. / Accra"** were invented during a
+  build and had been live for months, sitting next to the fabricated
+  `aggregateRating` of 4.8-from-127-reviews removed earlier the same day. **The
+  client found it, we didn't.** Removed.
+  - **Replaced with the only real customer words that exist**: the genuine 5-star
+    Google review from 17 July 2025 ("Works well and keeps on working"),
+    labelled as a Google review, plus a CTA to
+    `https://www.google.com/maps?cid=12849844042532015656` (verified 200) so real
+    customers can leave more. Two reviews is the honest position and the section
+    now works on the problem instead of hiding it.
+  - Swept the rest of the site afterwards: **no other named testimonials, no
+    invented review counts, no unsourced customer totals, zero aggregateRating.**
+  - Lesson written to [[feedback-never-invent-social-proof]].
+- **✅ 300-ton sluice: Chase confirms 60ft.** The spec table, the `Product` schema
+  and a feature bullet all said **50ft** while the hero and body said 60ft. All
+  now read `~60'`. **Do not guess a client's spec to resolve a contradiction —
+  ask.** Live check: 0 occurrences of 50ft remain.
+- **✅ Chase's three real M100 photos are live.** They were in
+  `~/Library/Messages/Attachments` from his 9 Aug text the whole time — recovered
+  via `chat.db` (`attachment` → `message_attachment_join`), resized 5184px→1600px
+  and recompressed, **8MB → 1.1MB total**. New "M100 Plants at Work" gallery on
+  the 100-ton page: one feeding from the bank on a claim, two **barge-mounted
+  offshore** (a John Deere 690E LC and a Komatsu). Verified rendering in a real
+  browser — the first capture showed three blank boxes, which was the lazy-load
+  decode race again, not a failure.
+  ⚠️ The barge close-up has **"FREEDOM MINING, LLC"** on the excavator — a
+  customer's branding. Chase supplied the photo for use, but worth a nod to him.
+- ⚠️ **`/compare/` carries claims nobody has sourced, and one is a live
+  contradiction.** It says setup runs **"about 2 hours"** while every product page
+  says **~30 minutes** (the 300-ton says ~2 hours). It also asserts *"hundreds of
+  miners who've used other equipment"*, *"industry average is 80-90%"*,
+  *"most competitors require 4-8 hours"* and *"industry standard is 6-12 months"*.
+  **Deliberately not rewritten** — unlike the testimonials there is no evidence
+  these are false, and silently editing a client's marketing claims is not ours to
+  do. **Next questions for Chase.**
+
 ### Later the same day — review reported, Ads diagnosed, Phase 1 shipped
 
 - **✅ Text SENT to Chase and delivered** (iMessage, 09:54, `is_sent=1
