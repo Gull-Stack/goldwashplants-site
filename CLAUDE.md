@@ -97,6 +97,24 @@ detail. Highlights:
   homepage. ⚠️ Trailing-slash variants are deliberately NOT excluded — the list
   has no trailing-slash sources and `subpathmatching` is off, so `/blog/` must
   stay on the catch-all or it would hit origin.
+- **🔴 The GBP has 2 reviews at 3.0 stars — NOT "zero reviews" as the 22 July note
+  said.** Read live from `business.google.com/u/1/` (bryce@gullstack.com — the
+  personal gmail shows nothing, see [[reference-gbp-account-split]]). Profile is
+  **Verified**, 874 W Skyline Dr, Loa UT, 226 customer interactions.
+  - **5★** — *Quiet Desperation*, 17 Jul 2025, "Works well and keeps on working."
+  - **1★** — *Abel Madiyanouba*, ~41 weeks ago, photo attached. **The owner's own
+    public reply reads "We went through our records and can't find a record of
+    you."** That single review is the entire reason the rating is 3.0 rather than
+    5.0. **A review from someone who was never a customer is normally removable
+    under Google's policy — filing that is the single cheapest win on this
+    account right now.**
+  - ⚠️ **None of the three homepage testimonials (Mike R. / James T. / Kwame A.)
+    appear as Google reviews**, so nothing we hold corroborates them. Not proof
+    they are fake — could be email or WhatsApp customers — but they remain
+    unverifiable. Asked Chase directly.
+  - ⚠️ **There is a Google Ads campaign on this profile and it is PAUSED.** Nobody
+    has mentioned Ads on this account in any prior session. Worth asking who set
+    it up, what it spent, and whether it should resume.
 - **🔴 CORRECTION TO MY OWN FRAMING, same session.** I called that redirect map
   "the biggest win on the account" and said the blanket redirect was wasting the
   132 referring domains. **Overstated — I checked the backlinks afterwards and

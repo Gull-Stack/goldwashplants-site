@@ -24,6 +24,17 @@ module.exports = {
 
     // Top organic positions, sorted by traffic contribution.
     // `was` is the 15 July position from the same SEMrush report.
+    // Google Business Profile, read live 2026-08-13 (bryce@gullstack.com, /u/1/).
+    // Corrects the 2026-07-22 note that said "zero reviews".
+    gbp: {
+      status: "Verified",
+      address: "874 W Skyline Dr, Loa, UT 84747",
+      rating: "3.0",
+      reviewCount: 2,
+      note: "Two reviews only. One 5-star (Quiet Desperation, 17 Jul 2025, \"Works well and keeps on working\"). One 1-star from Abel Madiyanouba, which the owner reply says matches no customer record — that single review is what holds the rating at 3.0. A review from a non-customer is normally removable under Google's policy.",
+      ads: "A Google Ads campaign exists on this profile and is PAUSED.",
+    },
+
     keywords: [
       { kw: "gold wash plants for sale",             pos: 3,  was: 3,  vol: 110, kd: 4,  url: "/" },
       { kw: "used small scale gold wash plants",     pos: 2,  was: 2,  vol: 40,  kd: 0,  url: "/" },
