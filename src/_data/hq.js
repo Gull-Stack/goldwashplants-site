@@ -8,57 +8,62 @@
 // To refresh SEO numbers:  npm run sync:seo   (see scripts/seo-sync.mjs)
 
 module.exports = {
-  updated: "2026-07-22",
+  updated: "2026-08-13",
 
   // ── SEO ─────────────────────────────────────────────────────────────
   // Source: SEMrush API (domain_ranks + backlinks_overview, us database)
   seo: {
     source: "SEMrush · US database",
-    pulled: "2026-07-22",
+    pulled: "2026-08-13",
     overview: [
-      { label: "Authority Score", value: "8", note: "was 7 in May · scale 0-100" },
-      { label: "Organic keywords", value: "161", note: "terms ranking in Google top 100" },
-      { label: "Monthly organic traffic", value: "137", note: "estimated visits/mo from search" },
-      { label: "Referring domains", value: "131", note: "559 total backlinks · 409 follow" },
+      { label: "Authority Score", value: "8", note: "flat since May · scale 0-100" },
+      { label: "Organic keywords", value: "162", note: "terms ranking in Google top 100 · 161 in July" },
+      { label: "Monthly organic traffic", value: "68", note: "estimated visits/mo · was 144 on 15 July" },
+      { label: "Referring domains", value: "132", note: "563 total backlinks · 412 follow · +1 domain since July" },
     ],
 
     // Top organic positions, sorted by traffic contribution.
+    // `was` is the 15 July position from the same SEMrush report.
     keywords: [
-      { kw: "gold wash plant for sale",              pos: 4,  vol: 210, kd: 4,  url: "/" },
-      { kw: "gold wash plants for sale",             pos: 3,  vol: 110, kd: 4,  url: "/" },
-      { kw: "small scale gold wash plants for sale", pos: 3,  vol: 90,  kd: 0,  url: "/" },
-      { kw: "used small scale gold wash plants",     pos: 2,  vol: 40,  kd: 0,  url: "/" },
-      { kw: "gold wash plants",                      pos: 5,  vol: 70,  kd: 0,  url: "/" },
-      { kw: "wash plant for sale",                   pos: 6,  vol: 110, kd: 0,  url: "/" },
-      { kw: "gold wash plant",                       pos: 7,  vol: 390, kd: 0,  url: "/" },
-      { kw: "sd600 wash plant",                      pos: 3,  vol: 70,  kd: 0,  url: "/products/" },
-      { kw: "sd 600 wash plant price",               pos: 4,  vol: 110, kd: 2,  url: "/products/" },
-      { kw: "gold in clay deposits",                 pos: 6,  vol: 110, kd: 21, url: "/blog/processing-clay-bound-gold/" },
-      { kw: "fine gold recovery equipment",          pos: 4,  vol: 90,  kd: 0,  url: "/blog/fine-gold-recovery/" },
-      { kw: "trommel gold washing plant",            pos: 8,  vol: 30,  kd: 0,  url: "/blog/gold-wash-plant-vs-trommel/" },
+      { kw: "gold wash plants for sale",             pos: 3,  was: 3,  vol: 110, kd: 4,  url: "/" },
+      { kw: "used small scale gold wash plants",     pos: 2,  was: 2,  vol: 40,  kd: 0,  url: "/" },
+      { kw: "gold wash plant for sale",              pos: 8,  was: 4,  vol: 210, kd: 1,  url: "/" },
+      { kw: "small scale gold wash plants for sale", pos: 4,  was: 4,  vol: 90,  kd: 0,  url: "/" },
+      { kw: "wash plant for sale",                   pos: 6,  was: 6,  vol: 110, kd: 0,  url: "/" },
+      { kw: "flour gold",                            pos: 5,  was: null, vol: 480, kd: 6, url: "/blog/fine-gold-recovery/" },
+      { kw: "sd-600 wash plant price",               pos: 5,  was: 5,  vol: 110, kd: 2,  url: "/products/" },
+      { kw: "sd600 wash plant",                      pos: 3,  was: 3,  vol: 70,  kd: 0,  url: "/products/" },
+      { kw: "easy wash plant",                       pos: 5,  was: 5,  vol: 210, kd: 22, url: "/blog/gold-wash-plant-site-preparation/" },
+      { kw: "gold trommel wash plant",               pos: 3,  was: 3,  vol: 70,  kd: 5,  url: "/blog/gold-wash-plant-vs-trommel/" },
+      { kw: "fine gold recovery equipment",          pos: 4,  was: 4,  vol: 90,  kd: 0,  url: "/blog/fine-gold-recovery/" },
+      { kw: "gold wash plant",                       pos: 15, was: 7,  vol: 390, kd: 1,  url: "/" },
+      { kw: "gold wash plants",                      pos: 12, was: 5,  vol: 70,  kd: 0,  url: "/" },
     ],
 
     // Ranked 11-40: one or two positions from real traffic.
     strikingDistance: [
       { kw: "gold processing equipment for sale", pos: 18, vol: 50,  kd: 11 },
-      { kw: "gold wash machine",                  pos: 16, vol: 50,  kd: 0 },
-      { kw: "rock wash plant",                    pos: 20, vol: 40,  kd: 3 },
-      { kw: "mini trommel wash plant",            pos: 24, vol: 70,  kd: 0 },
+      { kw: "gold wash machine",                  pos: 27, vol: 40,  kd: 0 },
+      { kw: "rock wash plant",                    pos: 19, vol: 40,  kd: 0 },
+      { kw: "mini trommel wash plant",            pos: 28, vol: 70,  kd: 0 },
       { kw: "miller table fine gold recovery",    pos: 26, vol: 50,  kd: 19 },
       { kw: "gold mining machines for sale",      pos: 27, vol: 260, kd: 20 },
       { kw: "wash plants",                        pos: 28, vol: 90,  kd: 0 },
-      { kw: "large scale gold mining equipment",  pos: 37, vol: 70,  kd: 12 },
+      { kw: "placer mining equipment",            pos: 22, vol: 210, kd: 2 },
     ],
 
     // Same keyword, multiple competing URLs. Google splits the signal and
     // ranks all of them badly instead of one of them well.
+    // Re-measured 2026-08-13: unchanged since July, and two got worse.
     cannibalization: [
-      { kw: "wash plants",              positions: [28, 45, 67, 79, 92], urls: 5, keep: "/" },
-      { kw: "gold wash machine",        positions: [16, 33, 51],         urls: 3, keep: "/products/" },
-      { kw: "rock wash plant",          positions: [20, 45, 57],         urls: 3, keep: "/how-it-works/" },
-      { kw: "gold wash plant for sale", positions: [4, 31, 47],          urls: 3, keep: "/" },
-      { kw: "trommel gold washing plant", positions: [8, 53],            urls: 2, keep: "/blog/gold-wash-plant-vs-trommel/" },
-      { kw: "sd-600 wash plant price",  positions: [5, 19],              urls: 2, keep: "/products/" },
+      { kw: "easy wash plant",          positions: [5, 27, 36, 42, 48, 55], urls: 6, keep: "/blog/gold-wash-plant-site-preparation/" },
+      { kw: "gold wash plant for sale", positions: [8, 29, 43, 52, 63],     urls: 5, keep: "/" },
+      { kw: "wash plants",              positions: [28, 45, 67, 79, 92],    urls: 5, keep: "/" },
+      { kw: "gold wash plant",          positions: [15, 30, 44, 57],        urls: 4, keep: "/" },
+      { kw: "gold wash plants",         positions: [12, 31, 44, 55],        urls: 4, keep: "/" },
+      { kw: "gold mining wash plant",   positions: [13, 30, 45, 54],        urls: 4, keep: "/" },
+      { kw: "wash plant for gold",      positions: [10, 30, 40, 52],        urls: 4, keep: "/" },
+      { kw: "gold wash machine",        positions: [27, 52, 54],            urls: 3, keep: "/" },
     ],
   },
 
