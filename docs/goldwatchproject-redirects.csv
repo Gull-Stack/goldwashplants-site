@@ -1,0 +1,17 @@
+source,target,status,preservequerystring,includesubdomains,subpathmatching,preservepathsuffix
+https://goldwatchproject.com/blog,https://goldwashplants.com/blog/,301,true,true,false,false
+https://goldwatchproject.com/category/mining-knowledge,https://goldwashplants.com/blog/,301,true,true,false,false
+https://goldwatchproject.com/gold-wash-plant-info,https://goldwashplants.com/how-it-works/,301,true,true,false,false
+https://goldwatchproject.com/gold-wash-plant-maintenance-101-trouble-free-mining,https://goldwashplants.com/blog/gold-wash-plant-maintenance-tips/,301,true,true,false,false
+https://goldwatchproject.com/mining-knowledge-101-what-we-have-learned,https://goldwashplants.com/blog/,301,true,true,false,false
+https://goldwatchproject.com/tag/gold-mining,https://goldwashplants.com/blog/,301,true,true,false,false
+https://goldwatchproject.com/tag/mining,https://goldwashplants.com/blog/,301,true,true,false,false
+https://goldwatchproject.com/tag/trommel,https://goldwashplants.com/blog/gold-wash-plant-vs-trommel/,301,true,true,false,false
+https://goldwatchproject.com/tag/wash-plant,https://goldwashplants.com/blog/,301,true,true,false,false
+https://goldwatchproject.com/wash-plant-examples,https://goldwashplants.com/examples/,301,true,true,false,false
+https://goldwatchproject.com/wash-plant-pricing,https://goldwashplants.com/products/,301,true,true,false,false
+https://goldwatchproject.com/water-needs-for-gold-processing,https://goldwashplants.com/how-it-works/,301,true,true,false,false
+https://goldwatchproject.com/contact,https://goldwashplants.com/contact/,301,true,true,false,false
+https://goldwatchproject.com/contact.html,https://goldwashplants.com/contact/,301,true,true,false,false
+https://goldwatchproject.com/examples,https://goldwashplants.com/examples/,301,true,true,false,false
+https://goldwatchproject.com/examples.html,https://goldwashplants.com/examples/,301,true,true,false,false

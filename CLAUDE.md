@@ -29,6 +29,88 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-08-13 — Full SEO audit: broken images Chase reported twice, 145 fake reviews, and the money terms are sliding
+
+Full audit written up at **`docs/SEO-AUDIT-2026-08-13.md`** — read that for the
+detail. Highlights:
+
+- **🔴 Chase was right about the M100 photo, and it was four images not one.**
+  `src="../images/…"` on pages one directory deep resolves to
+  `/products/images/…` → **404**. Hit `/products/100-ton/`, `/products/50-ton/`
+  and **both** images on `/locations/alaska/`. `/products/200-ton/` used an
+  absolute path, which is why nobody caught it. He asked **7 Aug and again
+  9 Aug**. Fixed in `c2a6cd2` with better alt text + `loading="lazy"`.
+- **🔴 THE FINDING OF THE SESSION — the site published 145 reviews it does not
+  have.** Homepage `Organization` carried `aggregateRating` **4.8/127**;
+  `/products/50-ton/` carried **4.9/18**. The 22 July session recorded the site
+  has **zero reviews**. The 19 May session had already flagged the homepage one
+  ("verify this is real … or remove it — manual-action risk") and it was never
+  resolved. Same page also declared **price $35,000 and $0 shipping** on a page
+  with no visible price, for a company that ships worldwide. All removed; 0
+  `aggregateRating` remain in the build. ⚠️ The three homepage testimonials are
+  still live and **unverified** — ask Chase whether they are real people, and if
+  so get them to leave actual Google reviews.
+- **🔴 Commercial terms slid 4–8 places since 15 July; informational terms held.**
+  Same-source SEMrush: `gold wash plant` (390/mo) **7 → 15** · `gold wash plants`
+  **5 → 12** · `gold wash plant for sale` (210/mo) **4 → 8** · `gold in clay
+  deposits` dropped out of the top 30. Meanwhile `flour gold` (480/mo, the
+  biggest volume term on the site) **appeared at #5**. Traffic estimate
+  **144 → 68**. Keywords flat 161 → 162, Authority Score flat at 8, referring
+  domains 131 → 132.
+- **⚠️ Do not read that as a traffic collapse.** Chase's Search Console shows
+  **748 clicks over ~3 months, flat to slightly up**, with some of the highest
+  daily peaks in early August. SEMrush estimates position × volume; GSC counts
+  real clicks. Both are true — the site is losing buying-intent terms while
+  holding long-tail clicks. Say it that way to Chase.
+- **Cannibalization from 22 July was never fixed and is now worse — 8 terms.**
+  `easy wash plant` across **6 URLs**, `gold wash plant for sale` and
+  `wash plants` across **5** each. `wash plants` sits at *exactly* the same five
+  positions as three weeks ago (28/45/67/79/92). Titles are already
+  differentiated (that was the right 22 July fix); the remaining split is body
+  copy + internal linking. **This is the highest-return work outstanding.**
+- **The money pages were the thinnest pages on the site** — 265–309 words, ranking
+  29th–63rd for their own terms while the homepage ranked 8th. Each product page
+  gained a model-specific FAQ + `FAQPage` schema answering cost / water / power /
+  feed size / fine gold / international shipping, every answer linking into the
+  existing blog cluster (which also unstrands the blog). Now **629–655 words**.
+  All facts taken from each page's own spec table; nothing invented.
+- **The 293 "not indexed" pages are mostly benign.** The site publishes 57 pages,
+  so ~283 of them are legacy goldwatchproject.com WordPress URLs. Verified all 56
+  sitemap URLs return **200 with no redirect hops**, and no location/product/blog
+  pair exceeds 70% body-text similarity — so neither redirects nor duplicate
+  content is the cause. **The number that matters is 46 indexed of 56 indexable**
+  — ~10 real pages missing. Needs the GSC Pages report to name them.
+- **🔴 THE BIGGEST UNSHIPPED WIN: the May migration redirects never went live.**
+  `goldwatchproject.com` **301s every URL to the homepage** — verified, all 16
+  mapped URLs miss their target. Google treats blanket redirect-to-homepage as a
+  soft 404 and passes ~no link equity, which wastes a chunk of the 132 referring
+  domains. The page-level map was written **26 May**, committed to branch
+  `seo/migration-redirect-map-2026-05`, and **never merged or applied**. It is a
+  **Cloudflare Bulk Redirects change on the goldwatchproject.com zone**, not a
+  deploy. CSV lives only in the stale checkout:
+  `~/Code/goldwashplants-site/docs/goldwatchproject-redirects.csv`.
+- **🔴 `/products/300-ton/` contradicts itself about sluice length, live.** Spec
+  table + schema say **50 feet**; meta description, hero and body say **60 ft**.
+  Four places, two answers. Product fact — **not guessed.** One question for Chase.
+- **⚠️ Two checkouts of this repo exist.** `~/Documents/clients/goldwashplants` is
+  canonical (`main`, current with origin). **`~/Code/goldwashplants-site` is on the
+  unmerged May branch, three months behind — do not work in it.**
+- `/hq` SEO block refreshed to today's pull (`a1d25f1`) — it had been showing
+  22 July numbers to the client. Added a `was` field so the July→August slide is
+  visible in the dashboard rather than implied.
+- Verified: 57 pages build clean, **120 JSON-LD blocks, 0 invalid**, 0 images
+  missing alt, 0 relative `../images/` refs remain, 0 duplicate titles or
+  descriptions, canonicals self-referential everywhere except the noindexed `/hq/`.
+- **Still open from 22 July, untouched:** Phase 1 spam-filter fixes (LLC names,
+  `y`-as-vowel), lead DB rebuild, GBP posting calendar. Six pages still carry no
+  JSON-LD (`/blog/`, `/compare/`, `/contact/`, `/examples/`, `/privacy/`,
+  `/terms/`), and `/contact/` is **86 words**.
+
+**Next:** apply the Cloudflare redirect map (needs Cloudflare access — biggest
+return, costs nothing) · ask Chase the 300-ton sluice question + whether the
+testimonials are real · de-cannibalize the 8 split terms · pull the GSC Pages
+report for the ~10 unindexed pages · start collecting real Google reviews.
+
 ### 2026-07-22 — Flagged-lead diagnosis + client Flight Deck at /hq
 
 - **The "flagged lead" scare was bots, not lost leads.** Four
