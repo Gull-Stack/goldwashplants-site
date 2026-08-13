@@ -146,6 +146,60 @@ detail. Highlights:
   JSON-LD (`/blog/`, `/compare/`, `/contact/`, `/examples/`, `/privacy/`,
   `/terms/`), and `/contact/` is **86 words**.
 
+### Chase asked "are we hacked?" — investigated, answered, and one real gap closed
+
+- **🔴 CORRECTION: the 300-ton sluice is 50ft, not 60.** Chase reversed himself —
+  *"Wait sorry. If the spec sheet says 50 go with 50."* So the spec table and
+  `Product` schema were right all along, and the **meta description, hero and body
+  copy that said 60ft were the wrong ones.** All **11 references now read 50**;
+  zero occurrences of 60ft remain live. **Lesson: when a client contradicts his
+  own document, the document usually wins — and the fix direction was the
+  opposite of what his first answer implied.**
+- **Chase's real worry, in his words:** *"Is something wierd happening like site
+  hacks? … we get emails and texts and calls then all of a sudden a ton of spam
+  and then phone calls are people looking for lawn mower repair or I had one
+  where it called and I answered and the lady said I called her."* Investigated
+  rather than reassured:
+  - **Not hacked, verified four ways.** Live HTML diffed against our build =
+    **0 differing lines**. Every external host the site loads is known and
+    intentional (`challenges.cloudflare.com`, Google Fonts, YouTube, `wa.me`,
+    gullstack.com). **No unknown scripts.** Repo authors are only Bryce and Josh
+    (⚠️ Josh's machine commits as **"Thor Odinson
+    <strongestavenger@Thors-Mac-mini.local>"** — looks alarming in a log, is
+    legitimate). `/api/submit-lead.js` is **not** publicly readable (308, served
+    as a function, not a static file).
+  - **The spam is real and the cause is mundane: his email is on 58 pages and his
+    phone on 56.** It has to be — that is how customers reach him. Scrapers
+    harvest it, and ranking better means being scraped more. **That is the honest
+    link between "things start going good" and "suddenly a ton of spam."** Not an
+    attack; the tax on being findable.
+  - **The phone incidents are not the website.** "A lady said I called her" =
+    **caller-ID spoofing** (his number used in the from-field; recipients call it
+    back). "Lawn mower repair" calls = his **(888) toll-free number is recycled**
+    between businesses — flagged to him explicitly as a hypothesis, not a fact,
+    with "your phone provider could confirm."
+- **✅ Closed the one real gap: the lead endpoint had NO rate limit.** Turnstile
+  guards the widget path, but `/api/submit-lead` accepts direct POSTs — which is
+  exactly how **187 fake submissions arrived in 72 hours in March**. Now capped at
+  **5 per IP per 10 minutes**, returning the normal success shape so a flooding
+  script gets no signal it was throttled. ⚠️ **In-memory on purpose** — no KV or
+  Redis on this project, so the window is per warm instance: it stops a
+  single-source flood, not a distributed one. Documented in the code.
+- **🔴 Fixed a bug I introduced earlier today.** `looksLikeSpam` was never passed
+  `phone`, so the reserved-555 bot rule I added could never fire. 4/4 tests pass
+  now (rate limiter allows 5 / blocks 6th, other IPs unaffected, bot phone
+  caught, real Alaska lead clean).
+- Scrubbed a **real customer's email address** out of a source comment I had
+  written earlier in the day.
+- ⚠️ **Verifying the form post-deploy nearly emailed the client.** A successful
+  submission SendGrids Chase. Used the **honeypot path** instead (hard drop, no
+  save, no email) to prove the endpoint was alive — 200 + correct message. Also
+  note `/api/submit-lead` 308s to the trailing-slash form; browser `fetch`
+  follows it preserving method and body, curl needs `-L`.
+- ⚠️ zsh backtick gotcha bit again on `git commit -m` (ate the word `phone`);
+  amended via heredoc + `-F`. **Use `-F`, never `-m`, for any message containing
+  backticks.**
+
 ### Chase replied — the testimonials were ours, and they were fake
 
 - **🔴 THE ONE THAT MATTERS. Chase on the three homepage testimonials: *"I have no
