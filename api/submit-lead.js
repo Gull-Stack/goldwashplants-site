@@ -20,7 +20,7 @@ function isGibberish(text) {
   const cleaned = stripped.toLowerCase().replace(/[^a-z]/g, '');
   if (cleaned.length < 2) return false;
   // `y` is a vowel for this purpose. Treating it as a consonant made
-  // "dyby6178@gmail.com" read as vowel-less and flagged a real lead on 2026-05-27.
+  // a real lead's address read as vowel-less and was flagged on 2026-05-27.
   const vowels = cleaned.match(/[aeiouy]/g);
   if (!vowels || vowels.length < cleaned.length * 0.15) return true;
   if (/[^aeiouy]{5,}/i.test(cleaned)) return true;
@@ -83,6 +83,40 @@ function looksLikeSpam(data) {
   return false;
 }
 
+// === RATE LIMITING ===
+// Mar 20-22 2026 a single bot posted 187 submissions in 72 hours. Turnstile now
+// blocks the widget path, but this endpoint accepts direct POSTs, so a script
+// can still hammer it — those arrive flagged rather than dropped, which means
+// 187 emails to Chase. This caps one IP at 5 submissions per 10 minutes.
+//
+// Deliberately in-memory: this is a serverless function with no Redis or KV
+// attached, so the window is per warm instance, not global. That is imperfect —
+// a distributed flood from many IPs still gets through — but it stops the
+// single-source flood that actually happened, at zero infrastructure cost.
+const RATE_WINDOW_MS = 10 * 60 * 1000;
+const RATE_MAX = 5;
+const rateBuckets = new Map();
+
+function clientIp(req) {
+  const fwd = req.headers['x-forwarded-for'];
+  if (typeof fwd === 'string' && fwd.length) return fwd.split(',')[0].trim();
+  return req.headers['x-real-ip'] || req.socket?.remoteAddress || 'unknown';
+}
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  const hits = (rateBuckets.get(ip) || []).filter(t => now - t < RATE_WINDOW_MS);
+  hits.push(now);
+  rateBuckets.set(ip, hits);
+  // Keep the map from growing without bound on a long-lived instance.
+  if (rateBuckets.size > 5000) {
+    for (const [k, v] of rateBuckets) {
+      if (!v.length || now - v[v.length - 1] > RATE_WINDOW_MS) rateBuckets.delete(k);
+    }
+  }
+  return hits.length > RATE_MAX;
+}
+
 async function sendEmail({ to, from, fromName, subject, html, replyTo, cc }) {
   const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
     method: 'POST',
@@ -108,6 +142,14 @@ export default async function handler(req, res) {
 
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
+
+  // Same success shape a real visitor sees — a flooding script gets no signal
+  // that it has been throttled, and a genuine double-submit is not alarmed.
+  const ip = clientIp(req);
+  if (isRateLimited(ip)) {
+    console.log(`[RATE LIMIT] ip=${ip} blocked`);
+    return res.status(200).json({ success: true, message: "Thank you! We'll be in touch within 24 hours." });
+  }
 
   try {
     const { name, email, phone, interest, location, message, website, _timestamp } = req.body;
@@ -135,7 +177,7 @@ export default async function handler(req, res) {
     }
 
     if (!flaggedReason) {
-      const spamReason = looksLikeSpam({ name, website, _timestamp, email, message });
+      const spamReason = looksLikeSpam({ name, website, _timestamp, email, message, phone });
       if (spamReason) {
         console.log(`[SPAM FLAG] reason=${spamReason} name="${name}" email="${email}"`);
         flaggedReason = spamReason;
