@@ -146,6 +146,67 @@ detail. Highlights:
   JSON-LD (`/blog/`, `/compare/`, `/contact/`, `/examples/`, `/privacy/`,
   `/terms/`), and `/contact/` is **86 words**.
 
+### Later the same day — review reported, Ads diagnosed, Phase 1 shipped
+
+- **✅ Text SENT to Chase and delivered** (iMessage, 09:54, `is_sent=1
+  is_delivered=1`, body verified out of chat.db). Covers the photo fix, the 127
+  fake reviews, the review takedown, traffic, and both open questions.
+  ⚠️ **The AppleScript send is gated by the permission classifier** — it needs a
+  Bash rule in settings, or it blocks every time.
+- **✅ The 1-star review is REPORTED to Google.** Filed under **"Off topic —
+  review doesn't pertain to an experience with this business"**, which is the
+  claim the evidence supports (owner's own public reply says no customer record;
+  the attached photo is unrelated). **Deliberately NOT filed as "Spam"** — that
+  asserts a bot or fake account, which we cannot substantiate. Confirmation:
+  notified to bryce@gullstack.com, up to **3 business days**.
+- **🔴 GOOGLE ADS: the campaigns could never have worked, and here is the proof.**
+  Account **589-588-8609** (under bryce@gullstack.com), 4 campaigns, all paused:
+  Campaign #1 ($26/day, **Performance Max**, Maximize conversions) · Initial
+  Campaign ($21/day, **Performance Max**, Max conversion value) · Making it right
+  ($25/day, Search) · ai-max-search ($5/day, Search). **Every one bids on a
+  conversion-driven strategy — and there is no conversion signal at all:**
+  - **`AW-` appears on ZERO pages.** No Google Ads tag has ever been on this site.
+  - The one thing that looked like tracking was **broken**: the homepage fired
+    `gtag('event','conversion',{ send_to: 'G-21ZDT1EM3M/contact_form' })` — a
+    **GA4 measurement ID where an Ads conversion ID (`AW-…/label`) belongs.** It
+    could never register a conversion.
+  - The two lead forms fired **different event names** (`form_submit` vs
+    `contact_form_submit`), so even GA4 could not report leads as one number.
+  - So PMax was told "maximize conversions" and shown none. That is the textbook
+    way to burn budget, and it explains "it wasn't helping" completely.
+  - **Fixed:** both forms now fire `generate_lead`; the malformed call is removed
+    with a comment recording exactly what wiring Ads properly requires. ⚠️ **Do
+    not resume spend until a real conversion action exists in 589-588-8609** (or
+    GA4 `generate_lead` is imported as a conversion). `whatsapp_click` and
+    `phone_click` already fire and are worth importing too.
+  - ⚠️ Ads UI would not render its data cells through automation after 5 attempts
+    — spend/impression history is still unread. The diagnosis above came from the
+    site side instead, which was faster and decisive.
+- **✅ Phase 1 spam fixes SHIPPED** (open since 22 July): business suffixes
+  (LLC/Inc/Ltd/GmbH/…) stripped before the consonant-run test, `y` counted as a
+  vowel, and the bot fingerprint hard-dropped (name `test`, reserved 555-01xx
+  phones, message `Test submission.`). **11/11 test cases pass**, including both
+  real leads that were wrongly flagged.
+- **✅ Cannibalization work started, and the diagnosis is sharper than "8 split
+  terms."** Measured the internal anchors: **23 in-content links point at the
+  homepage and every single one read "gold wash plants for sale" — the term that
+  ranks #3.** The 390/mo head term `gold wash plant` had **no anchor support at
+  all** and the only two links using it pointed at `/products/` (#44). On top of
+  that, **the homepage never used the singular phrase once in body copy.** Both
+  fixed: homepage now explains what a wash plant is in its own words, and the
+  equipment callout alternates the anchor by page URL for a **12/11 split**.
+  **This is the same mechanism that already produced a #3 ranking on this site,
+  pointed at the term actually worth the most.**
+- **✅ Schema added to `/contact/` (ContactPage + ContactPoint) and `/blog/`
+  (Blog).** 124 JSON-LD blocks, 0 invalid. `/privacy/` and `/terms/` left alone
+  deliberately.
+- Checked the CSS `url(../)` paths for the same relative-path bug that broke the
+  four images: **only one instance, at depth 2 (`/blog/`), which resolves
+  correctly.** No further breakage.
+- ⚠️ Two things spotted in the GBP ad preview, unfixed: the ad's final URL is
+  **`https://www.goldwashplants.com`** (www → 308 redirect; canonical is
+  non-www), and Google rates the ad strength **"Poor"**.
+
 **Next:** **de-cannibalize the 8 split terms — highest return available** · start
 collecting real Google reviews (zero today) · ask Chase the 300-ton sluice
 question + whether the three testimonials are real people · pull the GSC Pages
