@@ -80,15 +80,37 @@ detail. Highlights:
   pair exceeds 70% body-text similarity — so neither redirects nor duplicate
   content is the cause. **The number that matters is 46 indexed of 56 indexable**
   — ~10 real pages missing. Needs the GSC Pages report to name them.
-- **🔴 THE BIGGEST UNSHIPPED WIN: the May migration redirects never went live.**
-  `goldwatchproject.com` **301s every URL to the homepage** — verified, all 16
-  mapped URLs miss their target. Google treats blanket redirect-to-homepage as a
-  soft 404 and passes ~no link equity, which wastes a chunk of the 132 referring
-  domains. The page-level map was written **26 May**, committed to branch
-  `seo/migration-redirect-map-2026-05`, and **never merged or applied**. It is a
-  **Cloudflare Bulk Redirects change on the goldwatchproject.com zone**, not a
-  deploy. CSV lives only in the stale checkout:
-  `~/Code/goldwashplants-site/docs/goldwatchproject-redirects.csv`.
+- **✅ THE MAY MIGRATION REDIRECTS ARE LIVE — and the cause was a single missing
+  step, not missing work.** In Cloudflare (GullStack acct `6c00aba9…`) a Bulk
+  Redirect List named **`new_site` already existed with exactly these 16
+  redirects**, uploaded in May, contents correct — but **Inactive**, with **0 Bulk
+  Redirect Rules** in the account. A list does nothing without a rule referencing
+  it. Created rule **"goldwatchproject legacy page redirects"** → list flipped
+  Active.
+  🔴 **That alone did not work.** The zone Redirect Rule "Gold Wash Plants"
+  (`All incoming requests` → 301 homepage) still won — **empirically the
+  zone-level Single Redirect beats the account-level Bulk Redirect here**, the
+  opposite of what phase ordering implies. Tested one path, confirmed, then
+  changed the catch-all's match to a custom expression excluding the 16 legacy
+  paths. **Verified 16/16 land on target in one hop**, and unmapped legacy URLs
+  (`/about/`, `/careers/`, `/2017/02/`, random) still fall through to the
+  homepage. ⚠️ Trailing-slash variants are deliberately NOT excluded — the list
+  has no trailing-slash sources and `subpathmatching` is off, so `/blog/` must
+  stay on the catch-all or it would hit origin.
+- **🔴 CORRECTION TO MY OWN FRAMING, same session.** I called that redirect map
+  "the biggest win on the account" and said the blanket redirect was wasting the
+  132 referring domains. **Overstated — I checked the backlinks afterwards and
+  they do not support it.** SEMrush: `https://goldwatchproject.com/` has **69
+  referring domains**, `http://goldwatchproject.com/` has **26**, and **every
+  other legacy URL has 0**. So ~95 of the domains point at the old *homepage*,
+  which was already redirecting homepage→homepage correctly. The deep pages this
+  map fixes have no external links. The referring domains are also mostly spam
+  (AS 6: `analyticshaven.top`, `blogsphere.top`, `cheapsmmprovider.online`); only
+  `juniorminers.com` (AS 22) looks real. **Real value = correct landing page for
+  humans + removes a soft-404 pattern. NOT link-equity recovery — do not sell it
+  as one.** The highest-return work is the cannibalization above.
+  **Standing lesson: check where the backlinks actually point before valuing a
+  redirect map.**
 - **🔴 `/products/300-ton/` contradicts itself about sluice length, live.** Spec
   table + schema say **50 feet**; meta description, hero and body say **60 ft**.
   Four places, two answers. Product fact — **not guessed.** One question for Chase.
@@ -106,10 +128,11 @@ detail. Highlights:
   JSON-LD (`/blog/`, `/compare/`, `/contact/`, `/examples/`, `/privacy/`,
   `/terms/`), and `/contact/` is **86 words**.
 
-**Next:** apply the Cloudflare redirect map (needs Cloudflare access — biggest
-return, costs nothing) · ask Chase the 300-ton sluice question + whether the
-testimonials are real · de-cannibalize the 8 split terms · pull the GSC Pages
-report for the ~10 unindexed pages · start collecting real Google reviews.
+**Next:** **de-cannibalize the 8 split terms — highest return available** · start
+collecting real Google reviews (zero today) · ask Chase the 300-ton sluice
+question + whether the three testimonials are real people · pull the GSC Pages
+report for the ~10 unindexed pages · Phase 1 spam-filter fixes · schema on
+`/contact/` + `/blog/`.
 
 ### 2026-07-22 — Flagged-lead diagnosis + client Flight Deck at /hq
 
