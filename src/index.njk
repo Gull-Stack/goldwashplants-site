@@ -650,7 +650,11 @@ permalink: /
       <span class="section-label">Gold Recovery Equipment</span>
       <h2 class="section-title">Portable Gold Wash Plants for Sale</h2>
       <p class="section-subtitle">
-        All-in-one gold recovery equipment. No additional screens or sluice boxes needed. Placer mining made simple.
+        A gold wash plant is one machine that does the whole job — it breaks down pay dirt,
+        screens off the oversize and runs the fines across a sluice, so you recover gold
+        without a separate trommel, screen deck or sluice box. Ours run 50 to 300 tons per
+        hour at 95-98% recovery, mercury-free, and each one is built for the ground it will
+        work. Placer mining made simple.
       </p>
     </div>
     
@@ -1012,9 +1016,17 @@ permalink: /
                 status.innerHTML = '<span style="color:#25D366">' + (body.message || "Thank you! We'll be in touch within 24 hours.") + '</span>';
                 form.reset();
                 if (typeof gtag !== 'undefined') {
-                  gtag('event', 'contact_form_submit', { event_category: 'lead_generation', event_label: 'quote_request_form_home', value: 1 });
-                  gtag('event', 'conversion', { send_to: 'G-21ZDT1EM3M/contact_form' });
+                  // GA4 recommended event name, used on BOTH forms so leads count as one number.
+                  gtag('event', 'generate_lead', { event_category: 'lead_generation', event_label: 'quote_request_form_home', value: 1 });
                 }
+                // NOTE: a Google Ads conversion used to fire here as
+                //   gtag('event','conversion',{ send_to: 'G-21ZDT1EM3M/contact_form' })
+                // which was malformed and never registered — send_to needs an Ads
+                // conversion ID (AW-XXXXXXXXX/label), not a GA4 measurement ID.
+                // There is no AW- tag on this site at all, so the four Ads campaigns
+                // were bidding on Maximize-conversions with zero conversion signal.
+                // To wire it properly: create a conversion action in Ads account
+                // 589-588-8609, add its AW- tag, then fire it alongside generate_lead.
               } else {
                 status.innerHTML = '<span style="color:#e74c3c">' + (body.error || 'Something went wrong. Please try again or call (888) 868-2650.') + '</span>';
               }

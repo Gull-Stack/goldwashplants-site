@@ -5,7 +5,13 @@
     <div style="text-align:center;max-width:640px;margin:0 auto 36px">
       <span style="display:inline-block;text-transform:uppercase;letter-spacing:1px;font-size:0.8rem;font-weight:600;color:var(--gold-dark);margin-bottom:10px">Our Equipment</span>
       <h2 style="font-family:var(--font-display);font-size:1.9rem;color:var(--black);line-height:1.2">Gold Wash Plants Built for Your Operation</h2>
-      <p style="color:var(--gray-700);margin-top:10px">Portable placer mining equipment with 95-98% gold recovery, custom-built in the USA and shipped worldwide. Browse our <a href="/" style="color:var(--gold-dark);font-weight:600">gold wash plants for sale</a> or compare models below.</p>
+      {# Anchor text alternates deterministically by page URL length. Every one of these
+         links points at the homepage, which is the page Google already ranks best for all
+         four variants — but before this they ALL read "gold wash plants for sale", so the
+         390/mo singular head term had almost no internal anchor support and sat at #15
+         while the plural-for-sale variant, with 23 exact-match links, sat at #3. Same
+         mechanism, applied to the term that is actually worth the most. #}
+      <p style="color:var(--gray-700);margin-top:10px">Portable placer mining equipment with 95-98% gold recovery, custom-built in the USA and shipped worldwide. Browse our <a href="/" style="color:var(--gold-dark);font-weight:600">{% if (page.url | length) % 2 == 0 %}gold wash plants for sale{% else %}gold wash plant{% endif %}</a> lineup or compare models below.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px">
       <a href="/products/50-ton/" style="display:block;padding:20px;background:#fff;border:1px solid var(--gray-300);border-radius:12px;color:var(--black)">

@@ -9,23 +9,45 @@ const FROM_EMAIL = process.env.FROM_EMAIL || 'leads@gullstack.com';
 const TURNSTILE_SECRET = process.env.TURNSTILE_SECRET_KEY;
 
 // === SPAM PROTECTION ===
+// Business suffixes that are legitimately consonant-heavy. Stripped before the
+// consonant-run check, otherwise "Martian gold miners LLC" collapses to
+// "...minerSLLC" and trips it. Cost us a real 200-ton Alaska lead on 2026-07-12.
+const BUSINESS_SUFFIXES = /\b(llc|l\.l\.c|inc|corp|corporation|ltd|limited|co|plc|gmbh|pty|pte|sarl|bv|nv|ab|as|oy|sa|srl|spa|kg|ag)\b\.?/gi;
+
 function isGibberish(text) {
   if (!text || text.length < 2) return false;
-  const cleaned = text.toLowerCase().replace(/[^a-z]/g, '');
+  let stripped = String(text).replace(BUSINESS_SUFFIXES, ' ');
+  const cleaned = stripped.toLowerCase().replace(/[^a-z]/g, '');
   if (cleaned.length < 2) return false;
-  const vowels = cleaned.match(/[aeiou]/g);
+  // `y` is a vowel for this purpose. Treating it as a consonant made
+  // "dyby6178@gmail.com" read as vowel-less and flagged a real lead on 2026-05-27.
+  const vowels = cleaned.match(/[aeiouy]/g);
   if (!vowels || vowels.length < cleaned.length * 0.15) return true;
-  if (/[^aeiou]{5,}/i.test(cleaned)) return true;
+  if (/[^aeiouy]{5,}/i.test(cleaned)) return true;
+  return false;
+}
+
+// Scripted submissions that POST straight to this endpoint. Same fingerprint
+// every time: name "test", message "Test submission.", and a phone in one of the
+// ranges reserved for fiction (555-0100..0199). Four of these hit Chase 7/20-7/22.
+function isKnownBotFingerprint({ name, phone, message }) {
+  const n = (name || '').trim().toLowerCase();
+  if (n === 'test' || n === 'test test' || n === 'testing') return 'bot_test_name';
+  const digits = (phone || '').replace(/\D/g, '');
+  if (/^1?\d{3}55501\d{2}$/.test(digits)) return 'bot_reserved_phone';
+  if ((message || '').trim().toLowerCase() === 'test submission.') return 'bot_test_message';
   return false;
 }
 
 function looksLikeSpam(data) {
-  const { name, website, _timestamp, email, message } = data;
+  const { name, website, _timestamp, email, message, phone } = data;
   if (website) return 'honeypot';
   if (_timestamp) {
     const elapsed = Date.now() - parseInt(_timestamp, 10);
     if (elapsed < 3000) return 'too_fast';
   }
+  const botFingerprint = isKnownBotFingerprint({ name, phone, message });
+  if (botFingerprint) return botFingerprint;
   if (isGibberish(name)) return 'gibberish_name';
   if (name && name.trim().length < 2) return 'short_name';
 
