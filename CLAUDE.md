@@ -146,6 +146,73 @@ detail. Highlights:
   JSON-LD (`/blog/`, `/compare/`, `/contact/`, `/examples/`, `/privacy/`,
   `/terms/`), and `/contact/` is **86 words**.
 
+### 2026-08-14 — De-cannibalization finished, and the cause was not what the audit assumed
+
+- **🔴 NOT ONE competing page linked to the homepage in body content. Zero.** All
+  23 in-content links to `/` came from the blog cluster, while the five pages
+  that actually outrank-compete with it — `/how-it-works/`, `/products/`,
+  `/products/50-ton/`, `/examples/`, `/compare/` — sent **nothing**. Added one
+  natural in-content link from each, spreading anchors across the terms the
+  homepage should own: *gold wash plants* (how-it-works) · *gold mining wash
+  plant* (products) · *gold wash plant* (50-ton) · *wash plants* (examples) ·
+  *gold wash machine* (compare). Verified live on all five.
+- **🔴 The homepage ranked #8–#27 for four terms it NEVER USED.** portable gold
+  wash plant **#8**, wash plant for gold **#10**, gold mining wash plant **#13**,
+  gold wash machine **#27** — zero occurrences of any of them. Added a
+  **"Before You Buy"** block answering the four questions buyers actually open
+  with, chosen specifically because `/faq/` does **not** already cover them, so
+  the two pages don't start competing with each other. Renders clean, verified in
+  a real browser.
+- **⚠️ Deliberately did NOT thin the money phrases out of the competing pages.**
+  The audit assumed body-copy density was the driver. Read in context it is
+  ordinary well-written prose — *"Compare Gold Wash Plant Models"*, *"every gold
+  wash plant is custom-built"*. Rewriting that to dodge a keyword would make the
+  copy worse and the pages vaguer, and the intents are already separated by the
+  distinct titles/H1s shipped 22 July. **The real gap was links and coverage, not
+  density.**
+- Positions were unchanged from 13 Aug (`previous_position == position` on every
+  row), which is expected — this work needs weeks, not hours. **Re-measure the
+  eight split terms in ~3 weeks; the head term `gold wash plant` at #15 is the
+  one to watch.**
+
+### One question about setup time exposed SEVEN different answers on the site
+
+- **Chase: *"Smaller machines 30 and larger about an hour."*** Asking that single
+  question turned up **seven different setup times published across the site**:
+  30 minutes, "under 30 minutes", "< 30 min", 1-2 hours, ~2 hours, 2-4 hours, and
+  **3-5 / 5-7 DAYS**. Now reconciled everywhere to **~30 min (50/100)** and
+  **~1 hr (200/300)** — both product pages, the `/products/` comparison table,
+  `/examples/` (both videos are M200), `/compare/`, homepage, `/how-it-works/`,
+  `/faq/` (visible copy **and** its FAQPage schema), and two blog posts.
+- **🔴 `blog/m200-vs-m300-wash-plant` was publishing invented specs** — it
+  contradicted the product pages on **every figure**: setup 3-5 / 5-7 days vs ~30
+  min · water **800-1,000 GPM vs 2,200** and **1,200-1,500 vs 3,500** · capacity
+  in **cubic yards** where the product pages say **tons**. Same failure mode as
+  the fake testimonials. Setup and water now match the product pages.
+  ⚠️ **Still unsourced and deliberately NOT invented away: 150 HP / 220 HP,
+  4×40ft / 6×40ft containers, 120'×60' / 150'×80' footprints.** Asked Chase.
+- **🔴 Three wrong cells in the `/products/` comparison table**, found by diffing
+  it against each product page's own spec block:
+  - 300-ton **water flow read 1,200 GPM**; its spec table says **3,500**.
+  - The **Grizzly Intake row was shifted one column left** — the 50-ton showed the
+    100's 18" and the 100-ton showed the 200's 24". Correct: 13" / 18" / 24" / 24".
+- **🔴 NEAR-MISS worth keeping.** A bulk find-replace put the corrected setup time
+  into the **Trommel** column of the vs-trommel table, leaving **our own plant at
+  "2-4 hours"** — i.e. advertising that our wash plant sets up slower than the
+  trommel it is being compared to. Caught only by reading `<th>` headers instead
+  of trusting row order. **Columns there are `Feature | Wash Plant | Trommel`.
+  Check table headers before bulk-replacing cell values.**
+- **✅ Freedom Mining decal removed** from the M100 barge photo at Chase's request.
+  Inpainted by interpolating the clean panel rows above and below **per column**,
+  so the panel's shading and seam lines survive. A straight copy-patch from a
+  nearby area was tried first and left a **visible rectangle**, because it
+  duplicated the panel seam along with the colour. John Deere branding left — that
+  is the equipment maker, not a customer identity. Verified on the live file.
+- **Google Ads: PARKED** per Bryce — *"Necessary only if he pays for that gain."*
+  Diagnosis stands and is recorded in §8 of the audit doc. 🔴 **Nobody should
+  resume those campaigns before a conversion action exists**, or they burn budget
+  exactly as before.
+
 ### Chase asked "are we hacked?" — investigated, answered, and one real gap closed
 
 - **🔴 CORRECTION: the 300-ton sluice is 50ft, not 60.** Chase reversed himself —
