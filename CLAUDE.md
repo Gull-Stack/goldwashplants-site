@@ -181,12 +181,13 @@ Chase answered all three questions. Each answer changed something.
   container-ready"* on the homepage. Not true of the M300.
 - **Sitewide sweep now returns ONE model-specific figure — Chase's real 25 HP.**
   124 JSON-LD blocks, 0 invalid. All verified live.
-- ⚠️ **ONE unverifiable claim left, deliberately not deleted:**
-  `blog/m200-vs-m300` says *"Our client in the DRC ultimately chose the M200.
-  After six months of operation, they're processing an average of 180 tons per
-  hour."* Every other figure in that post was invented, so this is suspect — but
-  a customer story is a different category from a spec, and it might be real.
-  **Ask Chase before removing.**
+- **✅ The DRC case study is REAL — Bryce confirmed 15 Aug. Leave it.**
+  `blog/m200-vs-m300`: *"Our client in the DRC ultimately chose the M200. After
+  six months of operation, they're processing an average of 180 tons per hour."*
+  🔴 **Annotated in source as verified, and that note is load-bearing** — every
+  other figure in that post was fabricated and removed, so the next fabrication
+  sweep will land on this passage and it is the one genuine thing there.
+  **Nothing unverified now remains on the site.**
 
 **Standing lesson from three days of this:** the fabricated content was found in
 four waves — testimonials, then prices, then model specs in prose, then specs
