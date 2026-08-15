@@ -146,6 +146,55 @@ detail. Highlights:
   JSON-LD (`/blog/`, `/compare/`, `/contact/`, `/examples/`, `/privacy/`,
   `/terms/`), and `/contact/` is **86 words**.
 
+### 2026-08-15 — Chase's real specs land, and they expose a third wave of fabrication
+
+Chase answered all three questions. Each answer changed something.
+
+- **🔴 REAL SPECS AT LAST: M200 ships in ONE 40' container and is 25 HP. The M300
+  needs specialised transport, does NOT containerise, and is also 25 HP.** Against
+  the fabricated figures (M200 150 HP / 4×40ft, M300 220 HP / 6×40ft) that is a
+  **6-9× overstatement on power and completely wrong on shipping**. The
+  `gold-wash-plant-power-requirements` table was worse still — **M200 300 HP,
+  M300 400 HP, a 12-16× overstatement** — with generator sizes, fuel burn and
+  daily fuel cost all derived from it. ⚠️ **I had wrongly protected that post on
+  14 Aug as "generator-sizing guidance rather than product specs."** Part of it
+  was, but its core table was per-model and invented. The table is gone; a short
+  honest block replaces it. **We still have no HP for the M30/M50/M100.**
+- **🔴 "Not sure where those claims came from. Let's remove all that."** —
+  `/compare/` was built around an **"Industry Average" column** asserting 80-90%
+  recovery, 4-8+ hour setup, 6-12 month build times, "often imported", "email
+  only" support, plus *"hundreds of miners who've used other equipment"*. All
+  unsourced. The column is gone entirely; the page now states only what goes on
+  our own plants and asserts **nothing** about anyone else. Its **meta
+  description was making the same comparative claims** and was rewritten.
+- **✅ "Let's leave gold watch project. That's the original company name and
+  current company name."** So the `/examples/` heading **stays**. 🔴 **Recorded
+  deliberately so a future session does not "fix" it as a stale brand
+  reference** — Gold Watch Project is the company, Gold Wash Plants is the brand
+  and domain. This also explains why the goldwatchproject.com redirects matter.
+- **Applying his specs surfaced fabrication three earlier passes had missed,
+  because it lived in tables and schema rather than prose:** container counts in
+  three more posts · invented shipping weights of **18,000-210,000 lbs** · water
+  flow contradicting the product pages in three posts · and a price in
+  **"$180k-220k"** form that the earlier `$180,000-220,000` sweep did not match.
+- **🔴 Corrected my own error.** On 13 Aug I wrote *"every plant is
+  container-ready"* on the homepage. Not true of the M300.
+- **Sitewide sweep now returns ONE model-specific figure — Chase's real 25 HP.**
+  124 JSON-LD blocks, 0 invalid. All verified live.
+- ⚠️ **ONE unverifiable claim left, deliberately not deleted:**
+  `blog/m200-vs-m300` says *"Our client in the DRC ultimately chose the M200.
+  After six months of operation, they're processing an average of 180 tons per
+  hour."* Every other figure in that post was invented, so this is suspect — but
+  a customer story is a different category from a spec, and it might be real.
+  **Ask Chase before removing.**
+
+**Standing lesson from three days of this:** the fabricated content was found in
+four waves — testimonials, then prices, then model specs in prose, then specs
+hidden in **tables and JSON-LD schema**. Grepping rendered prose is not enough;
+sweep table cells and `"text":` schema fields separately, and re-run the sweep
+after every new fact the client supplies, because a real figure is what exposes
+the fake one next to it.
+
 ### 2026-08-14 — De-cannibalization finished, and the cause was not what the audit assumed
 
 - **🔴 NOT ONE competing page linked to the homepage in body content. Zero.** All
