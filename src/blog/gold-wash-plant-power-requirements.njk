@@ -78,55 +78,24 @@ dateModified: "2026-05-14"
 
         <div class="power-spec">
           <h4>Standard Power Requirements</h4>
-          <table>
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Motor HP</th>
-                <th>Generator Size</th>
-                <th>Fuel Consumption</th>
-                <th>Daily Fuel Cost</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>M30</strong></td>
-                <td>60 HP</td>
-                <td>75-100 HP</td>
-                <td>3-4 gal/hour</td>
-                <td>$120-160</td>
-              </tr>
-              <tr>
-                <td><strong>M50</strong></td>
-                <td>75 HP</td>
-                <td>100-150 HP</td>
-                <td>4-6 gal/hour</td>
-                <td>$160-240</td>
-              </tr>
-              <tr>
-                <td><strong>M100</strong></td>
-                <td>150 HP</td>
-                <td>200-250 HP</td>
-                <td>8-12 gal/hour</td>
-                <td>$320-480</td>
-              </tr>
-              <tr>
-                <td><strong>M200</strong></td>
-                <td>300 HP</td>
-                <td>350-400 HP</td>
-                <td>15-20 gal/hour</td>
-                <td>$600-800</td>
-              </tr>
-              <tr>
-                <td><strong>M300</strong></td>
-                <td>400 HP</td>
-                <td>500+ HP</td>
-                <td>20-25 gal/hour</td>
-                <td>$800-1000</td>
-              </tr>
-            </tbody>
-          </table>
-          <p><em>Fuel costs calculated at $4/gallon diesel, 10-hour operating day</em></p>
+          {# 2026-08-15: this block previously carried a per-model table claiming
+             M200 = 300 HP and M300 = 400 HP, with generator sizes, fuel burn and
+             daily fuel cost all derived from those figures. Chase Shillig confirmed
+             both plants are 25 HP. Everything downstream of the HP column was
+             therefore wrong too, so the table came out rather than being patched.
+             Restore a table only when real figures exist for every model. #}
+          <p>Every plant is configured for <strong>diesel or electric</strong> when it is
+          built, so the honest answer to "what will it draw" depends on the package you
+          order rather than on the model number alone.</p>
+          <p>What we can state outright: the <a href="/products/200-ton/">M200</a> and the
+          <a href="/products/300-ton/">M300</a> are both <strong>25 HP</strong> machines.
+          Capacity on a wash plant comes from water, sluice length and feed rate, not from
+          a big motor &mdash; which is why a 300 ton-per-hour plant does not need ten times
+          the power of a 50.</p>
+          <p>For the rest of the package &mdash; generator sizing, expected fuel burn and
+          running cost on your ground &mdash; <a href="/contact/">ask us for the figures</a>
+          against the build you are quoting. Sizing rules of thumb are below, and they hold
+          whatever plant you run.</p>
         </div>
 
         <h3>Why Generator Sizing Exceeds Motor Requirements</h3>
@@ -213,7 +182,7 @@ dateModified: "2026-05-14"
         <div class="cost-calc">
           <h5>Electric vs Diesel Cost Comparison (M100 Example)</h5>
           <div class="calc-line">
-            <span><strong>Electric Power (150 HP, 10 hours/day):</strong></span>
+            <span><strong>Electric power, 10 hours/day:</strong></span>
             <span></span>
           </div>
           <div class="calc-line">
