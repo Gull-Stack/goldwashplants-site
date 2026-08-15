@@ -146,6 +146,39 @@ detail. Highlights:
   JSON-LD (`/blog/`, `/compare/`, `/contact/`, `/examples/`, `/privacy/`,
   `/terms/`), and `/contact/` is **86 words**.
 
+### 2026-08-15 (later) — Worked the GSC Pages report: 11 legacy redirects were 404ing
+
+- **🔴 THE FIND: all 11 legacy short-URL redirects returned 404, not a redirect.**
+  `/50-ton` `/100-ton` `/200-ton` `/300-ton` `/gold-trommel`
+  `/products/gold-trommel` `/alaska` `/california` `/africa` `/guyana`
+  `/suriname`. **Cause: `trailingSlash: true` makes Vercel 308 `/50-ton` to
+  `/50-ton/` BEFORE the redirect rule is evaluated, and no `/50-ton/` rule
+  existed.** Whoever added the `/contact-us` and `/pricing` rules already knew
+  this and paired each with a slash variant; these eleven were missed. All 11
+  now resolve 200 to the right page. ⚠️ **Any new rule in `vercel.json` needs
+  both variants on this site.**
+- **Only FIVE current pages are genuinely unindexed, not ~10 as section 5
+  guessed**: `/blog/gold-concentrator-vs-wash-plant/`, `/locations/montana/`,
+  `/locations/oregon/`, `/blog/gold-dredge-vs-wash-plant/`, `/privacy/`.
+  Everything else in the 79 "crawled - not indexed" is a `www.` duplicate, a
+  `.html` legacy URL or an old short URL.
+- **🔴 CORRECTED MY OWN HYPOTHESIS MID-TASK.** Two sitemaps are registered and
+  the `www.` one (submitted **8 Feb**, read **10 Aug**) looked like the cause of
+  ~55 www URLs. It is not: it **308s to the non-www sitemap** and what it serves
+  contains **0 www URLs**. The www entries are historical, from before the host
+  was standardised on 15 May (`6e913f4`) — newest www crawl is **23 May**. They
+  age out on their own. I checked before "fixing" a non-problem. (The stale
+  sitemap row cannot be removed via the UI regardless — its menu offers only
+  "See page indexing".)
+- **The 51 404s need no action.** They are URLs that never existed here
+  (`/guides/…`, `/brand-facts`, `/products/m100`, `/compare/vs-savona/`,
+  `/resources/blog/…`) plus old WordPress paths (`/category/uncategorized/`,
+  `/author/bryce/`). **Verified no current page links to any of them**, and the
+  three that were real (`/locations/`, `/contact-us/`, `/wash-plant-examples/`)
+  all return 200 today.
+- Also removed a **sitewide redirect hop**: the footer linked "Pricing Guide" at
+  `/pricing/`, which 308s to `/products/` — on all 56 pages.
+
 ### 2026-08-15 — Chase's real specs land, and they expose a third wave of fabrication
 
 Chase answered all three questions. Each answer changed something.
