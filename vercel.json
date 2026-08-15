@@ -5,35 +5,206 @@
     "cleanUrls": true,
     "trailingSlash": true,
     "redirects": [
-        { "source": "/50-ton", "destination": "/products/50-ton", "permanent": true },
-        { "source": "/100-ton", "destination": "/products/100-ton", "permanent": true },
-        { "source": "/200-ton", "destination": "/products/200-ton", "permanent": true },
-        { "source": "/300-ton", "destination": "/products/300-ton", "permanent": true },
-        { "source": "/gold-trommel", "destination": "/products", "permanent": true },
-        { "source": "/alaska", "destination": "/locations/alaska", "permanent": true },
-        { "source": "/california", "destination": "/locations/california", "permanent": true },
-        { "source": "/africa", "destination": "/locations/africa", "permanent": true },
-        { "source": "/guyana", "destination": "/locations/guyana", "permanent": true },
-        { "source": "/suriname", "destination": "/locations/suriname", "permanent": true },
-        { "source": "/products/gold-trommel", "destination": "/products", "permanent": true },
-        { "source": "/contact.html", "destination": "/contact", "permanent": true },
-        { "source": "/blog/index.html", "destination": "/blog", "permanent": true },
-        { "source": "/about-us", "destination": "/", "permanent": true },
-        { "source": "/about-us/", "destination": "/", "permanent": true },
-        { "source": "/contact-us", "destination": "/contact", "permanent": true },
-        { "source": "/contact-us/", "destination": "/contact", "permanent": true },
-        { "source": "/wash-plant-examples", "destination": "/examples", "permanent": true },
-        { "source": "/wash-plant-examples/", "destination": "/examples", "permanent": true },
-        { "source": "/category/mining-knowledge", "destination": "/blog", "permanent": true },
-        { "source": "/category/mining-knowledge/", "destination": "/blog", "permanent": true },
-        { "source": "/cat-rentals", "destination": "/", "permanent": true },
-        { "source": "/cat-rentals/", "destination": "/", "permanent": true },
-        { "source": "/wash-plant-pricing", "destination": "/products", "permanent": true },
-        { "source": "/wash-plant-pricing/", "destination": "/products", "permanent": true },
-        { "source": "/blog/trommel-vs-wash-plant", "destination": "/blog/gold-wash-plant-vs-trommel", "permanent": true },
-        { "source": "/blog/trommel-vs-wash-plant/", "destination": "/blog/gold-wash-plant-vs-trommel", "permanent": true },
-        { "source": "/pricing", "destination": "/products", "permanent": true },
-        { "source": "/pricing/", "destination": "/products", "permanent": true }
+        {
+            "source": "/50-ton",
+            "destination": "/products/50-ton",
+            "permanent": true
+        },
+        {
+            "source": "/50-ton/",
+            "destination": "/products/50-ton",
+            "permanent": true
+        },
+        {
+            "source": "/100-ton",
+            "destination": "/products/100-ton",
+            "permanent": true
+        },
+        {
+            "source": "/100-ton/",
+            "destination": "/products/100-ton",
+            "permanent": true
+        },
+        {
+            "source": "/200-ton",
+            "destination": "/products/200-ton",
+            "permanent": true
+        },
+        {
+            "source": "/200-ton/",
+            "destination": "/products/200-ton",
+            "permanent": true
+        },
+        {
+            "source": "/300-ton",
+            "destination": "/products/300-ton",
+            "permanent": true
+        },
+        {
+            "source": "/300-ton/",
+            "destination": "/products/300-ton",
+            "permanent": true
+        },
+        {
+            "source": "/gold-trommel",
+            "destination": "/products",
+            "permanent": true
+        },
+        {
+            "source": "/gold-trommel/",
+            "destination": "/products",
+            "permanent": true
+        },
+        {
+            "source": "/alaska",
+            "destination": "/locations/alaska",
+            "permanent": true
+        },
+        {
+            "source": "/alaska/",
+            "destination": "/locations/alaska",
+            "permanent": true
+        },
+        {
+            "source": "/california",
+            "destination": "/locations/california",
+            "permanent": true
+        },
+        {
+            "source": "/california/",
+            "destination": "/locations/california",
+            "permanent": true
+        },
+        {
+            "source": "/africa",
+            "destination": "/locations/africa",
+            "permanent": true
+        },
+        {
+            "source": "/africa/",
+            "destination": "/locations/africa",
+            "permanent": true
+        },
+        {
+            "source": "/guyana",
+            "destination": "/locations/guyana",
+            "permanent": true
+        },
+        {
+            "source": "/guyana/",
+            "destination": "/locations/guyana",
+            "permanent": true
+        },
+        {
+            "source": "/suriname",
+            "destination": "/locations/suriname",
+            "permanent": true
+        },
+        {
+            "source": "/suriname/",
+            "destination": "/locations/suriname",
+            "permanent": true
+        },
+        {
+            "source": "/products/gold-trommel",
+            "destination": "/products",
+            "permanent": true
+        },
+        {
+            "source": "/products/gold-trommel/",
+            "destination": "/products",
+            "permanent": true
+        },
+        {
+            "source": "/contact.html",
+            "destination": "/contact",
+            "permanent": true
+        },
+        {
+            "source": "/blog/index.html",
+            "destination": "/blog",
+            "permanent": true
+        },
+        {
+            "source": "/about-us",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/about-us/",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/contact-us",
+            "destination": "/contact",
+            "permanent": true
+        },
+        {
+            "source": "/contact-us/",
+            "destination": "/contact",
+            "permanent": true
+        },
+        {
+            "source": "/wash-plant-examples",
+            "destination": "/examples",
+            "permanent": true
+        },
+        {
+            "source": "/wash-plant-examples/",
+            "destination": "/examples",
+            "permanent": true
+        },
+        {
+            "source": "/category/mining-knowledge",
+            "destination": "/blog",
+            "permanent": true
+        },
+        {
+            "source": "/category/mining-knowledge/",
+            "destination": "/blog",
+            "permanent": true
+        },
+        {
+            "source": "/cat-rentals",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/cat-rentals/",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/wash-plant-pricing",
+            "destination": "/products",
+            "permanent": true
+        },
+        {
+            "source": "/wash-plant-pricing/",
+            "destination": "/products",
+            "permanent": true
+        },
+        {
+            "source": "/blog/trommel-vs-wash-plant",
+            "destination": "/blog/gold-wash-plant-vs-trommel",
+            "permanent": true
+        },
+        {
+            "source": "/blog/trommel-vs-wash-plant/",
+            "destination": "/blog/gold-wash-plant-vs-trommel",
+            "permanent": true
+        },
+        {
+            "source": "/pricing",
+            "destination": "/products",
+            "permanent": true
+        },
+        {
+            "source": "/pricing/",
+            "destination": "/products",
+            "permanent": true
+        }
     ],
     "git": {
         "deploymentEnabled": {
