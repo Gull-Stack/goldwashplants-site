@@ -792,3 +792,24 @@ report for the ~10 unindexed pages · Phase 1 spam-filter fixes · schema on
     "Get a Quote", and there are 3+ WhatsApp surfaces per page. Consider
     demoting WhatsApp to secondary and making the form the primary CTA.
   - Root `index.html` is stale duplicate code — delete it eventually.
+
+<!-- gs-notes-convention -->
+## Notes convention (read this first)
+
+This repo is the system of record for everything we know about goldwashplants.
+Anyone working here — Bryce, Josh, or a Claude session — saves to these files:
+
+- `CLAUDE.md` (this file) — **Session Log**. Append a dated entry at the TOP
+  of the Session Log section when a session or discrete task ends: what
+  shipped, current state, what's next. 3–8 tight bullets.
+- `docs/roadmap.md` — what we're trying to do here, and what comes next.
+- `docs/notes.md` — durable facts: decisions, gotchas, links, who asked for what.
+
+Rules:
+
+1. Read the newest Session Log entry before starting work.
+2. Write notes as you go, not from memory at the end.
+3. **Commit before the session ends.** An uncommitted note may as well not exist.
+4. No secrets in any of these files — no passwords, keys, or tokens.
+5. Write for someone who wasn't in the room.
+
