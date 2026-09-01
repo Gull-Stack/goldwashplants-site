@@ -29,6 +29,24 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-08-31 — Contact form now warns visitors that our reply may land in spam
+
+- Bryce sent a test lead to himself and the auto-reply went to **spam**.
+- Added two notices on `src/contact/index.njk` (commit `254eadd`):
+  - A standing line under the submit button: "Thanks for your email. Please
+    check your spam folder for our response — replies sometimes land there."
+  - A second line in the post-submit confirmation saying the same thing.
+- **Root cause is not fixed.** `api/submit-lead.js` sends both the visitor
+  auto-reply and Chase's lead alert from `FROM_EMAIL`, which defaults to
+  `leads@gullstack.com`. A goldwashplants.com form replying from a
+  gullstack.com address, without SendGrid domain authentication on that
+  domain, is a textbook spam trigger.
+- **Next session:** confirm the production `FROM_EMAIL` value, then either
+  authenticate the sending domain in SendGrid (DKIM + SPF) or move the sender
+  to an authenticated goldwashplants.com address. Re-test to inbox.
+- The homepage form (`src/index.njk`, line ~1044) shows its own confirmation
+  and did **not** get the spam notice. Add it there if Bryce wants parity.
+
 ### 2026-08-13 — Full SEO audit: broken images Chase reported twice, 145 fake reviews, and the money terms are sliding
 
 Full audit written up at **`docs/SEO-AUDIT-2026-08-13.md`** — read that for the
