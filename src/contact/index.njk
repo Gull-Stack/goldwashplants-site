@@ -351,7 +351,7 @@ permalink: /contact/
           
           <button type="submit" class="form-submit" id="submit-btn">Send Message</button>
           <div id="form-status" style="margin-top:12px;text-align:center;font-weight:500;"></div>
-          <p style="margin-top:12px;text-align:center;font-size:14px;line-height:1.5;color:var(--gray-500);">
+          <p id="spam-note" style="margin-top:12px;text-align:center;font-size:14px;line-height:1.5;color:var(--gray-500);">
             Thanks for your email. Please check your spam folder for our response &mdash;
             replies sometimes land there.
           </p>
@@ -403,6 +403,9 @@ permalink: /contact/
       if (response.ok) {
         statusDiv.innerHTML = '<span style="color: var(--gold)">Thanks for your email! We\'ll respond within 24 hours.</span>'
           + '<br><span style="color: var(--gray-500); font-weight:400; font-size:14px;">Please check your spam folder for our response.</span>';
+        // The standing note now says the same thing directly above. Hide it so
+        // the confirmation does not print the spam warning twice.
+        document.getElementById('spam-note').hidden = true;
         this.reset();
         
         // Track submission
