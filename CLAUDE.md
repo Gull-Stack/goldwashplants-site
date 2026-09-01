@@ -62,7 +62,11 @@ Auto-deploys from `main` (autoAlias to production).
   after a successful send (`3d43c9b`).
 - **Texted Chase** (1 Sept): leads now send from leads@goldwashplants.com, the
   test lead under Bryce's name should be ignored, and he should mark any old
-  lead emails in spam as "Not spam". Awaiting his reply.
+  lead emails in spam as "Not spam".
+- **Chase confirmed the same day. The spam problem is closed.**
+- Left in place for now: the standing spam note on `src/contact/index.njk`.
+  It is a bandage on a fixed problem — propose removing it once inbox
+  delivery has held for a couple of weeks.
 - The homepage form (`src/index.njk`, line ~1044) shows its own confirmation
   and did **not** get the spam notice. Add it there if Bryce wants parity.
 
