@@ -51,10 +51,18 @@ Auto-deploys from `main` (autoAlias to production).
     `leads@goldwashplants.com` is send-only and the body invites a reply.
   - **Verified on a real send:** `dkim=pass header.s=gwp`, `spf=pass`,
     `dmarc=pass header.from=goldwashplants.com`, delivered to inbox.
-- **Not yet verified:** the deployed `/api/submit-lead` path itself. Proving it
-  end-to-end means submitting the live form, which emails Chase. The direct
-  SendGrid send above proves the domain and the From address; the function
-  reads the same address from env and from the code default.
+- **Verified end-to-end.** A test lead was submitted through the live form on
+  1 Sept. Both emails sent from `leads@goldwashplants.com` and landed in the
+  **inbox**, with `dkim=pass header.s=gwp`, `spf=pass` and
+  `dmarc=pass header.from=goldwashplants.com`:
+  - the sales alert to chase@goldwashplants.com (CC bryce), and
+  - the customer confirmation, carrying `Reply-To: chase@goldwashplants.com`.
+- Fixed a duplicate on the success state: the standing spam note and the
+  confirmation both printed the warning, so the standing note now hides itself
+  after a successful send (`3d43c9b`).
+- **Texted Chase** (1 Sept): leads now send from leads@goldwashplants.com, the
+  test lead under Bryce's name should be ignored, and he should mark any old
+  lead emails in spam as "Not spam". Awaiting his reply.
 - The homepage form (`src/index.njk`, line ~1044) shows its own confirmation
   and did **not** get the spam notice. Add it there if Bryce wants parity.
 
