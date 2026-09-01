@@ -29,21 +29,32 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
-### 2026-08-31 — Contact form now warns visitors that our reply may land in spam
+### 2026-08-31 — Contact form spam notice, then the actual fix: goldwashplants.com is now authenticated in SendGrid
 
 - Bryce sent a test lead to himself and the auto-reply went to **spam**.
 - Added two notices on `src/contact/index.njk` (commit `254eadd`):
   - A standing line under the submit button: "Thanks for your email. Please
     check your spam folder for our response — replies sometimes land there."
   - A second line in the post-submit confirmation saying the same thing.
-- **Root cause is not fixed.** `api/submit-lead.js` sends both the visitor
-  auto-reply and Chase's lead alert from `FROM_EMAIL`, which defaults to
-  `leads@gullstack.com`. A goldwashplants.com form replying from a
-  gullstack.com address, without SendGrid domain authentication on that
-  domain, is a textbook spam trigger.
-- **Next session:** confirm the production `FROM_EMAIL` value, then either
-  authenticate the sending domain in SendGrid (DKIM + SPF) or move the sender
-  to an authenticated goldwashplants.com address. Re-test to inbox.
+- **Root cause fixed the same session** (commit `4fb0389`). Mail was sent as
+  `leads@gullstack.com` from a goldwashplants.com form. That does not align
+  with this domain's DMARC policy (`p=quarantine`).
+  - Authenticated goldwashplants.com in the GullStack SendGrid account and
+    added three DNS-only CNAMEs in Cloudflare (`em`, `gwp._domainkey`,
+    `gwp2._domainkey`). SendGrid validated all three.
+  - **Custom DKIM selector `gwp`, deliberately.** A different SendGrid account
+    (`u13370908`) already owns `s1`/`s2._domainkey` and `fwmail` on this
+    domain. Those were left untouched — see `docs/notes.md`.
+  - Switched `FROM_EMAIL` to `leads@goldwashplants.com` in Vercel production
+    and in the code default.
+  - Confirmation email now sets `replyTo: SALES_EMAIL`, because
+    `leads@goldwashplants.com` is send-only and the body invites a reply.
+  - **Verified on a real send:** `dkim=pass header.s=gwp`, `spf=pass`,
+    `dmarc=pass header.from=goldwashplants.com`, delivered to inbox.
+- **Not yet verified:** the deployed `/api/submit-lead` path itself. Proving it
+  end-to-end means submitting the live form, which emails Chase. The direct
+  SendGrid send above proves the domain and the From address; the function
+  reads the same address from env and from the code default.
 - The homepage form (`src/index.njk`, line ~1044) shows its own confirmation
   and did **not** get the spam notice. Add it there if Bryce wants parity.
 
