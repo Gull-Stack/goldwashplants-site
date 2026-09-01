@@ -5,7 +5,12 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const SALES_EMAIL = process.env.SITE_EMAIL || 'chase@goldwashplants.com';
-const FROM_EMAIL = process.env.FROM_EMAIL || 'leads@gullstack.com';
+// Must be on a domain authenticated in SendGrid. goldwashplants.com is
+// authenticated (DKIM selector gwp/gwp2, return path em.goldwashplants.com),
+// so the From domain aligns with the site and passes the domain's own
+// DMARC policy (p=quarantine). Sending as leads@gullstack.com did not
+// align, and a 31 Aug 2026 test reply landed in spam.
+const FROM_EMAIL = process.env.FROM_EMAIL || 'leads@goldwashplants.com';
 const TURNSTILE_SECRET = process.env.TURNSTILE_SECRET_KEY;
 
 // === SPAM PROTECTION ===
@@ -270,6 +275,9 @@ export default async function handler(req, res) {
         from: FROM_EMAIL,
         subject: 'Thanks for contacting Gold Wash Plants!',
         html: confirmationHtml,
+        // The body invites a reply. FROM_EMAIL is a send-only address, so point
+        // replies at the sales inbox instead of letting them bounce.
+        replyTo: SALES_EMAIL,
       });
      }
 
