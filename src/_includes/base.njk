@@ -11,6 +11,15 @@
   <meta name="description" content="{{ description }}">
 
   <link rel="canonical" href="https://goldwashplants.com{{ permalink or page.url }}">
+
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@type": "WebSite", "url": "https://goldwashplants.com/", "name": "Gold Wash Plants", "publisher": {"@type": "Organization", "name": "Gold Wash Plants", "url": "https://goldwashplants.com/"}}
+  </script>
+  {%- set crumbUrl = permalink or page.url -%}
+  {%- if crumbUrl and crumbUrl != '/' and breadcrumbs != false and not (crumbUrl.startsWith('/blog/') and crumbUrl != '/blog/') %}
+  {#- BreadcrumbList for every inner page. Blog posts carry their own in article-schema.njk. -#}
+  <script type="application/ld+json">{{ crumbUrl | breadcrumbs(title) | safe }}</script>
+  {%- endif %}
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/dark-logo.png">
   

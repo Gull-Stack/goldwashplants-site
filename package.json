@@ -4,7 +4,7 @@
   "description": "Gold Wash Plants website built with Eleventy",
   "main": ".eleventy.js",
   "scripts": {
-    "build": "npx eleventy",
+    "build": "npx eleventy && node scripts/build-llms-full.js",
     "dev": "npx eleventy --serve",
     "start": "npx eleventy --serve"
   },
