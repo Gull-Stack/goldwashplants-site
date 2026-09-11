@@ -5,6 +5,11 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const SALES_EMAIL = process.env.SITE_EMAIL || 'chase@goldwashplants.com';
+
+// Shared across every client lead endpoint. Canonical copy lives in
+// Gull-Stack/walkthru-labs → shared/lead-spam-filter.js; this is a synced copy,
+// so fix it there and re-run shared/sync-lead-spam-filter.sh, not here.
+import { classifyLead } from './lead-spam-filter.js';
 // Must be on a domain authenticated in SendGrid. goldwashplants.com is
 // authenticated (DKIM selector gwp/gwp2, return path em.goldwashplants.com),
 // so the From domain aligns with the site and passes the domain's own
@@ -189,6 +194,19 @@ export default async function handler(req, res) {
       }
     }
 
+    // Turnstile catches bots. It does not catch a salesperson filling the form
+    // properly to pitch Chase, which is the bigger share of what arrives.
+    if (!flaggedReason) {
+      const triage = classifyLead({
+        name, email, phone, message,
+        extraText: [interest, location].filter(Boolean).join(' '),
+      });
+      if (triage.verdict !== 'clean') {
+        console.log(`[LEAD TRIAGE] verdict=${triage.verdict} reasons=${triage.reasons.join('|')} name="${name}" — routed to Bryce, NOT the client`);
+        flaggedReason = `${triage.verdict}: ${triage.reasons.join(', ')}`;
+      }
+    }
+
     // Honeypot is filled only by bots — hard drop (no save, no email).
     // Every other flag is uncertain (a real visitor's Turnstile widget can
     // fail), so those are saved AND emailed below, marked for review.
@@ -308,7 +326,7 @@ export default async function handler(req, res) {
       `;
 
       await sendEmail({
-        to: SALES_EMAIL,
+        to: flaggedReason ? 'bryce@gullstack.com' : SALES_EMAIL,
         from: FROM_EMAIL,
         fromName: `${leadData.name} via Gold Wash Plants`,
         subject: `${flaggedReason ? `⚠️ FLAGGED (${flaggedReason})` : '🔔 New Lead'}: ${leadData.name} - ${leadData.interest || 'General Inquiry'}`,
