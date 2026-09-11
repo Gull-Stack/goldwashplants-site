@@ -142,7 +142,15 @@ async function sendEmail({ to, from, fromName, subject, html, replyTo, cc }) {
       content: [{ type: 'text/html', value: html }],
     }),
   });
-  return response.ok;
+  // Return a RESULT, never a bare boolean that call sites can drop. `detail`
+  // carries SendGrid's own error body, which names the real cause (duplicate
+  // recipient across to/cc, unverified sender, revoked key) instead of a bare
+  // status. A silent send failure is how leads go missing for months.
+  let detail = '';
+  if (!response.ok) {
+    try { detail = (await response.text()).slice(0, 400); } catch (e) { detail = ''; }
+  }
+  return { ok: response.ok, status: response.status, detail };
 }
 
 export default async function handler(req, res) {
@@ -325,15 +333,20 @@ export default async function handler(req, res) {
         </div>
       `;
 
-      await sendEmail({
+      const notify = await sendEmail({
         to: flaggedReason ? 'bryce@gullstack.com' : SALES_EMAIL,
         from: FROM_EMAIL,
         fromName: `${leadData.name} via Gold Wash Plants`,
         subject: `${flaggedReason ? `⚠️ FLAGGED (${flaggedReason})` : '🔔 New Lead'}: ${leadData.name} - ${leadData.interest || 'General Inquiry'}`,
         html: notificationHtml,
         replyTo: leadData.email,
-        cc: 'bryce@gullstack.com',
+        // No cc when the mail is already going to Bryce. SendGrid rejects a
+        // personalization whose to and cc are the same address, and the send
+        // fails silently because the endpoint still returns 200.
+        cc: flaggedReason ? undefined : 'bryce@gullstack.com',
       });
+      console.log(`[LEAD] name="${leadData.name}" flagged=${flaggedReason || 'no'} notify=${notify.ok ? 'sent' : `FAILED ${notify.status} ${notify.detail}`}`);
+      if (!notify.ok) console.error(`[LEAD] 🔴 notification FAILED: ${notify.status} ${notify.detail}`);
 
       // Mark email as sent in Supabase (best-effort, never fatal)
       if (savedLead?.[0]?.id && SUPABASE_URL && SUPABASE_KEY) {
