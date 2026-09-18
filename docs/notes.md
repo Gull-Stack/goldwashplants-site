@@ -8,7 +8,12 @@ Never put passwords, API keys, or tokens in this file.
 
 ## Who
 
-- (client contacts, who asks for what, who approves)
+- **Chase Shillig** — owner, chase@goldwashplants.com, +1 661-810-1844, texts
+  (iMessage). Personal address eshillig@yahoo.com shows up on his own test
+  leads. Does not follow jargon ("proposal", "CRM" meant nothing to him on
+  17 Sep 2026) — write to him in plain words about people and sales.
+- Pays $55–59/mo. On 17 Sep 2026 Bryce offered to swap the retainer for a cut
+  of each sale if a lead-status page and pay-now quote links get him sales.
 
 ## Decisions
 

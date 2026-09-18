@@ -29,6 +29,38 @@ Auto-deploys from `main` (autoAlias to production).
 
 ## Session Log
 
+### 2026-09-17 — Chase said leads "stopped again"; they had not. Texted him the 17-lead list and a rev-share offer
+
+- Chase texted Bryce "seems like they stopped again". Counted the lead alerts
+  CC'd to bryce@gullstack.com (Supabase read was blocked in-session): **17 real
+  leads since 22 July**, tests and spam excluded. Aug 9, Sep 1–17 five. About
+  two a week — the best run since March. He is not reading or not working them.
+- Over half are overseas (Sierra Leone, Mexico, Kenya, Nigeria, Congo, Zimbabwe,
+  PNG); domestic is mostly Alaska. Standing questions: 50-ton price, clay-heavy
+  alluvial, diesel power, shipping. Nothing on the site answers shipping or
+  payment terms (still open from the 13 Aug audit).
+- Two spam-ish rows excluded from the 17: Jeff Bush (30 Jul, sales pitch) and
+  the two `turnstile_missing` flags. **Philip Parker (7 Sep, Alaska) was
+  auto-flagged `gibberish_email` and looks real** — same false-positive class
+  as July. Lance Carter (3 Sep, "order washing sieves" from a construction
+  domain) smells like a procurement scam; kept in the list, noted.
+- **Bryce's strategic read:** keep him at $59/mo unless he will do a rev-share.
+  Offer = lead-status page on `/hq` (talked / quoted / bought / dead) + a
+  "pay now" link on quotes (Stripe Connect, application fee). ACH is US-only,
+  so it helps the Alaska buyers, not the overseas ones. A 3% cut of one ~$35k
+  50-ton sale is ~$1,050, about 18 months of the retainer.
+- **Texted Chase (21:33 MT, iMessage +1 661-810-1844):** the 17 names with
+  date / country / model, one question ("how many did you talk to, and did any
+  buy?"), and the two builds with the rev-share instead of $59. Row 797671
+  `is_sent=1 error=0`, not yet marked delivered at send time. **His answer
+  decides whether anything gets built.**
+- Stripe bills this client as "Gold Watch Project" at $55/mo per corn, not $59
+  — same customer record as the stopped Screens of Southern Utah sub.
+- Next: when Chase answers, (a) if any bought → scope the `/hq` lead-status
+  page + Stripe Connect quote links and price the cut; (b) if none → leave him
+  at the retainer, no more effort. Either way, fix the `gibberish_email`
+  false positive on `api/submit-lead.js`.
+
 ### 2026-08-31 — Contact form spam notice, then the actual fix: goldwashplants.com is now authenticated in SendGrid
 
 - Bryce sent a test lead to himself and the auto-reply went to **spam**.
