@@ -14,6 +14,32 @@
     "Custom-built placer mining equipment",
     "Worldwide shipping and setup guidance"
   ],
+  "products": [
+    {
+      "name": "50 Ton Gold Wash Plant",
+      "model": "M50",
+      "capacity": "50 tons per hour",
+      "url": "https://goldwashplants.com/products/50-ton/"
+    },
+    {
+      "name": "100 Ton Gold Wash Plant",
+      "model": "M100",
+      "capacity": "100 tons per hour",
+      "url": "https://goldwashplants.com/products/100-ton/"
+    },
+    {
+      "name": "200 Ton Gold Wash Plant",
+      "model": "M200T",
+      "capacity": "200 tons per hour",
+      "url": "https://goldwashplants.com/products/200-ton/"
+    },
+    {
+      "name": "300 Ton Gold Wash Plant",
+      "model": "M300",
+      "capacity": "300 tons per hour",
+      "url": "https://goldwashplants.com/products/300-ton/"
+    }
+  ],
   "differentiators": [
     "95-98% gold recovery rate",
     "Mercury-free recovery",
@@ -111,5 +137,5 @@
       "a": "We offer higher recovery rates, faster setup, and American-made quality at competitive prices."
     }
   ],
-  "last_updated": "2026-09-02"
+  "last_updated": "2026-10-01"
 }
